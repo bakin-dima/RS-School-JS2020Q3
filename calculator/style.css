@@ -7,7 +7,7 @@
 body {
   padding: 0;
   margin: 0;
-  background: linear-gradient(to right, #00498e, #728b9f);
+  background: linear-gradient(to right, #005b7c, #008eab, #d5d1ca);
 }
 
 .input {
@@ -16,11 +16,14 @@ body {
   padding: 15px;
   font-size: 24px;
   margin-bottom: 15px;
+  color: #005b7c;
+  background: #d5d1ca;
+  border: none;
 }
 
 .btn {
   border: none;
-  background: #0087c1;
+  background: #005b7c;
   color: #efefee;
   opacity: 0.8;
   transition: 0.2s;
@@ -28,7 +31,7 @@ body {
 }
 
 .btn:hover {
-  opacity: 1;
+  opacity: 0.9;
   transition: 0.5s;
 }
 
