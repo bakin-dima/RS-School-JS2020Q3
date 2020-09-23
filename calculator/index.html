@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="style.css" />
+    <title>calculator</title>
+  </head>
+
+  <body>
+    <div class="calculator_grid">
+      <!-- prettier-ignore -->
+      <input disabled type="text" id="display" value="0" class="input"/>
+      <button type="button" id="c" class="btn clear-btn spam-column">C</button>
+      <button type="button" id="ce" class="btn clear-btn">CE</button>
+      <button type="button" id="invert" class="btn">+/-</button>
+
+      <button type="button" id="root" class="btn">&Sqrt;x</button>
+      <button type="button" class="operator btn">n<sup>x</sup></button>
+      <button type="button" class="operator btn">*</button>
+      <button type="button" class="operator btn">/</button>
+      <button type="button" class="number btn">7</button>
+      <button type="button" class="number btn">8</button>
+      <button type="button" class="number btn">9</button>
+      <button type="button" class="operator btn">+</button>
+      <button type="button" class="number btn">4</button>
+      <button type="button" class="number btn">5</button>
+      <button type="button" class="number btn">6</button>
+
+      <button type="button" class="operator btn">-</button>
+
+      <button type="button" class="number btn">1</button>
+      <button type="button" class="number btn">2</button>
+      <button type="button" class="number btn">3</button>
+      <button type="button" class="operator btn span-row">=</button>
+
+      <button type="button" class="number btn spam-column">0</button>
+      <button type="button" id="decimal" class="btn">.</button>
+    </div>
+    <script src="script.js"></script>
+  </body>
+</html>
