@@ -1,0 +1,51 @@
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+body {
+  position: relative;
+}
+
+a {
+  color: white;
+  text-decoration: none;
+}
+
+.wrapper {
+  max-width: 1200px;
+  width: 62.5vw;
+  margin: 0 auto;
+  padding: 0px;
+}
+
+/* HEADER */
+.header {
+  position: absolute;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  right: 50%;
+  padding: 0px;
+}
+
+.logo {
+  width: 15.33%;
+}
+
+.nav-bar {
+  width: 36.91%;
+}
+
+.nav-bar__list {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  list-style: none;
+}
+
+.intro {
+  height: 908px;
+  background: url("/assets/images/noise_transparent@2x.png"), radial-gradient(100% 215.42% at 0% 0%, #5b483a 0%, #262425 100%), #211f20;
+}

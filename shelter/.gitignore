@@ -1,0 +1,6 @@
+.vscode/*
+Desktop.jpg
+*.scss
+*.map
+*.css
+!main.css
