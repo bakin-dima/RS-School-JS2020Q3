@@ -1,6 +1,6 @@
 .vscode/*
 Desktop.jpg
-mixin.css
-mixin.scss
-pages/main/main.scss
-pages/main/main.css.map
+*.scss
+*.map
+*.css
+!main.css
