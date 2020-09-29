@@ -85,10 +85,10 @@ body {
   text-decoration: none;
   line-height: 160%;
   border-bottom: 3px solid transparent;
-  transition: all 0.4s;
 }
 .list__link:hover {
   color: #fafafa;
+  transition-duration: 0.4s;
 }
 .list__link:active {
   border-bottom-color: #f1cdb3;
@@ -178,7 +178,7 @@ body {
   outline: none;
   padding: 0.9375rem 2.8125rem;
   border: none;
-  transition: all 0.4s;
+  transition: background-color 0.4s;
 }
 .button__primary:hover {
   background-color: #fddcc4;
@@ -251,7 +251,7 @@ body {
   background-color: #fafafa;
   border-radius: 9px;
   padding: 1.875rem 2.1875rem;
-  transition: all 0.4s;
+  transition: background-color 0.4s;
 }
 .card:hover {
   background-color: #ffffff;
@@ -283,7 +283,7 @@ body {
   font-size: 1.0625rem;
   line-height: 130%;
   letter-spacing: 0.06em;
-  transition: all 0.4s;
+  transition: background-color 0.4s;
 }
 .card__button:hover {
   background-color: #fddcc4;
@@ -301,7 +301,7 @@ body {
   display: flex;
   align-items: center;
   justify-content: center;
-  transition: all 0.4s;
+  transition: background-color 0.4s;
 }
 .slider__arrow:hover {
   background-color: #fddcc4;
