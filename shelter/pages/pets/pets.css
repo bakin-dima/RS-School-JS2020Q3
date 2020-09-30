@@ -1,10 +1,23 @@
-@media screen and (max-width: 1200px) {
+@media screen and (max-width: 1366px) {
   .wrapper {
     width: 708px;
   }
 
+  .intro__image {
+    width: 508px;
+  }
+
+  .about .content {
+    padding: 0;
+  }
+
   .slider {
     padding: 0 64px;
+  }
+
+  .footer__content {
+    justify-items: center;
+    flex-wrap: wrap;
   }
 
   .constacts {
@@ -13,6 +26,57 @@
 
   .location {
     width: 18.875rem;
+  }
+
+  .footer__image_big {
+    margin: 0 auto;
+  }
+}
+@media screen and (max-width: 667px) {
+  .wrapper {
+    width: 300px;
+  }
+
+  .intro__image,
+.donation__image {
+    display: none;
+  }
+
+  .about .content {
+    padding: 0;
+  }
+
+  .slider__arrow {
+    display: none;
+  }
+
+  .menu {
+    display: none;
+  }
+
+  .content__title {
+    font-size: 1.5625rem;
+  }
+
+  .slider {
+    padding: 0 15px;
+  }
+
+  .arrows {
+    width: 18.75rem;
+  }
+
+  .footer__content {
+    justify-items: center;
+    flex-wrap: wrap;
+  }
+
+  .constacts {
+    width: 17.9375rem;
+  }
+
+  .location {
+    width: 18.75rem;
   }
 
   .footer__image_big {
@@ -94,7 +158,7 @@
 }
 
 .list__link {
-  color: #545454;
+  color: #292929;
   font-family: Arial;
   font-size: 0.9375rem;
   /*! em/rem  */
@@ -150,7 +214,7 @@
 
 .slider {
   width: 100%;
-  margin: 3.75rem 0;
+  margin: 3.75rem 0 1.875rem 0;
 }
 
 .slider,
@@ -177,7 +241,7 @@
 }
 
 .card_big {
-  padding: 0 0 2.1875rem 0;
+  padding: 0 0 1.875rem 0;
 }
 
 .card__title {
@@ -205,12 +269,58 @@
   font-size: 1.0625rem;
   line-height: 130%;
   letter-spacing: 0.06em;
+  color: #292929;
   transition: background-color 0.4s;
 }
 .card__button:hover {
   background-color: #fddcc4;
   border-color: transparent;
   cursor: pointer;
+}
+
+.arrows {
+  display: flex;
+  width: 21.25rem;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.arrows__container {
+  font-family: Georgia;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 1.25rem;
+  line-height: 115%;
+  letter-spacing: 0.07rem;
+  color: color-dark-3xl;
+  background-color: transparent;
+  border: 2px solid #f1cdb3;
+  box-sizing: border-box;
+  outline: none;
+  border-radius: 100px;
+  width: 3.25rem;
+  height: 3.25rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background-color 0.4s;
+}
+.arrows__container:hover {
+  background-color: #fddcc4;
+  border-color: transparent;
+  cursor: pointer;
+}
+.arrows__container:hover:disabled {
+  border-color: #cdcdcd;
+  background-color: transparent;
+}
+.arrows__container:disabled {
+  border-color: #cdcdcd;
+  color: #cdcdcd;
+}
+
+.arrows__container_counter {
+  background-color: #f1cdb3;
 }
 
 .footer {
