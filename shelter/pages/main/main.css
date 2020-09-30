@@ -1,3 +1,29 @@
+@media screen and (max-width: 1200px) {
+  .wrapper {
+    width: 708px;
+  }
+
+  .slider {
+    padding: 0 64px;
+  }
+
+  .footer__content {
+    justify-items: center;
+    flex-wrap: wrap;
+  }
+
+  .constacts {
+    width: 17.9375rem;
+  }
+
+  .location {
+    width: 18.875rem;
+  }
+
+  .footer__image_big {
+    margin: 0 auto;
+  }
+}
 :root {
   font-size: 16px;
 }
@@ -19,7 +45,7 @@ body {
 .wrapper {
   margin: 0 auto;
   max-width: 75rem;
-  /*! wrapper-width / baseFontSize = 1200px / 16px = 75rem   */
+  width: 62.5%;
   display: flex;
   justify-content: space-between;
 }
@@ -83,6 +109,7 @@ body {
   /*! em/rem  */
   font-weight: 400;
   text-decoration: none;
+  word-wrap: none;
   line-height: 160%;
   border-bottom: 3px solid transparent;
 }
@@ -106,7 +133,7 @@ body {
 
 .intro {
   display: flex;
-  background: url(/assets/images/noise_transparent@2x.png), radial-gradient(100% 215.42% at 0% 0%, #5b483a 0%, #262425 100%), #211f20;
+  background: url(../../assets/images/noise_transparent@2x.png), radial-gradient(100% 215.42% at 0% 0%, #5b483a 0%, #262425 100%), #211f20;
   padding-top: 180px;
 }
 
@@ -114,6 +141,7 @@ body {
   width: 100%;
   display: flex;
   justify-content: space-between;
+  flex-flow: row wrap;
 }
 
 .content__section {

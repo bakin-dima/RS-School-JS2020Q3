@@ -1,6 +1,8 @@
 .vscode/*
-Desktop.jpg
+Shelter_*.jpg
 *.scss
 *.map
 *.css
 !main.css
+!pets.css
+!_media.css
