@@ -1,5 +1,5 @@
 :root {
-  font-size: 16px;
+  font-size: 10px;
 }
 
 * {
@@ -18,8 +18,7 @@ body {
 
 .wrapper {
   margin: 0 auto;
-  max-width: 75rem;
-  width: 62.5%;
+  max-width: 120rem;
   display: flex;
   justify-content: space-between;
 }
@@ -27,40 +26,40 @@ body {
 .header {
   width: 100%;
   position: absolute;
-  top: 60px;
+  top: 6rem;
 }
 
 .logo {
   display: flex;
   flex-direction: column;
+  text-decoration: none;
 }
 
 .logo__title_font {
   font-family: Georgia;
-  font-size: 2rem;
+  font-size: 3.2rem;
   /*! em/rem  */
   font-weight: 400;
-  line-height: 110%;
-  letter-spacing: 0.112rem;
+  line-height: 3.5rem;
+  letter-spacing: 0.1792rem;
   color: #f1cdb3;
 }
 
 .logo__subtitle {
-  margin-top: 10px;
+  margin-top: 1rem;
   text-align: center;
   font-family: Arial;
-  font-size: 0.8125rem;
+  font-size: 1.3rem;
   /*! em/rem  */
   font-weight: 400;
-  letter-spacing: 0.08rem;
-  line-height: 110%;
+  letter-spacing: 0.128rem;
+  line-height: 1.5rem;
   color: #ffffff;
 }
 
 .menu {
   display: flex;
-  width: 27.69rem;
-  /*! em/rem  */
+  width: 44.3rem;
 }
 
 .list {
@@ -79,12 +78,12 @@ body {
 .list__link {
   color: #cdcdcd;
   font-family: Arial;
-  font-size: 0.9375rem;
+  font-size: 1.5rem;
   /*! em/rem  */
   font-weight: 400;
   text-decoration: none;
   word-wrap: none;
-  line-height: 160%;
+  line-height: 2.3rem;
   border-bottom: 3px solid transparent;
 }
 .list__link:hover {
@@ -108,7 +107,7 @@ body {
 .intro {
   display: flex;
   background: url(../../assets/images/noise_transparent@2x.png), radial-gradient(100% 215.42% at 0% 0%, #5b483a 0%, #262425 100%), #211f20;
-  padding-top: 180px;
+  padding-top: 18rem;
 }
 
 .content {
@@ -125,17 +124,17 @@ body {
 }
 
 .content__section_intro {
-  max-width: 28.75rem;
-  padding-bottom: 80px;
+  max-width: 46rem;
+  padding-bottom: 8rem;
 }
 
 .content__title {
   font-family: Georgia;
   font-style: normal;
   font-weight: normal;
-  font-size: 2.1875rem;
-  line-height: 130%;
-  letter-spacing: 0.06rem;
+  font-size: 3.5rem;
+  line-height: 4.5rem;
+  letter-spacing: 0.09rem;
   color: #545454;
 }
 
@@ -143,8 +142,8 @@ body {
   font-family: Arial;
   font-style: normal;
   font-weight: normal;
-  font-size: 0.9375rem;
-  line-height: 160%;
+  font-size: 1.5rem;
+  line-height: 2.4rem;
   color: #545454;
 }
 
@@ -152,20 +151,20 @@ body {
   font-family: Georgia;
   font-style: normal;
   font-weight: normal;
-  font-size: 2.75rem;
-  line-height: 130%;
+  font-size: 4.4rem;
+  line-height: 5.7rem;
   color: #ffffff;
-  max-width: 19.375rem;
+  max-width: 31rem;
 }
 
 .content__subtitle_intro {
   font-family: Arial;
   font-style: normal;
   font-weight: normal;
-  font-size: 0.9375rem;
-  line-height: 160%;
+  font-size: 1.5rem;
+  line-height: 2.4rem;
   color: #cdcdcd;
-  margin-top: 2.625rem;
+  margin-top: 4.2rem;
 }
 
 .button__primary {
@@ -173,12 +172,12 @@ body {
   font-family: Georgia;
   font-style: normal;
   font-weight: normal;
-  font-size: 1.0625rem;
-  line-height: 130%;
-  letter-spacing: 0.06rem;
+  font-size: 1.7rem;
+  line-height: 2.2rem;
+  letter-spacing: 0.096rem;
   border-radius: 100px;
   outline: none;
-  padding: 0.9375rem 2.8125rem;
+  padding: 1.5rem 4.5rem;
   border: none;
   transition: background-color 0.4s;
 }
@@ -188,32 +187,35 @@ body {
 }
 
 .button__primary_intro {
-  width: 12.9375rem;
-  margin-top: 2.625rem;
+  width: 20.7rem;
+  margin-top: 4.2rem;
 }
 
 .intro__image {
-  margin-left: 42px;
+  margin-left: 4.2rem;
+  height: 72.8rem;
+  background: url(../../assets/images/start-screen-puppy.png) no-repeat;
 }
 
 .about {
-  padding: 5rem 0 6.25rem 0;
+  padding: 8rem 0 10rem 0;
 }
 .about .content {
-  padding: 0 10.9375rem;
+  margin: 0 auto;
+  max-width: 70.834%;
   flex-wrap: wrap;
 }
 .about .content__section {
-  max-width: 26.875rem;
+  max-width: 43rem;
   justify-content: space-around;
 }
 .about .content__title {
-  max-width: 23.125rem;
-  letter-spacing: 0.122rem;
+  max-width: 37rem;
+  letter-spacing: 0.1952rem;
 }
 
 .pets {
-  padding: 5rem 0 6.25rem 0;
+  padding: 8rem 0 10rem 0;
   background-color: #f6f6f6;
 }
 .pets .content__section {
@@ -221,17 +223,17 @@ body {
   align-items: center;
 }
 .pets .content__title {
-  max-width: 25rem;
+  max-width: 40rem;
   text-align: center;
-  letter-spacing: 0.13rem;
+  letter-spacing: 0.2rem;
 }
 .pets .button__primary {
-  max-width: 16.3125rem;
+  max-width: 26.1rem;
 }
 
 .slider {
   width: 100%;
-  margin: 3.75rem 0;
+  margin: 6rem 0;
 }
 
 .slider__container {
@@ -252,7 +254,7 @@ body {
   align-items: center;
   background-color: #fafafa;
   border-radius: 9px;
-  padding: 1.875rem 2.1875rem;
+  padding: 0 0 3rem 0;
   transition: background-color 0.4s;
 }
 .card:hover {
@@ -264,12 +266,12 @@ body {
   font-family: Georgia;
   font-style: normal;
   font-weight: normal;
-  font-size: 1.25rem;
-  line-height: 1.4375rem;
+  font-size: 2rem;
+  line-height: 2.3rem;
   text-align: center;
-  letter-spacing: 0.06em;
+  letter-spacing: 0.07em;
   color: #545454;
-  margin: 30px 0;
+  margin: 3rem 0;
 }
 
 .card__button {
@@ -278,12 +280,12 @@ body {
   border-radius: 100px;
   outline: none;
   box-sizing: border-box;
-  padding: 0.8125rem 2.6875rem;
+  padding: 1.3rem 4.3rem;
   font-family: Georgia;
   font-style: normal;
   font-weight: normal;
-  font-size: 1.0625rem;
-  line-height: 130%;
+  font-size: 1.7rem;
+  line-height: 2.2rem;
   letter-spacing: 0.06em;
   transition: background-color 0.4s;
 }
@@ -299,7 +301,7 @@ body {
   box-sizing: border-box;
   outline: none;
   border-radius: 100px;
-  padding: 1.3125rem 1.0625rem;
+  padding: 2.1rem 1.7rem;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -318,16 +320,16 @@ body {
 }
 
 .help {
-  padding-top: 5rem;
+  padding-top: 8rem;
 }
 .help .content__section {
   align-items: center;
 }
 .help .content__title {
-  max-width: 20rem;
+  max-width: 32rem;
   text-align: center;
-  letter-spacing: 0.13rem;
-  margin-bottom: 3.75rem;
+  letter-spacing: 0.2rem;
+  margin-bottom: 6rem;
 }
 
 .help-list {
@@ -335,11 +337,11 @@ body {
   align-items: center;
   justify-content: center;
   flex-flow: wrap;
-  margin-bottom: 45px;
+  margin-bottom: 4.5rem;
 }
 
 .help-list__item {
-  margin: 0 60px 55px 60px;
+  margin: 0 6rem 5.5rem 6rem;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -347,23 +349,24 @@ body {
 }
 
 .help-list__icon {
-  width: 3.75rem;
-  height: 3.75rem;
-  margin-bottom: 1.875rem;
+  width: 6rem;
+  height: 6rem;
+  margin-bottom: 3rem;
 }
 
 .help-list__title {
   font-family: Georgia;
   font-style: normal;
   font-weight: normal;
-  font-size: 1.25rem;
-  line-height: 115%;
-  letter-spacing: 0.07rem;
+  font-size: 2rem;
+  line-height: 2.3rem;
+  letter-spacing: 0.011rem;
   color: #545454;
+  letter-spacing: 0.11rem;
 }
 
 .donation {
-  padding: 5rem 0 6.3rem 0;
+  padding: 8rem 0 10rem 0;
   background-color: #f6f6f6;
 }
 .donation .wrapper {
@@ -372,38 +375,38 @@ body {
 }
 .donation .content {
   max-width: 76.25%;
-  flex-wrap: wrap;
+  padding: 0.1rem 0;
+  align-items: center;
 }
 .donation .donation__image {
-  max-height: 16.3125rem;
-  max-width: 31.5625rem;
-  margin-top: 0.75rem;
+  max-height: 26.1rem;
+  max-width: 50.5rem;
+  align-self: center;
 }
 .donation .content__section {
-  padding-top: 2px;
-  max-width: 23.75rem;
+  max-width: 38rem;
 }
 .donation .content__title {
-  max-width: 18.75rem;
-  letter-spacing: 0.13rem;
-  margin-bottom: 1.25rem;
+  max-width: 30rem;
+  letter-spacing: 0.2rem;
+  margin-bottom: 2rem;
 }
 .donation .content__title_h5 {
   font-family: Georgia;
   font-style: normal;
   font-weight: normal;
-  font-size: 0.9375rem;
-  line-height: 110%;
-  letter-spacing: 0.06rem;
+  font-size: 1.5rem;
+  line-height: 1.7rem;
+  letter-spacing: 0.09rem;
   color: #545454;
-  margin-bottom: 1.25rem;
+  margin-bottom: 2rem;
 }
 .donation .content__subtitle_small {
   font-family: Arial;
   font-style: italic;
   font-weight: normal;
-  font-size: 0.75rem;
-  line-height: 150%;
+  font-size: 1.2rem;
+  line-height: 18px;
   color: #b2b2b2;
 }
 
@@ -412,9 +415,9 @@ body {
   align-items: center;
   background-color: #f1cdb3;
   border-radius: 9px;
-  margin-bottom: 1.25rem;
-  max-width: 21.8125rem;
-  padding: 0.625rem 0.9375rem;
+  margin-bottom: 2rem;
+  max-width: 34.9rem;
+  padding: 1rem 1.5rem;
 }
 .credit-card:hover {
   background-color: #fddcc4;
@@ -426,38 +429,39 @@ body {
   align-items: center;
 }
 .credit-card .credit-card__logo {
-  max-width: 1.875rem;
-  margin-right: 0.9375rem;
+  max-width: 3rem;
+  margin-right: 1.5rem;
 }
 .credit-card .credit-card__title {
   font-family: Georgia;
   font-style: normal;
   font-weight: normal;
-  font-size: 1.25rem;
-  line-height: 115%;
-  letter-spacing: 0.07rem;
+  font-size: 2rem;
+  line-height: 2.3rem;
+  letter-spacing: 0.011rem;
   color: #545454;
-  max-width: 17.125rem;
+  max-width: 27.4rem;
+  letter-spacing: 0.117rem;
 }
 
 .footer {
   display: flex;
-  align-items: flex-end;
-  padding-top: 2.5rem;
+  align-items: center;
   background: url(/assets/images/noise_transparent@2x.png), radial-gradient(100% 215.42% at 0% 0%, #5b483a 0%, #262425 100%), #211f20;
 }
 
 .footer__content {
+  margin-top: 4rem;
   display: flex;
   justify-content: space-between;
+  flex-wrap: wrap;
 }
 
 .footer__section {
   display: flex;
   flex-direction: column;
-  padding-top: 21px;
   justify-content: space-between;
-  margin-bottom: 3.75rem;
+  padding: 1.6rem 0 6rem 0;
 }
 
 .constacts {
@@ -465,7 +469,7 @@ body {
 }
 
 .location {
-  width: 25.16%;
+  width: 25.167%;
 }
 
 .footer__container {
@@ -473,11 +477,7 @@ body {
 }
 
 .footer__image {
-  margin-right: 20px;
-}
-
-.footer__image_big {
-  width: 18.75rem;
+  margin-right: 2rem;
 }
 
 .footer__link {
@@ -493,19 +493,20 @@ body {
   font-family: Georgia;
   font-style: normal;
   font-weight: normal;
-  font-size: 2.1875rem;
-  line-height: 130%;
-  letter-spacing: 0.06rem;
+  font-size: 3.5rem;
+  line-height: 4.5rem;
+  letter-spacing: 0.09rem;
   color: #ffffff;
-  letter-spacing: 0.13rem;
+  letter-spacing: 0.208rem;
 }
 
 .footer__subtitle {
   font-family: Georgia;
   font-style: normal;
   font-weight: normal;
-  font-size: 1.25rem;
-  line-height: 115%;
-  letter-spacing: 0.07rem;
+  font-size: 2rem;
+  line-height: 2.3rem;
+  letter-spacing: 0.011rem;
   color: #f1cdb3;
+  letter-spacing: 0.12rem;
 }

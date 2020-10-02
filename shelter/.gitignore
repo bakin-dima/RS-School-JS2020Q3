@@ -1,8 +1,5 @@
-.vscode/*
+.vscode
 Shelter_*.jpg
+sass
 *.scss
 *.map
-*.css
-!main.css
-!pets.css
-!media.css

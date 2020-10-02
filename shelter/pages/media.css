@@ -1,101 +1,144 @@
-@media screen and (max-width: 1366px) {
+@media screen and (max-width: 1152px) {
   .wrapper {
-    width: 708px;
+    max-width: 70.8rem;
+    width: 100%;
   }
 
-  .intro__image {
-    width: 508px;
-  }
-
-  .intro .content,
-.about .content,
-.donation .content {
-    padding: 0;
+  .content {
     justify-content: center;
   }
 
-  .slider__container {
-    width: 100%;
-    flex-wrap: wrap;
+  .pets {
+    padding: 6rem 0 7rem 0;
   }
-
-  .slider__arrow {
-    display: none;
+  .pets .content {
+    padding: 1rem 0 0.6rem 0;
   }
 
   .slider {
-    padding: 0 64px;
+    padding: 4rem 6.4rem 1rem 6.4rem;
+    justify-content: center;
+  }
+
+  .card:nth-child(7),
+.card:nth-child(8) {
+    display: none;
   }
 
   .footer__content {
-    justify-items: center;
     flex-wrap: wrap;
+    padding: 0 3.4rem;
+    margin-top: 3rem;
+  }
+
+  .footer__section {
+    padding: 0;
+    margin-bottom: 6rem;
+    min-height: 23.4rem;
   }
 
   .constacts {
-    width: 17.9375rem;
+    width: 27.8rem;
   }
 
   .location {
-    width: 18.875rem;
+    width: 30.2rem;
   }
 
   .footer__image_big {
+    height: 31.5rem;
+    width: 30rem;
     margin: 0 auto;
   }
 }
-@media screen and (max-width: 710px) {
+@media screen and (max-width: 667px) {
   .wrapper {
-    width: 300px;
+    max-width: 30rem;
+    width: 100%;
   }
 
-  .intro__image,
-.donation__image {
-    display: none;
+  .header {
+    padding: 3rem 1rem;
   }
-
-  .about .content {
-    padding: 0;
-  }
-
-  .slider__arrow {
-    display: none;
-  }
-
-  .slider__container {
-    flex-wrap: wrap;
+  .header .wrapper {
+    flex-direction: row;
+    align-items: center;
   }
 
   .menu {
+    width: 3rem;
+    margin-right: 4rem;
+    min-height: 2.2rem;
+    background: url(/assets/icons/Burger.svg);
+  }
+  .menu .list {
     display: none;
+  }
+  .menu:hover {
+    width: 12rem;
+    margin-right: 1rem;
+    background: none;
+  }
+  .menu:hover .list {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .pets {
+    padding: 4rem 0 3rem 0;
+  }
+  .pets .content {
+    padding: 0;
+    justify-content: center;
+    width: 30rem;
   }
 
   .content__title {
-    font-size: 1.5625rem;
+    font-size: 2.5rem;
+    line-height: 3.2rem;
+    letter-spacing: 0.15rem;
   }
 
   .slider {
-    padding: 0 15px;
+    padding: 4.9rem 1.4rem 0 1.5rem;
+  }
+
+  .card:nth-child(2n) {
+    display: none;
   }
 
   .arrows {
-    width: 18.75rem;
+    width: 30rem;
   }
 
   .footer__content {
-    justify-items: center;
     flex-wrap: wrap;
+    padding: 0;
+    margin-top: 3rem;
+    justify-content: center;
+  }
+
+  .footer__section {
+    padding: 0;
+    margin-bottom: 4rem;
+    min-height: 23.4rem;
   }
 
   .constacts {
-    width: 17.9375rem;
+    width: 27.8rem;
   }
 
   .location {
-    width: 18.75rem;
+    width: 30rem;
+  }
+
+  .footer__title {
+    text-align: center;
   }
 
   .footer__image_big {
-    margin: 0 auto;
+    height: 31.5rem;
+    width: 30rem;
+    margin: 5rem auto 0 auto;
   }
 }
