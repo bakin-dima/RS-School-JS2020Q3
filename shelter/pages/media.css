@@ -1,23 +1,28 @@
-@media screen and (max-width: 910px) {
+@media screen and (max-width: 1152px) {
   .wrapper {
     max-width: 70.8rem;
+    width: 100%;
+  }
+
+  .content {
+    justify-content: center;
   }
 
   .pets {
     padding: 6rem 0 7rem 0;
   }
-
-  .content {
+  .pets .content {
     padding: 1rem 0 0.6rem 0;
   }
 
   .slider {
-    padding: 4rem 6.4rem;
+    padding: 4rem 6.4rem 1rem 6.4rem;
     justify-content: center;
   }
 
-  .slider__container {
-    height: 136.5rem;
+  .card:nth-child(7),
+.card:nth-child(8) {
+    display: none;
   }
 
   .footer__content {
@@ -46,49 +51,94 @@
     margin: 0 auto;
   }
 }
-@media screen and (max-width: 568px) {
+@media screen and (max-width: 667px) {
   .wrapper {
     max-width: 30rem;
+    width: 100%;
+  }
+
+  .header {
+    padding: 3rem 1rem;
+  }
+  .header .wrapper {
+    flex-direction: row;
+    align-items: center;
   }
 
   .menu {
+    width: 3rem;
+    margin-right: 4rem;
+    min-height: 2.2rem;
+    background: url(/assets/icons/Burger.svg);
+  }
+  .menu .list {
     display: none;
+  }
+  .menu:hover {
+    width: 12rem;
+    margin-right: 1rem;
+    background: none;
+  }
+  .menu:hover .list {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .pets {
+    padding: 4rem 0 3rem 0;
+  }
+  .pets .content {
+    padding: 0;
+    justify-content: center;
+    width: 30rem;
   }
 
   .content__title {
-    font-size: 1.5625rem;
+    font-size: 2.5rem;
+    line-height: 3.2rem;
+    letter-spacing: 0.15rem;
   }
 
   .slider {
-    padding: 0 15px;
+    padding: 4.9rem 1.4rem 0 1.5rem;
   }
 
-  .slider__container {
-    justify-content: center;
+  .card:nth-child(2n) {
+    display: none;
   }
 
   .arrows {
-    width: 18.75rem;
+    width: 30rem;
   }
 
   .footer__content {
-    justify-items: center;
     flex-wrap: wrap;
+    padding: 0;
+    margin-top: 3rem;
+    justify-content: center;
   }
 
-  .footer__link {
-    margin-top: 40px;
+  .footer__section {
+    padding: 0;
+    margin-bottom: 4rem;
+    min-height: 23.4rem;
   }
 
   .constacts {
-    width: 17.9375rem;
+    width: 27.8rem;
   }
 
   .location {
-    width: 18.75rem;
+    width: 30rem;
+  }
+
+  .footer__title {
+    text-align: center;
   }
 
   .footer__image_big {
-    margin: 0 auto;
+    height: 31.5rem;
+    width: 30rem;
+    margin: 5rem auto 0 auto;
   }
 }

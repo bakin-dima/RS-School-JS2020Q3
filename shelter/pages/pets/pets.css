@@ -19,7 +19,6 @@ body {
 .wrapper {
   margin: 0 auto;
   max-width: 120rem;
-  width: 93.75vw;
   display: flex;
   justify-content: space-between;
 }
@@ -144,11 +143,6 @@ body {
   padding: 6rem 0 3rem 0;
 }
 
-.slider__container {
-  height: 93rem;
-  overflow: hidden;
-}
-
 .card {
   display: flex;
   flex-direction: column;
@@ -253,6 +247,7 @@ body {
   margin-top: 4rem;
   display: flex;
   justify-content: space-between;
+  flex-wrap: wrap;
 }
 
 .footer__section {
@@ -276,10 +271,6 @@ body {
 
 .footer__image {
   margin-right: 2rem;
-}
-
-.footer__image_big {
-  width: 25%;
 }
 
 .footer__link {
