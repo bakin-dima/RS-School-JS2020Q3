@@ -69,7 +69,7 @@
     width: 3rem;
     margin-right: 4rem;
     min-height: 2.2rem;
-    background: url(/assets/icons/Burger.svg);
+    background: url(../../assets/icons/Burger.svg);
   }
   .menu .list {
     display: none;
