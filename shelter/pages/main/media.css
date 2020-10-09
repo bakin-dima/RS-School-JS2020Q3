@@ -1,0 +1,272 @@
+@media screen and (max-width: 1152px) {
+  .wrapper {
+    max-width: 70.8rem;
+    width: 100%;
+  }
+
+  .header {
+    top: 3rem;
+  }
+
+  .content {
+    justify-content: center;
+  }
+
+  .intro {
+    padding-top: 15rem;
+  }
+  .intro .button__primary_intro {
+    align-self: center;
+  }
+  .intro .intro__image {
+    width: 56.9rem;
+    height: 59.3rem;
+  }
+  .intro .content__section_intro {
+    padding-bottom: 9.5rem;
+  }
+  .intro .intro__image {
+    margin-top: 0.5rem;
+    margin-left: 14rem;
+  }
+
+  .about .about__image {
+    order: 1;
+    margin-top: 8rem;
+  }
+  .about .content__subtitle {
+    margin-top: 2.5rem;
+  }
+
+  .pets .card:nth-child(3) {
+    display: none;
+  }
+
+  .help .help-list {
+    margin-bottom: 10rem;
+    justify-content: space-between;
+    align-content: space-between;
+    min-height: 44.9rem;
+    max-width: 63rem;
+  }
+  .help .help-list__item {
+    width: 17rem;
+    margin: 0;
+  }
+
+  .donation .content {
+    padding: 0;
+  }
+  .donation .donation__image {
+    order: 1;
+    margin-top: 6rem;
+  }
+
+  .footer__content {
+    flex-wrap: wrap;
+    padding: 0 3.4rem;
+    margin-top: 3rem;
+  }
+
+  .footer__section {
+    padding: 0;
+    margin-bottom: 6rem;
+    min-height: 23.4rem;
+  }
+
+  .constacts {
+    width: 27.8rem;
+  }
+
+  .location {
+    width: 30.2rem;
+  }
+
+  .footer__image_big {
+    height: 31rem;
+    width: 30rem;
+    margin: 5rem auto 0;
+  }
+}
+@media screen and (max-width: 667px) {
+  .wrapper {
+    max-width: 30rem;
+    width: 100%;
+  }
+
+  .main .content__title {
+    font-size: 2.5rem;
+    line-height: 3.2rem;
+    letter-spacing: 0.15rem;
+    text-align: center;
+  }
+
+  .header .wrapper {
+    flex-direction: row;
+    align-items: center;
+  }
+  .header .menu {
+    width: 3rem;
+    margin-right: 4rem;
+    min-height: 2.2rem;
+    background: url(../../assets/icons/Burger-main.svg);
+  }
+  .header .menu .list {
+    display: none;
+  }
+
+  .intro .content__section {
+    text-align: center;
+    padding-bottom: 10.5rem;
+  }
+  .intro .content__title_intro {
+    align-self: center;
+    max-width: 26rem;
+    font-size: 2.5rem;
+    line-height: 3.2rem;
+    letter-spacing: 0.15rem;
+  }
+  .intro .intro__image {
+    margin: 0 1rem 0 5rem;
+    width: 26rem;
+    height: 27.177rem;
+  }
+
+  .about {
+    padding: 4.2rem 0;
+  }
+  .about .content {
+    max-width: 27rem;
+  }
+  .about .content__subtitle {
+    margin-top: 2.3rem;
+    text-align: justify;
+  }
+  .about .about__image {
+    margin-top: 4.2rem;
+    width: 26rem;
+    height: 35.36rem;
+  }
+
+  .pets {
+    padding: 4.2rem 0;
+  }
+  .pets .slider {
+    margin: 4.2rem 0;
+    flex-wrap: wrap;
+  }
+  .pets .slider__container {
+    width: 100%;
+    justify-content: center;
+  }
+  .pets .slider__container .card {
+    margin-bottom: 2.1rem;
+  }
+  .pets .slider__container .card:nth-child(n+2) {
+    display: none;
+  }
+  .pets .slider__arrow {
+    order: 1;
+    transition: margin 0.3s;
+  }
+  .pets .slider__arrow:first-child {
+    margin-left: 5.8rem;
+  }
+  .pets .slider__arrow:last-child {
+    margin-right: 5.8rem;
+  }
+
+  .help {
+    padding: 4.2rem 0;
+  }
+  .help .content__title {
+    max-width: 22.5rem;
+    margin-bottom: 4.2rem;
+  }
+  .help .help-list {
+    padding: 0 0.5rem;
+    margin-bottom: 0;
+    min-height: 55.5rem;
+  }
+  .help .help-list__item {
+    width: 13rem;
+  }
+  .help .help-list__icon {
+    width: 5rem;
+    height: 5rem;
+    margin-bottom: 2rem;
+  }
+  .help .help-list__title {
+    font-size: 1.5rem;
+    line-height: 1.65rem;
+    letter-spacing: 0.09rem;
+  }
+
+  .donation {
+    padding: 4.2rem 0;
+  }
+  .donation .content {
+    max-width: 100%;
+  }
+  .donation .content__title {
+    line-height: 3.25rem;
+    width: 22.5rem;
+    align-self: center;
+  }
+  .donation .content__section {
+    max-width: 28rem;
+  }
+  .donation .content__title_h5 {
+    padding: 0 0.3rem;
+    font-family: Arial;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 1.5rem;
+    line-height: 2.4rem;
+    letter-spacing: 0rem;
+    color: #545454;
+  }
+  .donation .credit-card__title {
+    font-size: 1.5rem;
+    line-height: 1.7rem;
+    letter-spacing: 0.08rem;
+  }
+  .donation .donation__image {
+    margin-top: 4.2rem;
+  }
+  .donation .donation__image img {
+    width: 26rem;
+    height: 13.52rem;
+  }
+
+  .footer__content {
+    flex-wrap: wrap;
+    padding: 0;
+    margin-top: 3rem;
+    justify-content: center;
+  }
+
+  .footer__section {
+    padding: 0;
+    margin-bottom: 4rem;
+    min-height: 23.4rem;
+  }
+
+  .constacts {
+    width: 27.8rem;
+  }
+
+  .location {
+    width: 30rem;
+  }
+
+  .footer__title {
+    text-align: center;
+  }
+
+  .footer__image_big {
+    height: 31rem;
+    width: 30rem;
+    margin: 5rem auto 0 auto;
+  }
+}

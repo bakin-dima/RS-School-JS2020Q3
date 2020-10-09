@@ -1,3 +1,8 @@
+@media screen and (max-width: 1200px) {
+  .wrapper {
+    max-width: 110rem;
+  }
+}
 @media screen and (max-width: 1152px) {
   .wrapper {
     max-width: 70.8rem;
@@ -46,7 +51,7 @@
   }
 
   .footer__image_big {
-    height: 31.5rem;
+    height: 31rem;
     width: 30rem;
     margin: 0 auto;
   }
@@ -69,19 +74,10 @@
     width: 3rem;
     margin-right: 4rem;
     min-height: 2.2rem;
-    background: url(../../assets/icons/Burger.svg);
+    background: url(../assets/icons/Burger.svg);
   }
   .menu .list {
     display: none;
-  }
-  .menu:hover {
-    width: 12rem;
-    margin-right: 1rem;
-    background: none;
-  }
-  .menu:hover .list {
-    display: flex;
-    flex-direction: column;
   }
 
   .pets {
@@ -103,7 +99,7 @@
     padding: 4.9rem 1.4rem 0 1.5rem;
   }
 
-  .card:nth-child(2n) {
+  .card:nth-child(n+4) {
     display: none;
   }
 
@@ -137,7 +133,7 @@
   }
 
   .footer__image_big {
-    height: 31.5rem;
+    height: 31rem;
     width: 30rem;
     margin: 5rem auto 0 auto;
   }
