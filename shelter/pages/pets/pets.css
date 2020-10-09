@@ -27,6 +27,8 @@ body {
   width: 100%;
   padding: 3rem;
   background-color: #ffffff;
+  position: sticky;
+  top: 0;
 }
 
 .logo {
@@ -258,7 +260,7 @@ body {
 }
 
 .constacts {
-  width: 23.167%;
+  width: 23.17%;
 }
 
 .location {
@@ -271,6 +273,7 @@ body {
 
 .footer__image {
   margin-right: 2rem;
+  min-width: 2.2rem;
 }
 
 .footer__link {
