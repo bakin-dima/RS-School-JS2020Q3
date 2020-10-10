@@ -1,4 +1,4 @@
-@media screen and (max-width: 1152px) {
+@media screen and (max-width: 1000px) {
   .wrapper {
     max-width: 70.8rem;
     width: 100%;
@@ -10,6 +10,7 @@
 
   .content {
     justify-content: center;
+    flex-wrap: wrap;
   }
 
   .intro {
@@ -70,7 +71,6 @@
 
   .footer__section {
     padding: 0;
-    margin-bottom: 6rem;
     min-height: 23.4rem;
   }
 
@@ -85,10 +85,10 @@
   .footer__image_big {
     height: 31rem;
     width: 30rem;
-    margin: 5rem auto 0;
+    margin: 6.5rem auto 0;
   }
 }
-@media screen and (max-width: 667px) {
+@media screen and (max-width: 710px) {
   .wrapper {
     max-width: 30rem;
     width: 100%;
@@ -107,7 +107,7 @@
   }
   .header .menu {
     width: 3rem;
-    margin-right: 4rem;
+    margin-right: 4.3rem;
     min-height: 2.2rem;
     background: url(../../assets/icons/Burger-main.svg);
   }
@@ -133,7 +133,7 @@
   }
 
   .about {
-    padding: 4.2rem 0;
+    padding: 4.2rem 0 4.2rem 0;
   }
   .about .content {
     max-width: 27rem;
@@ -226,6 +226,9 @@
     letter-spacing: 0rem;
     color: #545454;
   }
+  .donation .content__subtitle_small {
+    text-align: justify;
+  }
   .donation .credit-card__title {
     font-size: 1.5rem;
     line-height: 1.7rem;
@@ -233,10 +236,8 @@
   }
   .donation .donation__image {
     margin-top: 4.2rem;
-  }
-  .donation .donation__image img {
     width: 26rem;
-    height: 13.52rem;
+    height: 13.5rem;
   }
 
   .footer__content {
@@ -249,24 +250,31 @@
   .footer__section {
     padding: 0;
     margin-bottom: 4rem;
-    min-height: 23.4rem;
   }
 
   .constacts {
     width: 27.8rem;
+    min-height: 20.8rem;
+    align-items: center;
   }
 
   .location {
     width: 30rem;
+    min-height: 22.2rem;
   }
 
   .footer__title {
+    margin: 0 auto;
     text-align: center;
+    font-size: 2.5rem;
+    line-height: 3.2rem;
+    letter-spacing: 0.15rem;
+    width: 27.8rem;
   }
 
   .footer__image_big {
-    height: 31rem;
-    width: 30rem;
-    margin: 5rem auto 0 auto;
+    height: 26.9rem;
+    width: 26rem;
+    margin: 0;
   }
 }

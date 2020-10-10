@@ -19,6 +19,7 @@ body {
 .wrapper {
   margin: 0 auto;
   max-width: 120rem;
+  width: 93.75vw;
   display: flex;
   justify-content: space-between;
 }
@@ -114,7 +115,6 @@ body {
   width: 100%;
   display: flex;
   justify-content: space-between;
-  flex-wrap: wrap;
 }
 
 .content__section {
@@ -204,7 +204,7 @@ body {
 }
 .about .content {
   margin: 0 auto;
-  max-width: 70.834%;
+  max-width: 85rem;
   flex-wrap: wrap;
 }
 .about .content__section {
@@ -257,9 +257,11 @@ body {
   background-color: #fafafa;
   border-radius: 9px;
   padding: 0 0 3rem 0;
-  transition: background-color 0.4s;
+  transition-duration: 0.2s;
+  transition: background-color 0.2s ease-out;
 }
 .card:hover {
+  transition: 0.4s ease-in;
   background-color: #ffffff;
   box-shadow: 0px 2px 35px 14px rgba(13, 13, 13, 0.04);
 }
@@ -289,9 +291,10 @@ body {
   font-size: 1.7rem;
   line-height: 2.2rem;
   letter-spacing: 0.06em;
-  transition: background-color 0.4s;
+  transition: background-color 0.2s ease-out;
 }
 .card__button:hover {
+  transition: 0.4s ease-in;
   background-color: #fddcc4;
   border-color: transparent;
   cursor: pointer;
@@ -307,9 +310,10 @@ body {
   display: flex;
   align-items: center;
   justify-content: center;
-  transition: background-color 0.4s;
+  transition: background-color 0.2s ease-out;
 }
 .slider__arrow:hover {
+  transition: 0.4s ease-in;
   background-color: #fddcc4;
   border-color: transparent;
   cursor: pointer;
@@ -444,6 +448,7 @@ body {
   color: #545454;
   max-width: 27.4rem;
   letter-spacing: 0.117rem;
+  white-space: nowrap;
 }
 
 .footer {
@@ -468,10 +473,12 @@ body {
 
 .constacts {
   width: 23.17%;
+  min-width: 27.8rem;
 }
 
 .location {
   width: 25.167%;
+  min-width: 30rem;
 }
 
 .footer__container {
