@@ -3,59 +3,50 @@
     max-width: 70.8rem;
     width: 100%;
   }
-
   .content {
     justify-content: center;
   }
-
   .pets {
     padding: 6rem 0 7rem 0;
   }
   .pets .content {
     padding: 2rem 0 0.6rem 0;
   }
-
   .slider {
     padding: 3rem 6.4rem 1rem 6.4rem;
     justify-content: center;
   }
-
   .card:nth-child(7),
-.card:nth-child(8) {
+  .card:nth-child(8) {
     display: none;
   }
-
   .footer__content {
     flex-wrap: wrap;
     padding: 0 3.4rem;
     margin-top: 3rem;
   }
-
   .footer__section {
     padding: 0;
     min-height: 23.4rem;
   }
-
   .constacts {
     width: 27.8rem;
   }
-
   .location {
     width: 30.2rem;
   }
-
   .footer__image_big {
     height: 31rem;
     width: 30rem;
     margin: 6.5rem auto 0;
   }
 }
+
 @media screen and (max-width: 650px) {
   .wrapper {
     max-width: 30rem;
     width: 100%;
   }
-
   .header {
     padding: 3rem 1rem;
   }
@@ -63,7 +54,6 @@
     flex-direction: row;
     align-items: center;
   }
-
   .menu {
     width: 3rem;
     margin-right: 4.3rem;
@@ -73,7 +63,6 @@
   .menu .list {
     display: none;
   }
-
   .pets {
     padding: 4rem 0 4.5rem 0;
   }
@@ -82,48 +71,39 @@
     justify-content: center;
     width: 30rem;
   }
-
   .content__title {
     font-size: 2.5rem;
     line-height: 3.2rem;
     letter-spacing: 0.15rem;
   }
-
   .slider {
     padding: 4.2rem 1.5rem 1.1rem 1.5rem;
   }
-
-  .card:nth-child(n+4) {
+  .card:nth-child(n + 4) {
     display: none;
   }
-
   .arrows {
     width: 30rem;
   }
-
   .footer__content {
     flex-wrap: wrap;
     padding: 0;
     margin-top: 3rem;
     justify-content: center;
   }
-
   .footer__section {
     padding: 0;
     margin-bottom: 4rem;
   }
-
   .constacts {
     width: 27.8rem;
     min-height: 20.8rem;
     align-items: center;
   }
-
   .location {
     width: 30rem;
     min-height: 22.2rem;
   }
-
   .footer__title {
     margin: 0 auto;
     text-align: center;
@@ -132,10 +112,10 @@
     letter-spacing: 0.15rem;
     width: 27.8rem;
   }
-
   .footer__image_big {
     height: 26.9rem;
     width: 26rem;
     margin: 0;
   }
 }
+/*# sourceMappingURL=media.css.map */
