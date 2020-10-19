@@ -3,16 +3,13 @@
     max-width: 70.8rem;
     width: 100%;
   }
-
   .header {
     top: 3rem;
   }
-
   .content {
     justify-content: center;
     flex-wrap: wrap;
   }
-
   .intro {
     padding-top: 15rem;
   }
@@ -30,7 +27,6 @@
     margin-top: 0.5rem;
     margin-left: 14rem;
   }
-
   .about .about__image {
     order: 1;
     margin-top: 8rem;
@@ -38,11 +34,9 @@
   .about .content__subtitle {
     margin-top: 2.5rem;
   }
-
   .pets .card:nth-child(3) {
     display: none;
   }
-
   .help .help-list {
     margin-bottom: 10rem;
     justify-content: space-between;
@@ -54,7 +48,6 @@
     width: 17rem;
     margin: 0;
   }
-
   .donation .content {
     padding: 0;
   }
@@ -62,45 +55,59 @@
     order: 1;
     margin-top: 6rem;
   }
-
   .footer__content {
     flex-wrap: wrap;
     padding: 0 3.4rem;
     margin-top: 3rem;
   }
-
   .footer__section {
     padding: 0;
     min-height: 23.4rem;
   }
-
   .constacts {
     width: 27.8rem;
   }
-
   .location {
     width: 30.2rem;
   }
-
   .footer__image_big {
     height: 31rem;
     width: 30rem;
     margin: 6.5rem auto 0;
   }
+  .popup__card {
+    max-width: 63rem;
+    max-height: 35rem;
+  }
+  .popup__content {
+    margin: 1rem 0.9rem 3.7rem 1.1rem;
+  }
+  .popup__image {
+    max-width: 35rem;
+    max-height: 35rem;
+  }
+  .popup__description {
+    margin: 2rem auto;
+    font-size: 1.3rem;
+    line-height: 1.4rem;
+    letter-spacing: 0.07rem;
+  }
+  .popup__list {
+    min-height: 8.7rem;
+  }
 }
+
 @media screen and (max-width: 710px) {
   .wrapper {
     max-width: 30rem;
     width: 100%;
   }
-
   .main .content__title {
     font-size: 2.5rem;
     line-height: 3.2rem;
     letter-spacing: 0.15rem;
     text-align: center;
   }
-
   .header .wrapper {
     flex-direction: row;
     align-items: center;
@@ -114,7 +121,6 @@
   .header .menu .list {
     display: none;
   }
-
   .intro .content__section {
     text-align: center;
     padding-bottom: 10.5rem;
@@ -131,7 +137,6 @@
     width: 26rem;
     height: 27.177rem;
   }
-
   .about {
     padding: 4.2rem 0 4.2rem 0;
   }
@@ -147,7 +152,6 @@
     width: 26rem;
     height: 35.36rem;
   }
-
   .pets {
     padding: 4.2rem 0;
   }
@@ -162,7 +166,7 @@
   .pets .slider__container .card {
     margin-bottom: 2.1rem;
   }
-  .pets .slider__container .card:nth-child(n+2) {
+  .pets .slider__container .card:nth-child(n + 2) {
     display: none;
   }
   .pets .slider__arrow {
@@ -175,7 +179,6 @@
   .pets .slider__arrow:last-child {
     margin-right: 5.8rem;
   }
-
   .help {
     padding: 4.2rem 0;
   }
@@ -201,7 +204,6 @@
     line-height: 1.65rem;
     letter-spacing: 0.09rem;
   }
-
   .donation {
     padding: 4.2rem 0;
   }
@@ -239,30 +241,25 @@
     width: 26rem;
     height: 13.5rem;
   }
-
   .footer__content {
     flex-wrap: wrap;
     padding: 0;
     margin-top: 3rem;
     justify-content: center;
   }
-
   .footer__section {
     padding: 0;
     margin-bottom: 4rem;
   }
-
   .constacts {
     width: 27.8rem;
     min-height: 20.8rem;
     align-items: center;
   }
-
   .location {
     width: 30rem;
     min-height: 22.2rem;
   }
-
   .footer__title {
     margin: 0 auto;
     text-align: center;
@@ -271,10 +268,35 @@
     letter-spacing: 0.15rem;
     width: 27.8rem;
   }
-
   .footer__image_big {
     height: 26.9rem;
     width: 26rem;
     margin: 0;
   }
+  .popup__card {
+    max-width: 24rem;
+    max-height: 39.3rem;
+  }
+  .popup__content {
+    margin: 1rem;
+  }
+  .popup__name,
+  .popup__type {
+    text-align: center;
+  }
+  .popup__image {
+    display: none;
+  }
+  .popup__description {
+    letter-spacing: 0.07rem;
+    line-height: 1.4rem;
+    text-align: justify;
+  }
+  .popup__list {
+    min-height: 8.7rem;
+  }
+  .popup__btn {
+    right: -3rem;
+  }
 }
+/*# sourceMappingURL=media.css.map */

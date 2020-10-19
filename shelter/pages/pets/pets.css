@@ -5,8 +5,6 @@
 * {
   margin: 0;
   padding: 0;
-  -webkit-box-sizing: border-box;
-  -moz-box-sizing: border-box;
   box-sizing: border-box;
   margin-block-start: 0;
   margin-block-end: 0;
@@ -88,10 +86,12 @@ body {
   line-height: 2.3rem;
   border-bottom: 3px solid transparent;
 }
+
 .list__link:hover {
   color: #292929;
   transition-duration: 0.4s;
 }
+
 .list__link:active {
   border-bottom-color: #f1cdb3;
 }
@@ -156,6 +156,7 @@ body {
   margin-bottom: 3rem;
   transition: background-color 0.2s ease-out;
 }
+
 .card:hover {
   transition: 0.4s ease-in;
   background-color: #ffffff;
@@ -190,6 +191,7 @@ body {
   color: #292929;
   transition: background-color 0.2s ease-out;
 }
+
 .card__button:hover {
   transition: 0.4s ease-in;
   background-color: #fddcc4;
@@ -224,16 +226,19 @@ body {
   justify-content: center;
   transition: background-color 0.2s ease-out;
 }
+
 .arrows__container:hover {
   transition: 0.3s ease-in;
   background-color: #fddcc4;
   border-color: transparent;
   cursor: pointer;
 }
+
 .arrows__container:hover:disabled {
   border-color: #cdcdcd;
   background-color: transparent;
 }
+
 .arrows__container:disabled {
   border-color: #cdcdcd;
   color: #cdcdcd;
@@ -286,8 +291,12 @@ body {
   display: flex;
   align-items: center;
   text-decoration: none;
+  transition: opacity 0.2s ease;
 }
-.footer__link:hover .footer__subtitle, .footer__link:hover .footer__image {
+
+.footer__link:hover .footer__subtitle,
+.footer__link:hover .footer__image {
+  transition: 0.3s;
   opacity: 0.8;
 }
 
@@ -312,3 +321,4 @@ body {
   color: #f1cdb3;
   letter-spacing: 0.12rem;
 }
+/*# sourceMappingURL=pets.css.map */
