@@ -4,4 +4,5 @@ Private repository for @bakin-dima
 * [Calculator](https://rolling-scopes-school.github.io/bakin-dima-JS2020Q3/calculator/)
 * [Shelter main](https://rolling-scopes-school.github.io/bakin-dima-JS2020Q3/shelter/pages/main/main.html)
 * [Shelter pets](https://rolling-scopes-school.github.io/bakin-dima-JS2020Q3/shelter/pages/pets/pets.html)
+* [Momentum](https://rolling-scopes-school.github.io/bakin-dima-JS2020Q3/momentum/index.html)
 
