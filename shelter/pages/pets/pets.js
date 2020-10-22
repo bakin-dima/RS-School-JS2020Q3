@@ -10,6 +10,7 @@ let data = [
     inoculations: ["none"],
     diseases: ["none"],
     parasites: ["none"],
+    id: "0",
   },
   {
     name: "Sophia",
@@ -22,6 +23,7 @@ let data = [
     inoculations: ["parvovirus"],
     diseases: ["none"],
     parasites: ["none"],
+    id: "1",
   },
   {
     name: "Woody",
@@ -34,6 +36,7 @@ let data = [
     inoculations: ["adenovirus", "distemper"],
     diseases: ["right back leg mobility reduced"],
     parasites: ["none"],
+    id: "2",
   },
   {
     name: "Scarlett",
@@ -46,6 +49,7 @@ let data = [
     inoculations: ["parainfluenza"],
     diseases: ["none"],
     parasites: ["none"],
+    id: "3",
   },
   {
     name: "Katrine",
@@ -58,6 +62,7 @@ let data = [
     inoculations: ["panleukopenia"],
     diseases: ["none"],
     parasites: ["none"],
+    id: "4",
   },
   {
     name: "Timmy",
@@ -70,6 +75,7 @@ let data = [
     inoculations: ["calicivirus", "viral rhinotracheitis"],
     diseases: ["kidney stones"],
     parasites: ["none"],
+    id: "5",
   },
   {
     name: "Freddie",
@@ -82,6 +88,7 @@ let data = [
     inoculations: ["rabies"],
     diseases: ["none"],
     parasites: ["none"],
+    id: "6",
   },
   {
     name: "Charly",
@@ -94,21 +101,38 @@ let data = [
     inoculations: ["bordetella bronchiseptica", "leptospirosis"],
     diseases: ["deafness", "blindness"],
     parasites: ["lice", "fleas"],
+    id: "7",
   },
 ];
 
-let arrows = document.querySelectorAll(".slider__arrow"),
-  slider = document.querySelector(".slider__container"),
-  windowModal = document.querySelector(".popup__window");
+let slider = document.querySelector(".slider__container"),
+  arrowsCounter = document.querySelector(".arrows__container_counter"),
+  arrowStart = document.querySelector(".arrows__container_start"),
+  arrowPrev = document.querySelector(".arrows__container_prev"),
+  arrowNext = document.querySelector(".arrows__container_next"),
+  arrowEnd = document.querySelector(".arrows__container_end"),
+  counter = 1;
 
-let cardCreator = (i) => {
+arrowsCounter.textContent = `${counter}`;
+
+// ! CHECK WIDTH
+let checkWidth = () => {
+  windowWidth = Math.floor(
+    document.querySelector(".wrapper").clientWidth / 270
+  );
+  return windowWidth > 3 ? 8 : windowWidth > 1 ? 6 : 3;
+};
+
+//window.addEventListener("resize", checkWidth);
+
+const cardCreator = (i) => {
   let card = document.createElement("div");
   let image = document.createElement("img");
   let title = document.createElement("p");
   let button = document.createElement("button");
 
   card.className = "card";
-  card.setAttribute("id", i);
+  card.setAttribute("id", data[i].id);
   image.className = "card__image";
   title.className = "card__title";
   button.className = "card__button";
@@ -144,38 +168,99 @@ const popupCreator = (i) => {
   popupParasites.innerHTML = "<strong>Parasites: </strong>" + data[i].parasites;
 };
 
+// ! FIXED RANDOM index < 8
+let cardIndex = [];
+for (let index = 0; index < 8; index++) {
+  cardIndex.push(index);
+}
+
+// ! FIXED RANDOM j < 6
 let cardAdder = () => {
-  data.sort((a, b) => Math.random() * 2 - 1);
-  for (let i = 0; i < 3; i++) {
-    cardCreator(i);
+  for (let j = 0; j < 6; j++) {
+    cardIndex.sort((a, b) => Math.random() * 2 - 1);
+    cardIndex.forEach((i) => cardCreator(i));
   }
-
-  while (slider.children.length > 3) {
-    slider.removeChild(slider.lastChild);
-  }
-
-  let cards = document.querySelectorAll(".card");
-
-  cards.forEach((card) => {
-    card.addEventListener("click", function () {
-      popupCreator(card.id);
-      windowModal.style.display = "flex";
-      body.classList.toggle("scroll__lock");
-    });
-  });
-  windowModal.addEventListener("click", function (e) {
-    if (!e.target.closest(".popup__card") || e.target.closest(".popup__btn")) {
-      windowModal.style.display = "none";
-      body.classList.toggle("scroll__lock");
-    }
-  });
 };
 
 cardAdder();
 
-arrows.forEach((arrow) => arrow.addEventListener("click", cardAdder));
+let cards = document.querySelectorAll(".card");
 
-// ! BURGER
+// ! CHECK BUTTONS
+
+let checkButtons = (counter) => {
+  arrowsCounter.textContent = `${counter}`;
+  counter == 1 ? (arrowPrev.disabled = true) : (arrowPrev.disabled = false);
+  counter == 1 ? (arrowStart.disabled = true) : (arrowStart.disabled = false);
+  counter == cards.length / checkWidth()
+    ? (arrowNext.disabled = true)
+    : (arrowNext.disabled = false);
+  counter == cards.length / checkWidth()
+    ? (arrowEnd.disabled = true)
+    : (arrowEnd.disabled = false);
+};
+
+// ! SLIDER FUNCTION
+
+arrowNext.addEventListener("click", function () {
+  cards.forEach((card) => (card.style.display = "none"));
+  for (let i = checkWidth() * counter; i < checkWidth() * (counter + 1); i++) {
+    cards[i].style.display = "flex";
+    cards[i].classList.remove("slide-right");
+    cards[i].classList.add("slide-left");
+  }
+  checkButtons(++counter);
+});
+
+arrowPrev.addEventListener("click", function () {
+  cards.forEach((card) => (card.style.display = "none"));
+  checkButtons(--counter);
+  for (let i = checkWidth() * (counter - 1); i < counter * checkWidth(); i++) {
+    cards[i].style.display = "flex";
+    cards[i].classList.remove("slide-left");
+    cards[i].classList.add("slide-right");
+  }
+});
+
+arrowStart.addEventListener("click", function () {
+  cards.forEach((card) => (card.style.display = "none"));
+  for (let i = 0; i < checkWidth(); i++) {
+    cards[i].style.display = "flex";
+    cards[i].classList.remove("slide-left");
+    cards[i].classList.add("slide-right");
+  }
+  checkButtons((counter = 1));
+});
+
+arrowEnd.addEventListener("click", function () {
+  checkButtons((counter = cards.length / checkWidth()));
+  cards.forEach((card) => (card.style.display = "none"));
+  for (let i = checkWidth() * (counter - 1); i < checkWidth() * counter; i++) {
+    cards[i].style.display = "flex";
+    cards[i].classList.remove("slide-right");
+    cards[i].classList.add("slide-left");
+  }
+});
+
+// ! POP UP FUNCTION
+
+let windowModal = document.querySelector(".popup__window");
+
+cards.forEach((card) => {
+  card.addEventListener("click", function () {
+    popupCreator(card.id);
+    windowModal.style.display = "flex";
+    body.classList.toggle("scroll__lock");
+  });
+});
+windowModal.addEventListener("click", function (e) {
+  if (!e.target.closest(".popup__card") || e.target.closest(".popup__btn")) {
+    windowModal.style.display = "none";
+    body.classList.toggle("scroll__lock");
+  }
+});
+
+// ! BURGER FUNCTION
 
 const burgerBtn = document.querySelector(".burger__logo");
 const burgerWindow = document.querySelector(".burger__window");

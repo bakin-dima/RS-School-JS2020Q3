@@ -111,15 +111,19 @@
   .header .wrapper {
     flex-direction: row;
     align-items: center;
+    max-width: 25.7rem;
+    width: 100%;
+    margin: 0 5.3rem 0 auto;
+  }
+  .header .logo {
+    z-index: 5;
   }
   .header .menu {
-    width: 3rem;
-    margin-right: 4.3rem;
-    min-height: 2.2rem;
-    background: url(../../assets/icons/Burger-main.svg);
-  }
-  .header .menu .list {
     display: none;
+  }
+  .header .burger__logo {
+    display: flex;
+    align-self: center;
   }
   .intro .content__section {
     text-align: center;
@@ -297,6 +301,9 @@
   }
   .popup__btn {
     right: -3rem;
+  }
+  .burger__window_active {
+    display: flex;
   }
 }
 /*# sourceMappingURL=media.css.map */
