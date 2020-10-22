@@ -16,9 +16,8 @@
     padding: 3rem 6.4rem 1rem 6.4rem;
     justify-content: center;
   }
-  .card:nth-child(7),
-  .card:nth-child(8) {
-    display: none;
+  .slider__container {
+    height: 136.5rem;
   }
   .footer__content {
     flex-wrap: wrap;
@@ -40,6 +39,26 @@
     width: 30rem;
     margin: 6.5rem auto 0;
   }
+  .popup__card {
+    max-width: 63rem;
+    max-height: 35rem;
+  }
+  .popup__content {
+    margin: 1rem 0.9rem 3.7rem 1.1rem;
+  }
+  .popup__image {
+    max-width: 35rem;
+    max-height: 35rem;
+  }
+  .popup__description {
+    margin: 2rem auto;
+    font-size: 1.3rem;
+    line-height: 1.4rem;
+    letter-spacing: 0.07rem;
+  }
+  .popup__list {
+    min-height: 8.7rem;
+  }
 }
 
 @media screen and (max-width: 650px) {
@@ -49,22 +68,27 @@
   }
   .header {
     padding: 3rem 1rem;
+    position: absolute;
   }
   .header .wrapper {
     flex-direction: row;
     align-items: center;
+    max-width: 25.7rem;
+    width: 100%;
+    margin: 0 5.3rem 0 auto;
+  }
+  .logo {
+    z-index: 5;
   }
   .menu {
-    width: 3rem;
-    margin-right: 4.3rem;
-    min-height: 2.2rem;
-    background: url(../../assets/icons/Burger.svg);
-  }
-  .menu .list {
     display: none;
   }
+  .burger__logo {
+    display: flex;
+    align-self: center;
+  }
   .pets {
-    padding: 4rem 0 4.5rem 0;
+    padding: 16rem 0 4.5rem 0;
   }
   .pets .content {
     padding: 0;
@@ -79,8 +103,8 @@
   .slider {
     padding: 4.2rem 1.5rem 1.1rem 1.5rem;
   }
-  .card:nth-child(n + 4) {
-    display: none;
+  .slider__container {
+    height: 136.5rem;
   }
   .arrows {
     width: 30rem;
@@ -116,6 +140,31 @@
     height: 26.9rem;
     width: 26rem;
     margin: 0;
+  }
+  .popup__card {
+    max-width: 24rem;
+    max-height: 39.3rem;
+  }
+  .popup__content {
+    margin: 1rem;
+  }
+  .popup__name,
+  .popup__type {
+    text-align: center;
+  }
+  .popup__image {
+    display: none;
+  }
+  .popup__description {
+    letter-spacing: 0.07rem;
+    line-height: 1.4rem;
+    text-align: justify;
+  }
+  .popup__list {
+    min-height: 8.7rem;
+  }
+  .popup__btn {
+    right: -3rem;
   }
 }
 /*# sourceMappingURL=media.css.map */

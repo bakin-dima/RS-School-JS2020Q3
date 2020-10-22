@@ -7,7 +7,7 @@
     <link rel="stylesheet" href="main.css" />
     <link rel="stylesheet" href="media.css" />
   </head>
-  <body>
+  <body id="about">
     <header class="header">
       <div class="wrapper">
         <div class="logo">
@@ -36,6 +36,15 @@
             </li>
           </ul>
         </nav>
+        <div class="burger__logo">
+          <button class="burger__button">
+            <img
+              class="burger__image"
+              src="../../assets/icons/Burger-main.svg"
+              alt="burger"
+            />
+          </button>
+        </div>
       </div>
     </header>
     <main class="main">
@@ -57,7 +66,7 @@
           </div>
         </div>
       </div>
-      <div class="about" id="about">
+      <div class="about">
         <div class="wrapper">
           <!-- prettier-ignore -->
           <div class="content">
@@ -308,8 +317,32 @@
         </div>
       </div>
     </footer>
-    <div class="popup__window" id="popupWin">
-      <div class="popup__card" id="popupCar">
+    <!--  burger section -->
+    <div class="burger__window">
+      <div class="burger__box">
+        <ul class="burger__list">
+          <li class="burger__item burger__item_active">
+            <a href="#about" class="burger__link burger__link_active"
+              >About the shelter</a
+            >
+          </li>
+          <li class="burger__item">
+            <a href="../../pages/pets/pets.html" class="burger__link"
+              >Our pets</a
+            >
+          </li>
+          <li class="burger__item">
+            <a href="#" class="burger__link">Help the shelter</a>
+          </li>
+          <li class="burger__item">
+            <a href="#" class="burger__link">Contacts</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+    <!-- Pop up section -->
+    <div class="popup__window">
+      <div class="popup__card">
         <img class="popup__image" />
         <div class="popup__content">
           <h3 class="popup__name"></h3>

@@ -22,7 +22,7 @@
           <ul class="list">
             <li class="list__item">
               <!-- prettier-ignore -->
-              <a class="list__link" href="#about">About the shelter</a>
+              <a class="list__link" href="../main/main.html">About the shelter</a>
             </li>
             <li class="list__item">
               <!-- prettier-ignore -->
@@ -36,6 +36,15 @@
             </li>
           </ul>
         </nav>
+        <div class="burger__logo">
+          <button class="burger__button">
+            <img
+              class="burger__image"
+              src="../../assets/icons/Burger.svg"
+              alt="burger"
+            />
+          </button>
+        </div>
       </div>
     </header>
     <main class="main">
@@ -201,6 +210,49 @@
         </div>
       </div>
     </footer>
-    <script src="main.js"></script>
+    <!--  burger section -->
+    <div class="burger__window">
+      <div class="burger__box">
+        <ul class="burger__list">
+          <li class="burger__item">
+            <a href="../../pages/main/main.html" class="burger__link"
+              >About the shelter</a
+            >
+          </li>
+          <li class="burger__item burger__item_active">
+            <a
+              href="../../pages/pets/pets.html"
+              class="burger__link burger__link_active"
+              >Our pets</a
+            >
+          </li>
+          <li class="burger__item">
+            <a href="#" class="burger__link">Help the shelter</a>
+          </li>
+          <li class="burger__item">
+            <a href="#" class="burger__link">Contacts</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+    <!-- Pop up section -->
+    <div class="popup__window" id="popupWin">
+      <div class="popup__card" id="popupCar">
+        <img class="popup__image" />
+        <div class="popup__content">
+          <h3 class="popup__name"></h3>
+          <h4 class="popup__type"></h4>
+          <h5 class="popup__description"></h5>
+          <ul class="popup__list">
+            <li class="popup__item popup__item_age"></li>
+            <li class="popup__item popup__item_inoculations"></li>
+            <li class="popup__item popup__item_diseases"></li>
+            <li class="popup__item popup__item_parasites"></li>
+          </ul>
+        </div>
+        <button class="popup__btn" type="button"></button>
+      </div>
+    </div>
+    <script src="pets.js"></script>
   </body>
 </html>

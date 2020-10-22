@@ -10,7 +10,7 @@
   margin-block-end: 0;
 }
 
-@keyframes animation {
+@keyframes popup {
   0% {
     opacity: 0;
     transform: rotate(10deg) scale(0.4);
@@ -26,6 +26,10 @@
 
 body {
   position: relative;
+}
+
+body.scroll__lock {
+  overflow: hidden;
 }
 
 .wrapper {
@@ -281,7 +285,7 @@ body {
   padding: 0 0 3rem 0;
   transition-duration: 0.2s;
   transition: background-color 0.2s ease-out;
-  animation-name: animation;
+  animation-name: popup;
   animation-duration: 0.4s;
   animation-timing-function: linear;
 }
@@ -574,6 +578,125 @@ body {
   letter-spacing: 0.12rem;
 }
 
+@keyframes burger {
+  0% {
+    transform: translateX(300px);
+  }
+  50% {
+    transform: translateX(150px);
+  }
+  100% {
+    transform: translateX(0px);
+  }
+}
+
+.burger__logo {
+  display: none;
+  z-index: 5;
+  transition: 0.3s ease-out;
+}
+
+.burger__button {
+  z-index: 5;
+  background: none;
+  border: none;
+  outline: none;
+}
+
+.menu_burger_link:hover {
+  filter: contrast(1.2);
+  cursor: pointer;
+}
+
+.burger__logo_active {
+  transform: rotate(90deg);
+}
+
+.burger__window {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  z-index: 1;
+  top: 0;
+  background: rgba(41, 41, 41, 0.6);
+  left: 100%;
+  right: 0;
+  overflow: hidden;
+  width: 0;
+  height: 100vh;
+  transition: 0.3s ease-out;
+  transition-property: width, left;
+}
+
+.burger__window_active {
+  display: flex;
+  left: 0;
+  overflow-y: scroll;
+  width: 100%;
+  left: 0;
+}
+
+.burger__box {
+  position: absolute;
+  right: 0px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 32rem;
+  height: 100%;
+  background-color: #292929;
+}
+
+.burger__list {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  list-style: none;
+  height: 32.7rem;
+}
+
+.burger__item {
+  border-bottom: 2px solid transparent;
+}
+
+.burger__link {
+  text-decoration: none;
+  font-family: Arial;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 32px;
+  line-height: 160%;
+  color: #cdcdcd;
+}
+
+.burger__link:hover {
+  color: #fafafa;
+}
+
+.burger__link_active {
+  color: #fafafa;
+}
+
+.burger__item_active {
+  border-color: #f1cdb3;
+}
+
+@keyframes popup {
+  0% {
+    opacity: 0;
+    transform: scale(0.4);
+  }
+  33% {
+  }
+  66% {
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
 .popup__window {
   display: none;
   justify-content: center;
@@ -595,7 +718,7 @@ body {
   background: #fafafa;
   border-radius: 0.9rem;
   max-width: 90rem;
-  animation-name: animation;
+  animation-name: popup;
   animation-duration: 0.4s;
   animation-timing-function: linear;
 }
