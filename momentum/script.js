@@ -7609,49 +7609,49 @@ function setBgGreet() {
 
   if (hour > 8 && hour < 10) {
     // Morning 8:00
-    bg.style.backgroundImage = "url('assets/images/big_sur/1.png')";
+    bg.style.backgroundImage = "url('assets/images/1.png')";
     greeting.textContent = "Good Morning, ";
     focus__greeting.textContent = "What Is Your Focus For this morning?";
   }
   // Morning 10:00
   else if (hour >= 10 && hour < 12) {
-    bg.style.backgroundImage = "url('assets/images/big_sur/2.png')";
+    bg.style.backgroundImage = "url('assets/images/2.png')";
     name__greeting.textContent = "Good Morning, ";
     focus__greeting.textContent = "What Is Your Focus For this morning?";
   }
   // Day 12:00
   else if (hour >= 12 && hour < 14) {
-    bg.style.backgroundImage = "url('assets/images/big_sur/3.png')";
+    bg.style.backgroundImage = "url('assets/images/3.png')";
     name__greeting.textContent = "Have a good day, ";
     focus__greeting.textContent = "What Is Your Focus For today?";
   }
   // Day 14:00
   else if (hour >= 14 && hour < 16) {
-    bg.style.backgroundImage = "url('assets/images/big_sur/4.png')";
+    bg.style.backgroundImage = "url('assets/images/4.png')";
     name__greeting.textContent = "Have a good day, ";
     focus__greeting.textContent = "What Is Your Focus For today";
   }
   // Afternoon 16:00
   else if (hour >= 16 && hour < 18) {
-    bg.style.backgroundImage = "url('assets/images/big_sur/5.png')";
+    bg.style.backgroundImage = "url('assets/images/5.png')";
     name__greeting.textContent = "Good Afternoon, ";
     focus__greeting.textContent = "What Is Your Focus For this afternoon?";
   }
   // Afternoon 18:00
   else if (hour >= 18 && hour < 20) {
-    bg.style.backgroundImage = "url('assets/images/big_sur/6.png')";
+    bg.style.backgroundImage = "url('assets/images/6.png')";
     name__greeting.textContent = "Good Afternoon, ";
     focus__greeting.textContent = "What Is Your Focus For this arternoon?";
   }
   // Evening 20:00
   else if (hour >= 20 && hour < 22) {
-    bg.style.backgroundImage = "url('assets/images/big_sur/7.png')";
+    bg.style.backgroundImage = "url('assets/images/7.png')";
     name__greeting.textContent = "Evening began it's relax time, ";
     focus__greeting.textContent = "What Is Your Focus For this evening?";
   }
   // Evening 22:00
   else {
-    bg.style.backgroundImage = "url('assets/images/big_sur/8.png')";
+    bg.style.backgroundImage = "url('assets/images/8.png')";
     name__greeting.textContent = "Night is commig ready for party time, ";
     focus__greeting.textContent = "What Is Your Focus tonight?";
   }
@@ -7709,7 +7709,7 @@ function setFocus(e) {
 
 let i = 1;
 btn__image.addEventListener("click", function () {
-  bg.style.backgroundImage = `url("assets/images/big_sur/${i}.png")`;
+  bg.style.backgroundImage = `url("assets/images/${i}.png")`;
   i == 8 ? (i = 1) : i++;
 });
 
