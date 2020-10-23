@@ -6,52 +6,72 @@
 
 body {
   font-family: "Quicksand", sans-serif;
+  height: 100vh;
+  width: 100%;
+  font-size: 2rem;
+  color: #fafafa;
   display: flex;
   align-items: center;
-  justify-content: center;
+  justify-content: space-evenly;
   text-align: center;
-  height: 100vh;
+  background-position: 20% 40%;
   background-size: cover;
-  font-size: 12px;
-  color: #ffffff;
-  background-position: center center;
   background-repeat: no-repeat;
-  transition: background-image 0.4s ease-in-out;
+  transition: background-image 0.2s ease-in-out;
 }
 
 .container {
-  opacity: 0.6;
-  width: 90%;
   display: flex;
-  justify-content: center;
   flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  height: 95vh;
+}
+
+.container__inner {
+  font-size: 42px;
+  font-weight: 700;
+  border-radius: 20px;
+  background-color: transparent;
+  color: #fafafa;
+  opacity: 0.6;
+}
+
+.top {
+  max-width: 1400px;
+  width: 100%;
+  font-size: 120px;
+  display: flex;
+  align-self: center;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.top .weather {
+  max-width: 600px;
+  width: 50%;
+  justify-content: space-between;
+  display: flex;
   align-items: center;
 }
 
-.qoutes__content {
-  width: 50%;
-}
-
 .btn {
-  padding: 5px;
-  width: 320px;
-  height: 50px;
-  border: 2px #ffffff;
-  outline: none;
+  width: 300px;
+  height: 100px;
+  border-radius: 20px;
+  background-color: transparent;
+  background: url("/assets/images/overlay.png") no-repeat;
+  color: #fafafa;
   opacity: 0.6;
+  border: 1px solid #fafafa;
+  outline: none;
+  font-size: 25px;
 }
 
 .btn:hover {
+  background-color: #fafafa;
+  color: #020202;
   opacity: 0.9;
-}
-
-.time {
-  font-size: 11rem;
-}
-
-@media (max-width: 700px) {
-  .time {
-    font-size: 6rem;
-  }
+  cursor: pointer;
 }
 /*# sourceMappingURL=style.css.map */

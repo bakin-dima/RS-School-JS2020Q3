@@ -12,21 +12,32 @@
   </head>
   <body>
     <div class="container">
-      <i class="weather-icon owf"></i>
-      <div class="temperature"></div>
-      <div class="weather-description"></div>
-      <time class="time"></time>
-      <h1>
-        <span class="greeting"></span>
-        <span class="name" contenteditable="true"></span>
-      </h1>
-      <h2>What Is Your Focus For Today?</h2>
-      <h2 class="focus" contenteditable="true"></h2>
-      <div class="qoutes__content">
-        <h1 class="blockquote"></h1>
+      <div class="container__inner top">
+        <time class="time"></time>
+        <div class="weather">
+          <div class="city" contenteditable="true">Minsk</div>
+          <div class="temperature"></div>
+          <!-- <div class="weather-description"></div> -->
+        </div>
       </div>
-      <button type="button" class="btn btn__image"></button>
-      <button type="button" class="btn btn__quote"></button>
+      <div class="container__inner middle" >
+        <p class="name__greeting"></p>
+        <p class="name" contenteditable="true"></p>
+      </div>
+      <div class="container__inner middle" >
+        <p class="focus__greeting"></p>
+        <p class="focus" contenteditable="true"></p>
+      </div>
+      <div class="container__inner">
+        <div class="qoutes__content">
+          <p class="blockquote"></p>
+        </div>
+      </div>
+        <div class="container__inner">
+          <button type="button" class="btn btn__image"></button>
+          <button type="button" class="btn btn__quote"></button>
+        </div>
+      </div>
     </div>
 
     <script src="script.js"></script>
