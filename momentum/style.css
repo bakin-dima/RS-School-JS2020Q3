@@ -5,28 +5,48 @@
 }
 
 body {
-  font-family: 'Quicksand', sans-serif;
+  font-family: "Quicksand", sans-serif;
   display: flex;
-  flex-direction: column;
   align-items: center;
   justify-content: center;
   text-align: center;
   height: 100vh;
   background-size: cover;
-  color: #000000;
+  font-size: 12px;
+  color: #ffffff;
+  background-position: center center;
+  background-repeat: no-repeat;
+  transition: background-image 0.4s ease-in-out;
+}
+
+.container {
+  opacity: 0.6;
+  width: 90%;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+}
+
+.qoutes__content {
+  width: 50%;
+}
+
+.btn {
+  padding: 5px;
+  width: 320px;
+  height: 50px;
+  border: 2px #ffffff;
+  outline: none;
+  opacity: 0.6;
+}
+
+.btn:hover {
+  opacity: 0.9;
 }
 
 .time {
-  font-size: 8rem;
-}
-
-h1 {
-  margin-bottom: 3rem;
-}
-
-h2 {
-  margin-bottom: 0.5rem;
-  opacity: 0.8;
+  font-size: 11rem;
 }
 
 @media (max-width: 700px) {
@@ -34,3 +54,4 @@ h2 {
     font-size: 6rem;
   }
 }
+/*# sourceMappingURL=style.css.map */
