@@ -14,10 +14,11 @@
   <body>
       
         <div class="weather">
-          <div class="city" contenteditable="true"></div>
+          <div style="display: flex; justify-content: space-between;">
+            <div class="city" contenteditable="true"></div><div class="city__error"></div><i class="weather-icon owf"></i>
+          </div>
           <div class="temperature"></div>
           <div>
-            <i class="weather-icon owf"></i>
             <div class="weather-description"></div>
           </div>  
         </div>
