@@ -17,6 +17,8 @@ body {
   height: 100vh;
   width: 100%;
   min-height: 620px;
+  max-width: 1200px;
+  margin: 0 auto;
   font-size: 2.2rem;
   color: $color_day;
   display: flex;
@@ -36,7 +38,7 @@ body {
   background-color: $color_day;
   color: $color_night;
   border-radius: 15px;
-  padding: 8px;
+  padding: 8px 32px;
   opacity: 0.8;
 }
 
@@ -51,13 +53,17 @@ body {
   font-size: 20rem;
 }
 
+.date,
+.weekday {
+  font-size: 11rem;
+}
+
 .name,
 .focus,
 .city {
   opacity: 0.9;
   &:hover {
     opacity: 1;
-    border-bottom: 1px solid $color_day;
   }
 }
 
@@ -75,12 +81,13 @@ body {
   opacity: 0.7;
   border: none;
   outline: none;
+  font-size: 2rem;
   &:hover {
     opacity: 0.9;
   }
 }
 
-@media screen and (max-width: 700px) {
+@media screen and (max-width: 900px) {
   html {
     font-size: 9px;
   }
@@ -88,11 +95,16 @@ body {
     padding: 0 15px;
   }
   .time {
-    font-size: 9rem;
+    font-size: 7.5rem;
     padding: 0 25px;
+  }
+  .date,
+  .weekday {
+    font-size: 3rem;
   }
   .btn {
     margin-top: 10px;
     padding: 25px 25px;
+    font-size: 1.3rem;
   }
 }

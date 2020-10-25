@@ -7626,7 +7626,7 @@ setBgGreet = () => {
     let hour = today.getHours();
     let min = today.getMinutes();
     let sec = today.getSeconds();
-    if ((min == 30) && (sec == 0))  viewBgImage(backgroundArray[hour]);
+    if ((min == 0) && (sec == 0))  viewBgImage(backgroundArray[hour]);
     if (hour >= 6 && hour < 12) {greeting.textContent = 'Good Morning';}
     if (hour >= 12 && hour < 18) {greeting.textContent = 'Good Afternoon';}
     if (hour >= 18 && hour < 24) {greeting.textContent = 'Good Evening';}
@@ -7720,21 +7720,34 @@ newQuote = () => {
 
 const API = "57fc3f7af38ddc9f8ec414af399ee371";
 
-const weatherIcon = document.querySelector('.weather-icon');
-const temperature = document.querySelector('.temperature');
-const weatherDescription = document.querySelector('.weather-description');
-const city = document.querySelector('.city');
+const weatherIcon = document.querySelector('.weather-icon'),
+ temperature = document.querySelector('.temperature'),
+ weatherDescription = document.querySelector('.weather-description'),
+ city = document.querySelector('.city'),
+ cityError = document.querySelector('.city__error');
+
 
 async function getWeather() {
-  const url = `https://api.openweathermap.org/data/2.5/weather?q=${city.textContent}&lang=en&appid=57fc3f7af38ddc9f8ec414af399ee371&units=metric`;
-  const res = await fetch(url);
-  const data = await res.json();
-
-  weatherIcon.className = 'weather-icon owf';
-  weatherIcon.classList.add(`owf-${data.weather[0].id}`);
-  temperature.textContent = `${data.main.temp}°C`;
-  weatherDescription.textContent = data.weather[0].description;
+  if (city.textContent != "[Enter City]" || city.textContent === null) {
+    const url = `https://api.openweathermap.org/data/2.5/weather?q=${city.textContent}&lang=en&appid=57fc3f7af38ddc9f8ec414af399ee371&units=metric`;
+    const res = await fetch(url);
+    const data = await res.json();
   
+    if (data["message"] === "city not found") {
+      cityError.textContent = " -[Error, city not found]";
+      weatherIcon.style.display = "none";
+      temperature.textContent = "";
+      weatherDescription.textContent = "";
+      
+    } else {
+      cityError.textContent = "";
+      weatherIcon.className = 'weather-icon owf';
+      weatherIcon.style.display = "flex";
+    weatherIcon.classList.add(`owf-${data.weather[0].id}`);
+    temperature.textContent = `${data.main.temp}°C ${data.main.humidity}% ${data.wind.speed}km/h`;
+    weatherDescription.textContent = data.weather[0].description;
+    }
+  }
 }
 
 getCity = () => {
