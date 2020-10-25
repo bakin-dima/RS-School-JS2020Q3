@@ -12,9 +12,8 @@ body {
   font-family: "Quicksand", sans-serif;
   height: 100vh;
   width: 100%;
-  min-height: 600px;
   max-width: 1200px;
-  margin: 0 auto;
+  margin: 5px auto;
   font-size: 2.2rem;
   color: #fafafa;
   display: flex;
@@ -47,6 +46,10 @@ body {
 
 .time {
   font-size: 20rem;
+}
+
+.text__content {
+  text-align: center;
 }
 
 .date,
@@ -106,6 +109,12 @@ body {
     margin-top: 10px;
     padding: 25px 25px;
     font-size: 1.3rem;
+  }
+}
+
+@media screen and (max-width: 500px) {
+  body {
+    max-width: 300px;
   }
 }
 /*# sourceMappingURL=style.css.map */
