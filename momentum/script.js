@@ -7626,7 +7626,7 @@ setBgGreet = () => {
     let hour = today.getHours();
     let min = today.getMinutes();
     let sec = today.getSeconds();
-    if ((min == 15) && (sec == 0))  viewBgImage(backgroundArray[hour]);
+    if ((min == 20) && (sec == 0))  viewBgImage(backgroundArray[hour]);
     if (hour >= 6 && hour < 12) {greeting.textContent = 'Good Morning';}
     if (hour >= 12 && hour < 18) {greeting.textContent = 'Good Afternoon';}
     if (hour >= 18 && hour < 24) {greeting.textContent = 'Good Evening';}
