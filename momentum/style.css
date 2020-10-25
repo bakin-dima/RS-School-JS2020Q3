@@ -12,7 +12,7 @@ body {
   font-family: "Quicksand", sans-serif;
   height: 100vh;
   width: 100%;
-  min-height: 620px;
+  min-height: 600px;
   max-width: 1200px;
   margin: 0 auto;
   font-size: 2.2rem;
@@ -39,7 +39,7 @@ body {
 }
 
 .date__time {
-  margin-bottom: 10%;
+  margin-bottom: 10px;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -67,9 +67,9 @@ body {
 }
 
 .qoutes {
-  margin-top: 10%;
+  margin-top: 10px;
   max-width: 600px;
-  text-align: justify;
+  text-align: center;
 }
 
 .btn {
@@ -89,10 +89,10 @@ body {
 
 @media screen and (max-width: 900px) {
   html {
-    font-size: 9px;
+    font-size: 8px;
   }
   body {
-    padding: 0 15px;
+    padding: 0 5px;
   }
   .time {
     font-size: 7.5rem;
