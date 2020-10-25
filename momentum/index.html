@@ -8,38 +8,41 @@
       rel="stylesheet"
     />
     <link rel="stylesheet" href="style.css" />
+    <link rel="stylesheet" href="css/owfont-regular.css" />
     <title>momentum</title>
   </head>
   <body>
-    <div class="container">
-      <div class="container__inner top">
-        <time class="time"></time>
+      
         <div class="weather">
-          <div class="city" contenteditable="true">Minsk</div>
+          <div class="city" contenteditable="true"></div>
           <div class="temperature"></div>
-          <!-- <div class="weather-description"></div> -->
+          <div>
+            <i class="weather-icon owf"></i>
+            <div class="weather-description"></div>
+          </div>  
         </div>
+   
+        
+      
+        <div class="date__time">
+          <time class="time"></time>
+          <div class="date"></div>
+          <div class="weekday"></div>
       </div>
-      <div class="container__inner middle" >
-        <p class="name__greeting"></p>
-        <p class="name" contenteditable="true"></p>
+      <div class="text__content">
+        <span class="greeting"></span>
+        <span class="name" contenteditable="true"></span>
+        <span>What Is Your Focus For Today?</span>
+        <span class="focus" contenteditable="true"></span>
       </div>
-      <div class="container__inner middle" >
-        <p class="focus__greeting"></p>
-        <p class="focus" contenteditable="true"></p>
+      <div class="qoutes ">
+        <p class="blockquote"></p>
       </div>
-      <div class="container__inner bottom">
-        <div class="qoutes__content">
-          <p class="blockquote"></p>
-        </div>
-      </div>
-        <div class="container__inner">
-          <button type="button" class="btn btn__image"></button>
-          <button type="button" class="btn btn__quote"></button>
-        </div>
+      <div class="buttons">
+        <button type="button" class="btn btn__image">Change image</button>
+        <button type="button" class="btn btn__quote">Get motivation</button>
       </div>
     </div>
-
     <script src="script.js"></script>
   </body>
 </html>
