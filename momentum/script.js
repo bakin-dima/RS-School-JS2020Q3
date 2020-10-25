@@ -7568,192 +7568,221 @@ let qoutesData = [
     author: "Tom Jackson",
   },
 ];
+
 // DOM Elements
-const time = document.querySelector(".time"),
-  name__greeting = document.querySelector(".name__greeting"),
-  focus__greeting = document.querySelector(".focus__greeting"),
+let time = document.querySelector(".time"),
+  date = document.querySelector(".date"),
+  weekday = document.querySelector(".weekday"),
+  greeting = document.querySelector(".greeting"),
   name = document.querySelector(".name"),
-  focus = document.querySelector(".focus");
-let bg = document.body,
+  focus = document.querySelector(".focus"),
   blockquote = document.querySelector(".blockquote"),
   btn__quote = document.querySelector(".btn__quote"),
-  btn__image = document.querySelector(".btn__image");
+  btn__image = document.querySelector(".btn__image"),
+  now = new Date,
+  counterBg = now.getHours(),
+  backgroundArray = [];
+  
+// Add Zeros
+addZero = (n) => {
+  return (parseInt(n, 10) < 10 ? "0" : "") + n;
+  }
 
-btn__quote.textContent = "Get motivation";
-btn__image.textContent = "Change image";
+// Set Array backgrounds
+let BgAssets = ["night","morning","day","evening",];
+for (let i = 0; i < 4; i++) {
+  tempArr = [];
+  while(tempArr.length < 6) {
+    let num = Math.round(Math.random() * 20 + 1);
+    if (tempArr.indexOf(num)==-1 && num < 20) {
+      tempArr.push(num);
+      backgroundArray.push(`assets/images/${BgAssets[i]}/${addZero(num)}.jpg`);
+    }
+  }  
+}
+console.log(backgroundArray)
 
-// Show Time
-function showTime() {
+// Set Background and Greeting
+const img = document.createElement('img');
+
+function viewBgImage(src) {
+  btn__image.disabled = true;
+    const body = document.querySelector('body');
+    img.src = src;
+    img.onload = () => {
+        body.style.backgroundImage = `url(${src})`;
+         setTimeout(function() { btn__image.disabled = false }, 300);
+    };
+  }
+
+
+setBg = () => {
+    counterBg < 23 ? counterBg +=1 : counterBg = 0;
+    viewBgImage(backgroundArray[counterBg]);
+}
+
+setBgGreet = () => {
+    let today = new Date();
+    let hour = today.getHours();
+    let min = today.getMinutes();
+    let sec = today.getSeconds();
+    if ((min == 30) && (sec == 0))  viewBgImage(backgroundArray[hour]);
+    if (hour >= 6 && hour < 12) {greeting.textContent = 'Good Morning';}
+    if (hour >= 12 && hour < 18) {greeting.textContent = 'Good Afternoon';}
+    if (hour >= 18 && hour < 24) {greeting.textContent = 'Good Evening';}
+    if (hour >= 0 && hour < 6) {greeting.textContent = 'Good Night';}
+    setTimeout(setBgGreet, 1000);
+}
+
+showTime = () => {
   let today = new Date(),
     hour = today.getHours(),
     min = today.getMinutes(),
     sec = today.getSeconds();
 
   // Output Time
-  time.innerHTML = `${addZero(hour)}<span>:</span>${addZero(
-    min
-  )}<span>:</span>${addZero(sec)}`;
-
+  time.innerHTML = `${addZero(hour)}<span>:</span>${addZero(min)}<span>:</span>${addZero(sec)}`;
   setTimeout(showTime, 1000);
 }
 
-// Add Zeros
-function addZero(n) {
-  return (parseInt(n, 10) < 10 ? "0" : "") + n;
-}
-
-// Set Background and Greeting
-function setBgGreet() {
+showDate = () => {
   let today = new Date(),
-    hour = today.getHours();
-
-  if (hour > 8 && hour < 10) {
-    // Morning 8:00
-    bg.style.backgroundImage = "url('assets/images/1.png')";
-    greeting.textContent = "Good Morning, ";
-    focus__greeting.textContent = "What Is Your Focus For this morning?";
-  }
-  // Morning 10:00
-  else if (hour >= 10 && hour < 12) {
-    bg.style.backgroundImage = "url('assets/images/2.png')";
-    name__greeting.textContent = "Good Morning, ";
-    focus__greeting.textContent = "What Is Your Focus For this morning?";
-  }
-  // Day 12:00
-  else if (hour >= 12 && hour < 14) {
-    bg.style.backgroundImage = "url('assets/images/3.png')";
-    name__greeting.textContent = "Have a good day, ";
-    focus__greeting.textContent = "What Is Your Focus For today?";
-  }
-  // Day 14:00
-  else if (hour >= 14 && hour < 16) {
-    bg.style.backgroundImage = "url('assets/images/4.png')";
-    name__greeting.textContent = "Have a good day, ";
-    focus__greeting.textContent = "What Is Your Focus For today";
-  }
-  // Afternoon 16:00
-  else if (hour >= 16 && hour < 18) {
-    bg.style.backgroundImage = "url('assets/images/5.png')";
-    name__greeting.textContent = "Good Afternoon, ";
-    focus__greeting.textContent = "What Is Your Focus For this afternoon?";
-  }
-  // Afternoon 18:00
-  else if (hour >= 18 && hour < 20) {
-    bg.style.backgroundImage = "url('assets/images/6.png')";
-    name__greeting.textContent = "Good Afternoon, ";
-    focus__greeting.textContent = "What Is Your Focus For this arternoon?";
-  }
-  // Evening 20:00
-  else if (hour >= 20 && hour < 22) {
-    bg.style.backgroundImage = "url('assets/images/7.png')";
-    name__greeting.textContent = "Evening began it's relax time, ";
-    focus__greeting.textContent = "What Is Your Focus For this evening?";
-  }
-  // Evening 22:00
-  else {
-    bg.style.backgroundImage = "url('assets/images/8.png')";
-    name__greeting.textContent = "Night is commig ready for party time, ";
-    focus__greeting.textContent = "What Is Your Focus tonight?";
-  }
+    day = today.getDate(),
+    dayWeek = today.getDay(),
+    month = today.getMonth(),
+    year = today.getFullYear(),
+    weekdays = ["Sunday","Monday","Tuesday","Wednesday","Thursday","Friday","Saturday"];
+    months = ["January","February","March","April","May","June","July","August","September","October","November","December"]
+  // Output Date
+  date.textContent = `${day}.${months[month]}.${year}`;
+  weekday.textContent = `${weekdays[dayWeek]}`;
 }
 
 // Get Name
-function getName() {
-  if (
-    localStorage.getItem("name") === null ||
-    localStorage.getItem("name") === ""
-  ) {
-    name.textContent = "[Enter your Name]";
+getName = () => {
+  if (localStorage.getItem("name") === null || localStorage.getItem("name").replace(/\s/g,"") == "") {
+    name.textContent = "[Enter Name]";
   } else {
     name.textContent = localStorage.getItem("name");
   }
 }
 
 // Set Name
-function setName(e) {
-  if (e.type === "keypress") {
-    // Make sure enter is pressed
+setName = (e) => {
+  let check = localStorage.getItem('name') || '[Enter Name]';
+  if (e.type === 'keypress') {
     if (e.which == 13 || e.keyCode == 13) {
+      name.textContent.replace(/\s/g,"") == "" ?
+      name.textContent = check :    
       localStorage.setItem("name", e.target.innerText);
       name.blur();
     }
   } else {
+    name.textContent.replace(/\s/g,"") == "" ?
+    name.textContent = check :    
     localStorage.setItem("name", e.target.innerText);
   }
 }
 
 // Get Focus
-function getFocus() {
-  if (
-    localStorage.getItem("focus") === null ||
-    localStorage.getItem("focus") === ""
-  ) {
+getFocus = () => {
+  if (localStorage.getItem('focus') === null || localStorage.getItem("focus").replace(/\s/g,"") == "") {
     focus.textContent = "[Enter Focus]";
   } else {
-    focus.textContent = localStorage.getItem("focus");
+    focus.textContent = localStorage.getItem('focus');
   }
 }
 
 // Set Focus
-function setFocus(e) {
-  if (e.type === "keypress") {
-    // Make sure enter is pressed
+setFocus = (e) =>{
+  let check = localStorage.getItem('focus') || '[Enter Focus]';
+  if (e.type === 'keypress') {
     if (e.which == 13 || e.keyCode == 13) {
-      localStorage.setItem("focus", e.target.innerText);
+      focus.textContent.replace(/\s/g,"") == "" ?
+      focus.textContent = check :    
+      localStorage.setItem('focus', e.target.innerText);
       focus.blur();
     }
   } else {
-    localStorage.setItem("focus", e.target.innerText);
+    focus.textContent.replace(/\s/g,"") == "" ?
+    focus.textContent = check :    
+    localStorage.setItem('focus', e.target.innerText);
   }
-}
+} 
 
-let i = 1;
-btn__image.addEventListener("click", function () {
-  bg.style.backgroundImage = `url("assets/images/${i}.png")`;
-  i == 8 ? (i = 1) : i++;
-});
-
-name.addEventListener("keypress", setName);
-name.addEventListener("blur", setName);
-focus.addEventListener("keypress", setFocus);
-focus.addEventListener("blur", setFocus);
-
-let newQuote = function () {
+newQuote = () => {
   qoutesData.sort((a, b) => Math.random() * 2 - 1);
   return (blockquote.textContent = `${qoutesData[1].text} - ${qoutesData[1].author}`);
 };
 
-newQuote();
 
-btn__quote.addEventListener("click", newQuote);
-
-// Run
-showTime();
-setBgGreet();
-getName();
-getFocus();
+// ? WEATHER FUNCTION
 
 const API = "57fc3f7af38ddc9f8ec414af399ee371";
 
-const temperature = document.querySelector(".temperature");
-const weatherDescription = document.querySelector(".weather-description");
-const city = document.querySelector(".city");
+const weatherIcon = document.querySelector('.weather-icon');
+const temperature = document.querySelector('.temperature');
+const weatherDescription = document.querySelector('.weather-description');
+const city = document.querySelector('.city');
 
 async function getWeather() {
   const url = `https://api.openweathermap.org/data/2.5/weather?q=${city.textContent}&lang=en&appid=57fc3f7af38ddc9f8ec414af399ee371&units=metric`;
   const res = await fetch(url);
   const data = await res.json();
 
-  temperature.textContent = `${data.main.temp.toFixed(0)}°C`;
+  weatherIcon.className = 'weather-icon owf';
+  weatherIcon.classList.add(`owf-${data.weather[0].id}`);
+  temperature.textContent = `${data.main.temp}°C`;
   weatherDescription.textContent = data.weather[0].description;
+  
 }
 
-function setCity(event) {
-  if (event.code === "Enter") {
-    getWeather();
-    city.blur();
+getCity = () => {
+  if (localStorage.getItem('city') === null || localStorage.getItem('city').replace(/\s/g,"") == "") {
+    city.textContent = '[Enter City]';
+  } else {
+    city.textContent = localStorage.getItem('city');
   }
 }
 
-document.addEventListener("DOMContentLoaded", getWeather);
-city.addEventListener("keypress", setCity);
+setCity = (e) => {
+  let check = localStorage.getItem('city') || '[Enter City]';
+  if (e.type === 'keypress') {
+    if (e.which == 13 || e.keyCode == 13) {
+      if (city.textContent.replace(/\s/g,"") == ""){
+        city.textContent = check;
+      } else {
+        localStorage.setItem('city', e.target.innerText);
+        getWeather();
+      }
+      city.blur();
+    }
+  } else {
+    city.textContent.replace(/\s/g,"") == "" ?
+    city.textContent = check :    
+    localStorage.setItem('city', e.target.innerText);
+  }
+}
+
+// Run
+setBg();
+showTime();
+showDate();
+setBgGreet();
+getName();
+getFocus();
+getCity();
+newQuote();
+
+btn__image.addEventListener("click", setBg);
+name.addEventListener("click", function(){name.textContent= ""});
+name.addEventListener("keypress", setName);
+name.addEventListener("blur", setName);
+focus.addEventListener("click", function(){focus.textContent= ""});
+focus.addEventListener("keypress", setFocus);
+focus.addEventListener("blur", setFocus);
+city.addEventListener("click", function(){city.textContent= ""});
+city.addEventListener('keypress', setCity);
+city.addEventListener('blur', setCity);
+document.addEventListener('DOMContentLoaded', getWeather);
+btn__quote.addEventListener("click", newQuote);

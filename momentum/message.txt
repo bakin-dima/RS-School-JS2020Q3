@@ -1,0 +1,18 @@
+// Add Zeros
+  addZero = (n) => {
+    return (parseInt(n, 10) < 10 ? "0" : "") + n;
+    }
+
+  // Set Array backgrounds
+  let BgAssets = ["day","evening","morning","night"];
+  for (let i = 0; i < 4; i++) {
+    tempArr = [];
+    while(tempArr.length < 6) {
+      let num = Math.round(Math.random() * 20 + 1);
+      if (tempArr.indexOf(num)==-1 && num < 20) {
+        tempArr.push(num);
+        backgroundArray.push(`assets/images/${BgAssets[i]}/${addZero(num)}.jpg`);
+      }
+    }  
+  }
+  console.log(backgroundArray)
