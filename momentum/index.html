@@ -12,39 +12,44 @@
     <title>momentum</title>
   </head>
   <body>
-      
-        <div class="weather">
-          <div style="display: flex; justify-content: space-between;">
-            <div class="city" contenteditable="true"></div><div class="city__error"></div><i class="weather-icon owf"></i>
-          </div>
-          <div class="temperature"></div>
-          <div>
-            <div class="weather-description"></div>
-          </div>  
-        </div>
-   
-        
-      
-        <div class="date__time">
-          <time class="time"></time>
-          <div class="date"></div>
-          <div class="weekday"></div>
+    <div class="weather">
+      <div>
+        <div class="city" contenteditable="true"></div>
+        <div class="city__error"></div>
       </div>
-      <div class="text__content">
-        <span class="greeting"></span>
-        <span class="name" contenteditable="true"></span>
-        <p>What Is Your Focus For Today?</p>
-        <span class="focus" contenteditable="true"></span>
+      <div
+        class="info"
+        style="
+          display: flex;
+          justify-content: space-evenly;
+          align-items: center;
+        "
+      >
+        <div class="weather-description"></div>
+        <i class="weather-icon owf"></i>
       </div>
-      <div class="buttons">
-        <button type="button" class="btn btn__image">Change image</button>
-        <button type="button" class="btn btn__quote">Get motivation</button>
-      </div>
-      <div class="qoutes ">
-        <p class="blockquote"></p>
-      </div>
-
+      <div class="temperature"></div>
+      <div></div>
     </div>
+    <div class="info">
+      <time class="time"></time>
+      <div class="date"></div>
+      <div class="weekday"></div>
+    </div>
+    <div class="text">
+      <span class="greeting"></span>
+      <span class="name" contenteditable="true"></span>
+      <p>What Is Your Focus For Today?</p>
+      <span class="focus" contenteditable="true"></span>
+    </div>
+    <div class="buttons">
+      <button type="button" class="btn btn__image">Change image</button>
+      <button type="button" class="btn btn__quote">Get motivation</button>
+    </div>
+    <div class="qoutes">
+      <p class="blockquote"></p>
+    </div>
+
     <script src="script.js"></script>
   </body>
 </html>
