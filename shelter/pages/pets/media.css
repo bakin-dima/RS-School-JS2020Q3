@@ -68,7 +68,6 @@
   }
   .header {
     padding: 3rem 1rem;
-    position: absolute;
   }
   .header .wrapper {
     flex-direction: row;
@@ -78,14 +77,12 @@
     margin: 0 5.3rem 0 auto;
   }
   .logo {
-    z-index: 5;
-  }
-  .menu {
-    display: none;
+    z-index: 900;
   }
   .burger__logo {
     display: flex;
     align-self: center;
+    z-index: 999;
   }
   .pets {
     padding: 16rem 0 4.5rem 0;

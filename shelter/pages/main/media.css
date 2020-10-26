@@ -116,10 +116,7 @@
     margin: 0 5.3rem 0 auto;
   }
   .header .logo {
-    z-index: 5;
-  }
-  .header .menu {
-    display: none;
+    z-index: 900;
   }
   .header .burger__logo {
     display: flex;

@@ -107,7 +107,7 @@ let data = [
 
 let arrows = document.querySelectorAll(".slider__arrow"),
   slider = document.querySelector(".slider__container"),
-  windowModal = document.querySelector(".popup__window");
+  popupWindow = document.querySelector(".popup__window");
 
 let cardCreator = (i) => {
   let card = document.createElement("div");
@@ -152,7 +152,8 @@ const popupCreator = (i) => {
   popupParasites.innerHTML = "<strong>Parasites: </strong>" + data[i].parasites;
 };
 
-let cardAdder = () => { 
+// * NEW RANDOM
+const cardAdder = () => { 
   data.sort((a, b) => Math.random() * 2 - 1);
   for (let i = 0; i < 3; i++) {
     cardCreator(i);
@@ -166,13 +167,13 @@ let cardAdder = () => {
   cards.forEach((card) => {
     card.addEventListener("click", function () {
       popupCreator(card.id);
-      windowModal.style.display = "flex";
+      popupWindow.style.display = "flex";
       body.classList.toggle("scroll__lock");
     });
   });
-  windowModal.addEventListener("click", function (e) {
+  popupWindow.addEventListener("click", function (e) {
     if (!e.target.closest(".popup__card") || e.target.closest(".popup__btn")) {
-      windowModal.style.display = "none";
+      popupWindow.style.display = "none";
       body.classList.toggle("scroll__lock");
     }
   });
@@ -182,31 +183,33 @@ cardAdder();
 
 arrows.forEach((arrow) => arrow.addEventListener("click", cardAdder));
 
-// ! BURGER
+// ! BURGER FUNCTION
 
-const burgerBtn = document.querySelector(".burger__logo");
-const burgerWindow = document.querySelector(".burger__window");
-const burgerLinkActive = document.querySelector(".burger__link_active");
-const body = document.querySelector("body");
+const burgerBtn = document.querySelector(".burger__logo"),
+burgerWindow = document.querySelector(".burger__overlay"),
+burgerLinkActive = document.querySelector(".list__link_active"),
+body = document.querySelector("body"),
+menu = document.querySelector(".menu");
 
 burgerBtn.addEventListener("click", function () {
   burgerBtn.classList.toggle("burger__logo_active");
-  burgerWindow.classList.toggle("burger__window_active");
+  burgerWindow.classList.toggle("burger__overlay_active");
   body.classList.toggle("scroll__lock");
+  menu.classList.toggle("menu_active");
 });
 
 burgerWindow.addEventListener("click", function (e) {
   if (!e.target.closest(".burger__box")) {
-    burgerWindow.classList.toggle("burger__window_active");
     burgerBtn.classList.toggle("burger__logo_active");
-    body.classList.toggle("scroll__lock");
+  burgerWindow.classList.toggle("burger__overlay_active");
+  body.classList.toggle("scroll__lock");
+  menu.classList.toggle("menu_active");
   }
 });
 
 burgerLinkActive.addEventListener("click", function () {
-  burgerWindow.classList.remove("burger__window_active");
-  burgerBtn.classList.remove("burger__logo_active");
+  burgerBtn.classList.toggle("burger__logo_active");
+  burgerWindow.classList.toggle("burger__overlay_active");
   body.classList.toggle("scroll__lock");
+  menu.classList.toggle("menu_active");
 });
-
-console.log(data);
