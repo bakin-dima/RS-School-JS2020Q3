@@ -1,8 +1,9 @@
 $color_day: #fafafa;
 $color_night: #414141;
-$max_width: 800px;
 
-html {
+@import url("https://fonts.googleapis.com/css2?family=Roboto:wght@400;500&display=swap");
+
+:root {
   font-size: 10px;
 }
 
@@ -13,108 +14,92 @@ html {
 }
 
 body {
-  font-family: "Quicksand", sans-serif;
-  height: 100vh;
-  width: 100%;
-  //min-height: 600px;
-  max-width: 1200px;
-  margin: 5px auto;
-  font-size: 2.2rem;
-  color: $color_day;
+  font-family: "Roboto", sans-serif;
   display: flex;
   flex-direction: column;
-  align-items: center;
+  height: 100vh;
+  width: 100%;
+  text-align: center;
   justify-content: center;
-  background-repeat: no-repeat;
+  align-items: center;
+  color: $color_day;
+  transition: all 0.5s linear;
   background-size: cover;
-  background-position: center center;
-  transition: background-image 0.7s ease-in-out;
-  padding: 0 20px;
+  background-repeat: no-repeat;
 }
 
 .weather {
-  align-self: flex-end;
-  text-align: right;
   background-color: $color_day;
   color: $color_night;
-  border-radius: 15px;
-  padding: 8px 32px;
+  opacity: 0.7;
+  position: absolute;
+  align-self: flex-end;
+  font-size: 2.5rem;
+  top: 2.5rem;
+  right: 2.5rem;
+  border-radius: 1.5rem;
+  padding: 1.5rem 3.5rem;
+}
+
+.info {
+  .time {
+    font-size: 14rem;
+  }
+  .date {
+    font-size: 7rem;
+  }
+  .weekday {
+    font-size: 5rem;
+  }
+}
+
+.text {
+  margin: 4.5rem 0;
+  font-size: 4rem;
+  background-color: $color_day;
+  color: $color_night;
   opacity: 0.8;
+  width: 100%;
+  padding: 2rem 0;
 }
 
-.date__time {
-  margin-bottom: 10px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-}
-
-.time {
-  font-size: 20rem;
-}
-.text__content {
-  text-align: center;
-}
-
-.date,
-.weekday {
-  font-size: 11rem;
-}
-
-.name,
-.focus,
-.city {
-  opacity: 0.9;
+.btn {
+  background-color: $color_day;
+  color: $color_night;
+  opacity: 0.7;
+  font-size: 2.5rem;
+  border-radius: 1.5rem;
+  padding: 1.5rem 3.5rem;
+  border: none;
+  outline: none;
   &:hover {
-    opacity: 1;
+    color: $color_day;
+    background-color: $color_night;
   }
 }
 
 .qoutes {
-  margin-top: 10px;
-  max-width: 600px;
-  text-align: center;
+  position: absolute;
+  max-width: 90%;
+  bottom: 2.5rem;
+  font-size: 2.5rem;
 }
 
-.btn {
-  background: $color_day;
-  margin-top: 30px;
-  padding: 25px 55px;
-  border-radius: 15px;
-  opacity: 0.7;
-  border: none;
-  outline: none;
-  font-size: 2rem;
-  &:hover {
-    opacity: 0.9;
-  }
-}
-
-@media screen and (max-width: 900px) {
-  html {
-    font-size: 8px;
+@media screen and (max-height: 500px) {
+  :root {
+    font-size: 4px;
   }
   body {
-    padding: 0 5px;
-  }
-  .time {
-    font-size: 7.5rem;
-    padding: 0 25px;
-  }
-
-  .date,
-  .weekday {
-    font-size: 3rem;
-  }
-  .btn {
-    margin-top: 10px;
-    padding: 25px 25px;
-    font-size: 1.3rem;
+    height: 75rem;
   }
 }
 
-@media screen and (max-width: 500px) {
-  body {
-    max-width: 300px;
+@media screen and (max-width: 767px) {
+  :root {
+    font-size: 5px;
+  }
+  .btn,
+  .weather {
+    padding: 3rem 7rem;
   }
 }

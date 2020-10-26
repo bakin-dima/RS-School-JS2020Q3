@@ -7734,7 +7734,10 @@ async function getWeather() {
     const data = await res.json();
   
     if (data["message"] === "city not found") {
-      cityError.textContent = " -[Error, city not found]";
+      
+      cityError.textContent = "Error, city not found";
+      cityError.style.color = "red";
+
       weatherIcon.style.display = "none";
       temperature.textContent = "";
       weatherDescription.textContent = "";
