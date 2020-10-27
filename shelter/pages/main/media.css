@@ -102,6 +102,9 @@
     max-width: 30rem;
     width: 100%;
   }
+  body.scroll__lock {
+    overflow: hidden;
+  }
   .main .content__title {
     font-size: 2.5rem;
     line-height: 3.2rem;
