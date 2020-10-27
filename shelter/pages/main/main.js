@@ -168,13 +168,13 @@ const cardAdder = () => {
     card.addEventListener("click", function () {
       popupCreator(card.id);
       popupWindow.style.display = "flex";
-      body.classList.toggle("scroll__lock");
+      body.classList.toggle("popup__lock");
     });
   });
   popupWindow.addEventListener("click", function (e) {
     if (!e.target.closest(".popup__card") || e.target.closest(".popup__btn")) {
       popupWindow.style.display = "none";
-      body.classList.toggle("scroll__lock");
+      body.classList.toggle("popup__lock");
     }
   });
 };

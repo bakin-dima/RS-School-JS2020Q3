@@ -28,7 +28,7 @@ body {
   position: relative;
 }
 
-body.scroll__lock {
+body.popup__lock {
   overflow: hidden;
 }
 
