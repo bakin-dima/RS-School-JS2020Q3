@@ -1,6 +1,6 @@
 export default [
     {
-      small: 'CapsLock',
+      small: 'keyboard_capslock',
       shift: null,
       code: 'CapsLock',
     },
