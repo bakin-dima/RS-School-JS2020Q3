@@ -6,7 +6,7 @@ export default class Key {
     this.code = code;
     this.small = small;
     this.shift = shift;
-    this.isFnKey = Boolean(code.match(/Control|Arrow|Alt|Shift|Tab|Backspace|Del|Enter|Caps|Win|Lang|Close/));
+    this.isFnKey = Boolean(code.match(/Control|Arrow|Alt|Shift|Tab|Backspace|Mute|Enter|Caps|Win|Lang|Done|Voice/));
 
     if (shift && shift.match(/[^a-zA-Zа-яА-ЯёЁ0-9]/)) {
       this.sub = create('div', 'sub', this.shift);
@@ -16,6 +16,6 @@ export default class Key {
 
     this.letter = create('div', 'letter', small);
     this.div = create('div', 'keyboard__key', [this.sub, this.letter], null, ['code', this.code],
-      this.isFnKey ? ['fn', 'true'] : ['fn', 'false']); // мы забыли этот атрибут добавить )) он нужен, чтобы в разметке стилизовать функциональные клавиши отдельно
+      this.isFnKey ? ['fn', 'true'] : ['fn', 'false']);
   }
 }

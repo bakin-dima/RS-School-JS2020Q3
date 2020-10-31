@@ -33,6 +33,11 @@ main {
   border: 3px solid #222;
 }
 
+.keyboard__adder {
+  display: flex;
+  justify-content: center;
+}
+
 .keyboard_hide {
   visibility: hidden;
 }

@@ -14,13 +14,20 @@ export default class Keyboard {
 
     init(langCode) {
         this.keyBase = language[langCode];
+        this.audioList = ['boom','clap','hihat','kick','openhat','boom','ride','snare','tink','tom'];
         this.output = create('textarea','output', null , main, 
             ['placeholder', 'Enter text'],
             ['rows', 5],
             ['cols', 50],
             ['spellcheck', false],
             ['autocorrect', 'off']);
+        this.keyboadAdder = create('div','keyboard__adder keyboard_hide', '<i class="material-icons">keyboard</i>', main);
         this.container = create('div','keyboard', null , main , ['language', langCode]);
+        this.audioElements = [];
+        this.audioList.forEach((elem) => {
+            const audioElem = create('audio', '', null, main, ['src',`./sound/${elem}.wav`], ['name',`${elem}`])
+            this.audioElements.push(audioElem);
+        });
         document.body.prepend(main);
         return this;
     }
@@ -44,6 +51,13 @@ export default class Keyboard {
         document.addEventListener('keyup', this.handleEvent);
         this.container.addEventListener('mousedown', this.preHandleEvent);
         this.container.addEventListener('mouseup', this.preHandleEvent);
+        this.keyboadAdder.addEventListener('click', this.keyboadAdd);
+        this.output.addEventListener('click', this.keyboadAdd);
+    }
+
+    keyboadAdd = () => {
+        this.container.classList.remove('keyboard_hide');
+        this.keyboadAdder.classList.add('keyboard_hide');
     }
 
     preHandleEvent = (e) => {
@@ -57,7 +71,9 @@ export default class Keyboard {
 
     resetButtonState = ({ target: { dataset: {code} } }) => {
         const keyObj = this.keyButtons.find((key) => key.code === code);
-        keyObj.div.classList.remove('active');
+        if (!code.match(/Mute|Caps/)){
+            keyObj.div.classList.remove('active');
+        }
         keyObj.div.removeEventListener('mouseleave', this.resetButtonState);
     }
 
@@ -65,24 +81,30 @@ export default class Keyboard {
         if (e.stopPropagation) e.stopPropagation(); //! Отключения обрабоки клика
         const { code, type } = e;
         const keyObj = this.keyButtons.find((key) => key.code === code);
-        if (!keyObj) return;
+        const audio = this.audioElements;
+        if (!audio || !keyObj) return;
         this.output.focus();
+
 
         if (type.match(/keydown|mousedown/)){
             if (type.match(/key/)) e.preventDefault(); //! Отключение стандартного поведения клавиатуры
-
+            
             if(code.match(/Shift/)) this.shiftKey = true;
 
             if(this.shiftKey) this.switchUpperCase(true);
 
             //! Keyboard Hide
-            if(code.match(/Done/)) this.container.classList.add('keyboard_hide');
+            if(code.match(/Done/)) {
+                this.container.classList.add('keyboard_hide');
+                this.keyboadAdder.classList.remove('keyboard_hide');   
+            }
 
             //? SWITCH LANGUAGE
             if (code.match(/Control/)) this.ctrlKey = true;
             if (code.match(/Alt/)) this.altKey = true;
             if (code.match(/Control/) && this.altKey) this.switchLanguage();
             if (code.match(/Alt/) && this.ctrlKey) this.switchLanguage();
+            if (code.match(/Lang/)) this.switchLanguage();
             
 
             keyObj.div.classList.add('active');
@@ -95,6 +117,26 @@ export default class Keyboard {
                 this.isCaps = false;
                 this.switchUpperCase(false);
                 keyObj.div.classList.remove('active');
+            }
+
+            //? Mute Switcher;
+            if (code.match(/Mute/) && !this.isMute) {
+                this.isMute = true;
+            } else if (code.match(/Mute/) && this.isMute) {
+                this.isMute = false;
+                keyObj.div.classList.remove('active');
+            }
+
+            if (!this.isMute) {
+                if (keyObj.small.match(/[а-яА-я0-9-=ё/.]/) && !keyObj.isFnKey) {
+                    audio[3].currentTime = 0;
+                    audio[3].play();
+                };
+                if (keyObj.small.match(/[a-zA-z0-9-=;`,'/.]/) && !keyObj.isFnKey) {
+                    audio[0].currentTime = 0;
+                    audio[0].play();
+                };
+                
             }
            
             if(!this.isCaps) {
@@ -118,7 +160,7 @@ export default class Keyboard {
             if (code.match(/Control/)) this.ctrlKey = false;
             if (code.match(/Alt/)) this.altKey = false;
 
-            if (!code.match(/Caps/)) keyObj.div.classList.remove('active');
+            if (!code.match(/Caps|Mute/)) keyObj.div.classList.remove('active');
         }
     }
 
