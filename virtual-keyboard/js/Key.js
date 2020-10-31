@@ -1,34 +1,21 @@
+/* eslint-disable import/extensions */
 import create from './utils/create.js';
 
 export default class Key {
-    constructor({ small, shift, code }) {
-        this.small = small;
-        this.shift = shift;
-        this.code = code;
-        this.isFnKey = Boolean(small.match(/Ctrl|arr|Alt|Shift|Tab|Back|Del|Enter|Caps|Lang|keyboard_/));
+  constructor({ small, shift, code }) {
+    this.code = code;
+    this.small = small;
+    this.shift = shift;
+    this.isFnKey = Boolean(code.match(/Control|Arrow|Alt|Shift|Tab|Backspace|Del|Enter|Caps|Win|Lang|Close/));
 
-        if (shift && shift.match(/[^a-zA-zа-яА-яёЁ0-9]/)) {
-            this.sub = create('div', 'sub', this.shift);
-        } else {
-            this.sub = create('div', 'sub', '');
-        }
-
-        const createIconHTML = (icon_name) => {
-            return `<i class="material-icons">${icon_name}</i>`;
-          };
-
-          switch (this.small) {
-            case "backspace":
-                this.letter = create('div', 'letter', createIconHTML(`${this.small}`));
-                break;
-            case "keyboard_capslock":
-                this.letter = create('div', 'letter', createIconHTML(`${this.small}`));
-                break;
-            default:
-                this.letter = create('div', 'letter', this.small);
-                break;
-          }
-          this.div = create('div', 'keyboard__key', [this.sub, this.letter], null, ['code', this.code],
-          this.isFnKey ? ['fn', 'true'] : ['fn', 'false']);
+    if (shift && shift.match(/[^a-zA-Zа-яА-ЯёЁ0-9]/)) {
+      this.sub = create('div', 'sub', this.shift);
+    } else {
+      this.sub = create('div', 'sub', '');
     }
-};
+
+    this.letter = create('div', 'letter', small);
+    this.div = create('div', 'keyboard__key', [this.sub, this.letter], null, ['code', this.code],
+      this.isFnKey ? ['fn', 'true'] : ['fn', 'false']); // мы забыли этот атрибут добавить )) он нужен, чтобы в разметке стилизовать функциональные клавиши отдельно
+  }
+}
