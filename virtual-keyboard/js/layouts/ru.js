@@ -296,7 +296,7 @@ export default [
     code: 'Space',
   },
   {
-    small: '<i class="material-icons">language</i>',
+    small: '<i class="material-icons">language</i>ru',
     shift: null,
     code: 'Lang',
   },
