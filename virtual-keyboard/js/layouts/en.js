@@ -70,7 +70,7 @@ export default [
     code: 'Backspace',
   },
   {
-    small: '<i class="material-icons">volume_up</i>',
+    small: '<i class="material-icons">volume_off</i>',
     shift: null,
     code: 'Mute',
   },
@@ -295,7 +295,7 @@ export default [
     code: 'Space',
   },
   {
-    small: '<i class="material-icons">language</i>en',
+    small: '<i class="material-icons">language</i>En',
     shift: null,
     code: 'Lang',
   },

@@ -131,11 +131,11 @@ export default class Keyboard {
                 if (this.container.dataset.language === 'ru' && !keyObj.isFnKey) {
                     audio[0].currentTime = 0;
                     audio[0].play();
-                };
+                }
                 if (this.container.dataset.language === 'en' && !keyObj.isFnKey) {
                     audio[5].currentTime = 0;
                     audio[5].play();
-                };
+                }
                 if (code.match(/Control|Arrow|Alt|Tab|Win|Lang|Done|Voice/)) {
                     audio[7].currentTime = 0;
                     audio[7].play();
