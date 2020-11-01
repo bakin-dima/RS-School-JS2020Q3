@@ -76,7 +76,7 @@ export default [
     code: 'Backspace',
   },
   {
-    small: '<i class="material-icons">volume_up</i>',
+    small: '<i class="material-icons">volume_off</i>',
     shift: null,
     code: 'Mute',
   },
@@ -291,12 +291,12 @@ export default [
     code: 'AltLeft',
   },
   {
-    small: '<i class="material-icons">space_bar</i>',
+    small: ' ',
     shift: null,
     code: 'Space',
   },
   {
-    small: '<i class="material-icons">language</i>',
+    small: '<i class="material-icons">language</i>Ru',
     shift: null,
     code: 'Lang',
   },

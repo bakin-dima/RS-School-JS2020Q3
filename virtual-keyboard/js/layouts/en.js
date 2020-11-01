@@ -65,17 +65,17 @@ export default [
     code: 'Equal',
   },
   {
-    small: 'Backspace',
+    small: '<i class="material-icons">backspace</i>',
     shift: null,
     code: 'Backspace',
   },
   {
-    small: 'Delete',
+    small: '<i class="material-icons">volume_off</i>',
     shift: null,
-    code: 'Delete',
+    code: 'Mute',
   },
   {
-    small: 'Tab',
+    small: '<i class="material-icons">keyboard_tab</i>',
     shift: null,
     code: 'Tab',
   },
@@ -140,12 +140,12 @@ export default [
     code: 'BracketRight',
   },
   {
-    small: 'Enter',
+    small: '<i class="material-icons">keyboard_return</i>',
     shift: null,
     code: 'Enter',
   },
   {
-    small: 'CapsLock',
+    small: '<i class="material-icons">keyboard_capslock</i>',
     shift: null,
     code: 'CapsLock',
   },
@@ -210,7 +210,7 @@ export default [
     code: 'Backslash',
   },
   {
-    small: 'Shift',
+    small: '<i class="material-icons">keyboard_arrow_up</i>',
     shift: null,
     code: 'ShiftLeft',
   },
@@ -270,9 +270,14 @@ export default [
     code: 'Slash',
   },
   {
-    small: 'Shift',
+    small: '<i class="material-icons">keyboard_voice</i>',
     shift: null,
-    code: 'ShiftRight',
+    code: 'Voice',
+  },
+  {
+    small: '<i class="material-icons">mic_off</i>',
+    shift: null,
+    code: 'VoiceMute',
   },
   {
     small: 'Ctrl',
@@ -290,32 +295,32 @@ export default [
     code: 'Space',
   },
   {
-    small: 'Alt',
+    small: '<i class="material-icons">language</i>En',
     shift: null,
-    code: 'AltRight',
+    code: 'Lang',
   },
   {
-    small: 'Ctrl',
+    small: '<i class="material-icons">keyboard_hide</i>',
     shift: null,
-    code: 'ControlRight',
+    code: 'Done',
   },
   {
-    small: '&larr;',
+    small: '<i class="material-icons">keyboard_arrow_left</i>',
     shift: null,
     code: 'ArrowLeft',
   },
   {
-    small: '&uarr;',
+    small: '<i class="material-icons">keyboard_arrow_up</i>',
     shift: null,
     code: 'ArrowUp',
   },
   {
-    small: '&darr;',
+    small: '<i class="material-icons">keyboard_arrow_down</i>',
     shift: null,
     code: 'ArrowDown',
   },
   {
-    small: '&rarr;',
+    small: '<i class="material-icons">keyboard_arrow_right</i>',
     shift: null,
     code: 'ArrowRight',
   },

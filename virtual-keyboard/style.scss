@@ -3,50 +3,66 @@
   padding: 0;
 }
 
+:root {
+  font-size: 10px;
+}
+
 html {
-  font-size: 100%;
-  font-family: "Ubuntu", Arial, sans-serif;
+  font-family: "Open Sans", sans-serif;
 }
 
 body {
-  background: #e0e0e0;
+  background: url("./assets/bg.jpg");
 }
 
 main {
-  width: 1020px;
+  max-width: 1020px;
   margin: auto;
 }
 
 .keyboard {
+  margin: 0 auto;
+  color: #fafafa;
+  width: 100%;
   display: grid;
-  grid-row-gap: 10px;
-  padding: 10px;
-  border: 1px solid;
+  grid-row-gap: 1rem;
+  padding: 1rem;
   position: relative;
   overflow: hidden;
-  background: #2c2c2c;
+  background: #535150;
   border-radius: 5px;
   -webkit-border-radius: 5px;
   -moz-border-radius: 5px;
   -ms-border-radius: 5px;
   -o-border-radius: 5px;
-  border: 3px solid #222;
+
+  -moz-user-select: none;
+  -khtml-user-select: none;
+  user-select: none;
 }
 
 .keyboard__adder {
   display: flex;
   justify-content: center;
+  color: #fafafa;
+  -moz-user-select: none;
+  -khtml-user-select: none;
+  user-select: none;
+  &:hover {
+    opacity: 0.8;
+  }
 }
 
 .keyboard_hide {
-  visibility: hidden;
+  transform: translateY(1000px);
+  transition: all 0.2 linear;
 }
 
 .keyboard__row {
   display: grid;
-  grid-gap: 10px;
-  grid-row-gap: 10px;
-  height: 50px;
+  grid-gap: 1rem;
+  grid-row-gap: 1rem;
+  height: 5rem;
 }
 
 .keyboard__key {
@@ -56,117 +72,71 @@ main {
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  background: rgb(100, 100, 100)
-    radial-gradient(
-      circle at 0 0,
-      rgba(255, 255, 255, 0.75),
-      rgba(255, 255, 255, 0.35)
-    );
-  box-shadow: inset rgba(0, 0, 0, 0.75) -1px -1px 2px,
-    inset rgba(255, 255, 255, 0.9) 1px 1px 2px,
-    rgba(0, 0, 0, 0.8) 1px 1px 2px -1px;
-  transition: all 0.2s ease;
-  -webkit-border-radius: 3px;
-  -moz-border-radius: 3px;
-  -ms-border-radius: 3px;
-  -o-border-radius: 3px;
-  user-select: none;
-}
-
-[data-fn="false"].active {
-  box-shadow: inset 0px 1px 2px 1px rgba(0, 0, 0, 0.9),
-    inset 0 0 20px 2em rgba(255, 255, 255, 0.2);
-}
-
-[data-fn="true"].active {
-  box-shadow: inset 0px 1px 2px 1px rgba(0, 0, 0, 0.9),
-    inset 0 0 20px 2em rgba(255, 255, 255, 0);
+  background: #1f2020;
 }
 
 [data-fn="false"].active .letter,
 [data-fn="true"].active .letter {
-  transform: translateY(1px);
-  -webkit-transform: translateY(1px);
-  -moz-transform: translateY(1px);
-  -ms-transform: translateY(1px);
-  -o-transform: translateY(1px);
-  color: #244618;
-}
-
-[data-fn="true"] {
-  background: rgb(78, 78, 78)
-    radial-gradient(
-      circle at 0 0,
-      rgba(136, 134, 134, 0.65),
-      rgba(167, 167, 167, 0.35)
-    );
-  box-shadow: inset rgba(0, 0, 0, 0.75) -1px -1px 2px,
-    inset rgba(161, 160, 160, 0.9) 1px 1px 2px,
-    rgba(0, 0, 0, 0.8) 1px 1px 2px -1px;
+  transform: translateY(0.1rem);
+  -webkit-transform: translateY(0.1rem);
+  -moz-transform: translateY(0.1rem);
+  -ms-transform: translateY(0.1rem);
+  -o-transform: translateY(0.1rem);
+  color: #fafafa;
 }
 
 [data-fn="true"] > .letter {
-  font-size: 16px;
+  font-size: 1.6rem;
 }
 
 [data-code="CapsLock"] {
-  width: 86px;
+  width: 8.6rem;
 }
 
 [data-code="ShiftLeft"] {
-  width: 100px;
+  width: 10rem;
 }
 
 [data-code="ShiftRight"] {
-  width: 120px;
+  width: 12rem;
 }
 
 [data-code="Enter"] {
-  width: 100px;
+  width: 10rem;
 }
 
 [data-code="Tab"] {
-  width: 76px;
+  width: 7.6rem;
 }
 
 [data-code="ControlLeft"] {
-  width: 76px;
+  width: 7.6rem;
 }
 
 [data-code="ControlRight"] {
-  width: 60px;
+  width: 6rem;
 }
 
 [data-code="Backspace"] {
-  width: 115px;
+  width: 11.5rem;
 }
 
 [data-code="Space"] {
-  width: 420px;
+  width: 42rem;
 }
 
 [data-code="AltLeft"],
 [data-code="AltRight"] {
-  width: 76px;
-}
-
-[data-code="ArrowLeft"],
-[data-code="ArrowUp"],
-[data-code="ArrowDown"],
-[data-code="ArrowRight"] {
-  background: rgb(125, 253, 75);
-}
-
-[data-code="Done"] {
-  background: rgb(253, 53, 53);
+  width: 7.6rem;
 }
 
 .active {
-  background: rgb(60, 212, 0);
+  background: rgba(31, 32, 32, 0.2);
+  color: gray;
 }
 
 .letter {
-  font-size: 25px;
+  font-size: 2.5rem;
   width: 100%;
   text-align: center;
   transition: all 0.2s ease;
@@ -184,26 +154,27 @@ main {
 
 .subtitle,
 .hint {
-  color: #666;
+  color: #fafafa;
 }
 
 textarea.output {
   resize: none;
   width: 100%;
-  height: 200px;
-  padding: 10px;
+  height: 20rem;
+  padding: 1rem;
   box-sizing: border-box;
-  font-size: 18px;
-  letter-spacing: 1px;
-  margin-top: 50px;
-  margin-bottom: 10px;
+  font-size: 1.8rem;
+  letter-spacing: 0.1rem;
+  margin-top: 5rem;
+  margin-bottom: 1rem;
 }
 
 .sub {
   width: 100%;
-  color: #68688a;
+  font-size: 1rem;
+  color: #fafafa;
   text-align: left;
-  padding-left: 10px;
+  padding-left: 1rem;
   transition: all 0.2s ease;
   -webkit-transition: all 0.2s ease;
   -moz-transition: all 0.2s ease;
@@ -211,23 +182,22 @@ textarea.output {
   -o-transition: all 0.2s ease;
 }
 
-.sub.sub-active:not(:empty) {
-  color: rgb(19, 80, 0);
-  font-size: 23px;
-}
-
 .sub.sub-active:not(:empty) ~ .letter.sub-inactive {
-  color: #68688a;
-  font-size: 16px;
+  color: #fafafa;
+  font-size: 1.6rem;
   text-align: center;
-  padding-right: 10px;
+  padding-right: 1rem;
   width: 50%;
   transform-origin: center;
-  transform: translateX(20px);
-  -webkit-transform: translateX(20px);
-  -moz-transform: translateX(20px);
-  -ms-transform: translateX(20px);
-  -o-transform: translateX(20px);
+  transform: translateX(2rem);
+  -webkit-transform: translateX(2rem);
+  -moz-transform: translateX(2rem);
+  -ms-transform: translateX(2rem);
+  -o-transform: translateX(2rem);
+}
+
+[data-code="Done"] {
+  color: #a5282c;
 }
 
 @keyframes fadeInOut {
@@ -254,5 +224,146 @@ textarea.output {
     -moz-transform: scale(2.5);
     -ms-transform: scale(2.5);
     -o-transform: scale(2.5);
+  }
+}
+
+@media screen and (max-width: 1020px) {
+  .keyboard {
+    margin: 0 auto;
+    max-width: 800px;
+    display: grid;
+    grid-row-gap: 0.7rem;
+    padding: 1rem;
+  }
+
+  .keyboard__row {
+    grid-gap: 0.7rem;
+    grid-row-gap: 1rem;
+    height: 5rem;
+  }
+
+  [data-fn="true"] > .letter {
+    font-size: 1.6rem;
+  }
+
+  [data-code="ControlRight"] {
+    width: 6rem;
+  }
+
+  [data-code="Tab"],
+  [data-code="ControlLeft"],
+  [data-code="AltLeft"],
+  [data-code="AltRight"] {
+    width: 6.9rem;
+  }
+
+  [data-code="CapsLock"] {
+    width: 6.8rem;
+  }
+
+  [data-code="ShiftLeft"],
+  [data-code="Enter"] {
+    width: 8rem;
+  }
+
+  [data-code="Backspace"] {
+    width: 9.75rem;
+  }
+
+  [data-code="ShiftRight"] {
+    width: 9.9rem;
+  }
+
+  [data-code="Space"] {
+    width: 32rem;
+  }
+
+  .letter {
+    font-size: 2rem;
+  }
+  .sub.sub-active:not(:empty) ~ .letter.sub-inactive {
+    color: #fafafa;
+    font-size: 1.6rem;
+    text-align: center;
+    padding-right: 1rem;
+    width: 50%;
+    transform-origin: center;
+    transform: 1rem;
+    -webkit-transform: translateX(1rem);
+    -moz-transform: translateX(1rem);
+    -ms-transform: translateX(1rem);
+    -o-transform: translateX(1rem);
+  }
+}
+
+@media screen and (max-width: 800px) {
+  .keyboard {
+    margin: 0 auto;
+    max-width: 320px;
+    display: grid;
+    grid-row-gap: 0.1rem;
+    padding: 1rem;
+  }
+
+  .keyboard__row {
+    grid-gap: 0.1rem;
+    grid-row-gap: 1rem;
+    height: 4rem;
+  }
+
+  [data-fn="true"] > .letter {
+    font-size: 1.1rem;
+  }
+
+  [data-code="Tab"],
+  [data-code="ControlLeft"],
+  [data-code="AltLeft"],
+  [data-code="AltRight"] {
+    width: 3rem;
+  }
+
+  [data-code="CapsLock"] {
+    width: 3rem;
+  }
+
+  [data-code="ShiftLeft"],
+  [data-code="Enter"] {
+    width: 3rem;
+  }
+
+  [data-code="Backspace"] {
+    width: 3.2rem;
+  }
+
+  [data-code="Space"] {
+    width: 12rem;
+  }
+
+  .letter {
+    font-size: 2rem;
+  }
+
+  [data-fn="false"].active .letter,
+  [data-fn="true"].active .letter {
+    transform: translateY(0);
+    -webkit-transform: translateY(0);
+    -moz-transform: translateY(0);
+    -ms-transform: translateY(0);
+    -o-transform: translateY(0);
+    color: #fafafa;
+  }
+
+  .sub.sub-active:not(:empty) ~ .letter.sub-inactive {
+    color: #fafafa;
+    font-size: 1.6rem;
+    text-align: center;
+    padding-right: 1rem;
+    width: 50%;
+    transform-origin: center;
+    transform: 0.1rem;
+    -webkit-transform: translateX(0.1rem);
+    -moz-transform: translateX(0.1rem);
+    -ms-transform: translateX(0.1rem);
+    -o-transform: translateX(0.1rem);
   }
 }

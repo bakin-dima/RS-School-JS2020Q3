@@ -100,10 +100,10 @@ export default class Keyboard {
             }
 
             //? SWITCH LANGUAGE
-            if (code.match(/Control/)) this.ctrlKey = true;
-            if (code.match(/Alt/)) this.altKey = true;
-            if (code.match(/Control/) && this.altKey) this.switchLanguage();
-            if (code.match(/Alt/) && this.ctrlKey) this.switchLanguage();
+            // if (code.match(/Control/)) this.ctrlKey = true;
+            // if (code.match(/Alt/)) this.altKey = true;
+            // if (code.match(/Control/) && this.altKey) this.switchLanguage();
+            // if (code.match(/Alt/) && this.ctrlKey) this.switchLanguage();
             if (code.match(/Lang/)) this.switchLanguage();
             
 
@@ -128,15 +128,34 @@ export default class Keyboard {
             }
 
             if (!this.isMute) {
-                if (keyObj.small.match(/[а-яА-я0-9-=ё/.]/) && !keyObj.isFnKey) {
-                    audio[3].currentTime = 0;
-                    audio[3].play();
-                };
-                if (keyObj.small.match(/[a-zA-z0-9-=;`,'/.]/) && !keyObj.isFnKey) {
+                if (this.container.dataset.language === 'ru' && !keyObj.isFnKey) {
                     audio[0].currentTime = 0;
                     audio[0].play();
-                };
-                
+                }
+                if (this.container.dataset.language === 'en' && !keyObj.isFnKey) {
+                    audio[5].currentTime = 0;
+                    audio[5].play();
+                }
+                if (code.match(/Control|Arrow|Alt|Tab|Win|Lang|Done|Voice/)) {
+                    audio[7].currentTime = 0;
+                    audio[7].play();
+                }
+                if (code.match(/Enter/)) {
+                    audio[2].currentTime = 0;
+                    audio[2].play();
+                }
+                if (code.match(/Shift/)) {
+                    audio[3].currentTime = 0;
+                    audio[3].play();
+                }
+                if (code.match(/Caps/)) {
+                    audio[4].currentTime = 0;
+                    audio[4].play();
+                }
+                if (code.match(/Backspace/)) {
+                    audio[1].currentTime = 0;
+                    audio[1].play();
+                }
             }
            
             if(!this.isCaps) {
@@ -151,14 +170,14 @@ export default class Keyboard {
         //? Отпускаем кнопку
         } else if (type.match(/keyup|mouseup/)){
             
-            if(code.match(/Shift|ShiftRight/)) {
+            if(code.match(/Shift/)) {
                 this.shiftKey = false;
                 this.switchUpperCase(false);
             }
 
             //? SWITCH LANGUAGE
-            if (code.match(/Control/)) this.ctrlKey = false;
-            if (code.match(/Alt/)) this.altKey = false;
+            // if (code.match(/Control/)) this.ctrlKey = false;
+            // if (code.match(/Alt/)) this.altKey = false;
 
             if (!code.match(/Caps|Mute/)) keyObj.div.classList.remove('active');
         }
