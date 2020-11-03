@@ -72,7 +72,7 @@ main {
 }
 
 .on {
-  color: red;
+  color: #a5282c;
 }
 
 [data-fn="false"].active .letter,
@@ -131,8 +131,11 @@ main {
 }
 
 .active {
-  background: rgba(31, 32, 32, 0.2);
-  color: gray;
+  background: rgba(31, 32, 32, 0.5);
+}
+
+[data-code="Mute"].active {
+  background: #a5282c;
 }
 
 .letter {
