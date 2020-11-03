@@ -75,6 +75,10 @@ main {
   background: #1f2020;
 }
 
+.on {
+  color: red;
+}
+
 [data-fn="false"].active .letter,
 [data-fn="true"].active .letter {
   transform: translateY(0.1rem);
@@ -97,7 +101,7 @@ main {
   width: 10rem;
 }
 
-[data-code="ShiftRight"] {
+[data-code="Voice"] {
   width: 12rem;
 }
 
@@ -270,7 +274,7 @@ textarea.output {
     width: 9.75rem;
   }
 
-  [data-code="ShiftRight"] {
+  [data-code="Voice"] {
     width: 9.9rem;
   }
 

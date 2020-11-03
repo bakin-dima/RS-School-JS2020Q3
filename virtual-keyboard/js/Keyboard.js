@@ -3,6 +3,8 @@ import create from './utils/create.js';
 import language from './layouts/index.js'; //? { en , ru }
 import Key from './Key.js';
 
+const languageKeyboard = document.querySelector('html');
+console.log(languageKeyboard.lang);
 const main = create('main', '');
 
 export default class Keyboard {
@@ -119,6 +121,14 @@ export default class Keyboard {
                 keyObj.div.classList.remove('active');
             }
 
+            //? VoiceOff Switcher;
+            // if (code.match(/VoiceOff/) && !this.isVoiceOff) {
+            //     this.isVoiceOff = true;
+            // } else if (code.match(/VoiceOff/) && this.isVoiceOff) {
+            //     this.isVoiceOff = false;
+            //     keyObj.div.classList.remove('active');
+            // }
+
             //? Mute Switcher;
             if (code.match(/Mute/) && !this.isMute) {
                 this.isMute = true;
@@ -206,6 +216,8 @@ export default class Keyboard {
         });
 
         if (this.isCaps) this.switchUpperCase(true);
+         if (this.container.dataset.language === 'en') languageKeyboard.lang = 'en-US'; 
+         if (this.container.dataset.language === 'ru') languageKeyboard.lang = 'ru-RU';
     }
 
     switchUpperCase(isUpperCase) {
