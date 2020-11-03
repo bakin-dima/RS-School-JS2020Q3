@@ -73,7 +73,7 @@ export default class Keyboard {
 
     resetButtonState = ({ target: { dataset: {code} } }) => {
         const keyObj = this.keyButtons.find((key) => key.code === code);
-        if (!code.match(/Mute|Caps/)){
+        if (!code.match(/Mute|Caps|Shift/)){
             keyObj.div.classList.remove('active');
         }
         keyObj.div.removeEventListener('mouseleave', this.resetButtonState);
@@ -102,10 +102,6 @@ export default class Keyboard {
             }
 
             //? SWITCH LANGUAGE
-            // if (code.match(/Control/)) this.ctrlKey = true;
-            // if (code.match(/Alt/)) this.altKey = true;
-            // if (code.match(/Control/) && this.altKey) this.switchLanguage();
-            // if (code.match(/Alt/) && this.ctrlKey) this.switchLanguage();
             if (code.match(/Lang/)) this.switchLanguage();
             
 
@@ -120,14 +116,6 @@ export default class Keyboard {
                 this.switchUpperCase(false);
                 keyObj.div.classList.remove('active');
             }
-
-            //? VoiceOff Switcher;
-            // if (code.match(/VoiceOff/) && !this.isVoiceOff) {
-            //     this.isVoiceOff = true;
-            // } else if (code.match(/VoiceOff/) && this.isVoiceOff) {
-            //     this.isVoiceOff = false;
-            //     keyObj.div.classList.remove('active');
-            // }
 
             //? Mute Switcher;
             if (code.match(/Mute/) && !this.isMute) {
@@ -180,16 +168,17 @@ export default class Keyboard {
         //? Отпускаем кнопку
         } else if (type.match(/keyup|mouseup/)){
             
-            if(!code.match(/Shift/)) {
+            if(!code.match(/Shift/) && type.match(/mouseup/)) {
                 this.shiftKey = false;
                 this.switchUpperCase(false);
+                document.querySelector('[data-code="ShiftLeft"]').classList.remove('active');
+            } else if (code.match(/Shift/) && type.match(/keyup/)) {
+                this.shiftKey = false;
+                this.switchUpperCase(false);
+                document.querySelector('[data-code="ShiftLeft"]').classList.remove('active');
             }
 
-            //? SWITCH LANGUAGE
-            // if (code.match(/Control/)) this.ctrlKey = false;
-            // if (code.match(/Alt/)) this.altKey = false;
-
-            if (!code.match(/Caps|Mute/)) keyObj.div.classList.remove('active');
+            if (!code.match(/Caps|Mute|Shift/)) keyObj.div.classList.remove('active');
         }
     }
 
