@@ -201,6 +201,7 @@ textarea.output {
 .sub {
   width: 100%;
   font-size: 1rem;
+  opacity: 0.5;
   color: #fafafa;
   text-align: left;
   padding-left: 1rem;
@@ -211,8 +212,13 @@ textarea.output {
   -o-transition: all 0.2s ease;
 }
 
+.sub-active {
+  opacity: 1;
+}
+
 .sub.sub-active:not(:empty) ~ .letter.sub-inactive {
   color: #fafafa;
+  opacity: 0.5;
   font-size: 1.6rem;
   text-align: center;
   padding-right: 1rem;

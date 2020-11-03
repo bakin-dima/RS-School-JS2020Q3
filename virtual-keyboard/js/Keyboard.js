@@ -131,8 +131,8 @@ export default class Keyboard {
                     audio[0].play();
                 }
                 if (this.container.dataset.language === 'en' && !keyObj.isFnKey) {
-                    audio[5].currentTime = 0;
-                    audio[5].play();
+                    audio[8].currentTime = 0;
+                    audio[8].play();
                 }
                 if (code.match(/Control|Arrow|Alt|Tab|Win|Lang|Done|Voice/)) {
                     audio[7].currentTime = 0;
