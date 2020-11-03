@@ -22,6 +22,7 @@ let rec = new SpeechRecognition();
 rec.interimResults = true;
 
 start.addEventListener("click", function() {
+    rec.lang = document.querySelector("html").lang;
     this.classList.toggle('on');
     (this.classList.contains('on')) ? rec.start() : rec.stop();
 });
