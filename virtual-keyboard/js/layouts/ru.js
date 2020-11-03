@@ -276,11 +276,6 @@ export default [
     code: 'Voice',
   },
   {
-    small: '<i class="material-icons">mic_off</i>',
-    shift: null,
-    code: 'VoiceMute',
-  },
-  {
     small: 'Ctrl',
     shift: null,
     code: 'ControlLeft',
