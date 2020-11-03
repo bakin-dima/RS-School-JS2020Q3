@@ -96,6 +96,28 @@ main {
   width: 10rem;
 }
 
+[data-code="CapsLock"],
+[data-code="ShiftLeft"] {
+  position: relative;
+}
+[data-code="CapsLock"]:before,
+[data-code="ShiftLeft"]:before {
+  content: "";
+  width: 1rem;
+  height: 1rem;
+  top: 0.5rem;
+  left: 0.5rem;
+  border-radius: 50%;
+  border: 1px solid #535150;
+  background: #1f2020;
+  position: absolute;
+}
+
+[data-code="CapsLock"].active:before,
+[data-code="ShiftLeft"].active:before {
+  background: #fafafa;
+}
+
 [data-code="Voice"] {
   width: 12rem;
 }
@@ -306,7 +328,7 @@ textarea.output {
   }
 }
 
-@media screen and (max-width: 800px) {
+@media screen and (max-width: 850px) {
   .keyboard {
     margin: 0 auto;
     max-width: 450px;
@@ -362,6 +384,13 @@ textarea.output {
 
   [data-code="Space"] {
     width: 17rem;
+  }
+
+  [data-code="CapsLock"]:before,
+  [data-code="ShiftLeft"]:before {
+    content: "";
+    width: 0.5rem;
+    height: 0.5rem;
   }
 
   .letter {
