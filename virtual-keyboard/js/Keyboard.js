@@ -180,7 +180,7 @@ export default class Keyboard {
         //? Отпускаем кнопку
         } else if (type.match(/keyup|mouseup/)){
             
-            if(code.match(/Shift/)) {
+            if(!code.match(/Shift/)) {
                 this.shiftKey = false;
                 this.switchUpperCase(false);
             }
