@@ -54,8 +54,7 @@ main {
 }
 
 .keyboard_hide {
-  transform: translateY(1000px);
-  transition: all 0.2 linear;
+  display: none;
 }
 
 .keyboard__row {
@@ -73,10 +72,6 @@ main {
   justify-content: center;
   align-items: center;
   background: #1f2020;
-}
-
-.on {
-  color: #a5282c;
 }
 
 [data-fn="false"].active .letter,
@@ -129,16 +124,21 @@ main {
   width: 42rem;
 }
 
-[data-code="AltLeft"],
-[data-code="AltRight"] {
+[data-code="AltLeft"] {
   width: 7.6rem;
+}
+
+[data-code="Lang"] {
+  width: 9rem;
 }
 
 .active {
   background: rgba(31, 32, 32, 0.5);
 }
 
-[data-code="Mute"].active {
+[data-code="Mute"].active,
+[data-code="Done"],
+.on {
   background: #a5282c;
 }
 
@@ -203,10 +203,6 @@ textarea.output {
   -o-transform: translateX(2rem);
 }
 
-[data-code="Done"] {
-  color: #a5282c;
-}
-
 @keyframes fadeInOut {
   0% {
     opacity: 0.5;
@@ -243,6 +239,10 @@ textarea.output {
     padding: 1rem;
   }
 
+  .keyboard_hide {
+    display: none;
+  }
+
   .keyboard__row {
     grid-gap: 0.7rem;
     grid-row-gap: 1rem;
@@ -259,9 +259,12 @@ textarea.output {
 
   [data-code="Tab"],
   [data-code="ControlLeft"],
-  [data-code="AltLeft"],
-  [data-code="AltRight"] {
+  [data-code="AltLeft"] {
     width: 6.9rem;
+  }
+
+  [data-code="Lang"] {
+    width: 5.8rem;
   }
 
   [data-code="CapsLock"] {
@@ -306,10 +309,14 @@ textarea.output {
 @media screen and (max-width: 800px) {
   .keyboard {
     margin: 0 auto;
-    max-width: 320px;
+    max-width: 450px;
     display: grid;
     grid-row-gap: 0.1rem;
     padding: 1rem;
+  }
+
+  .keyboard_hide {
+    display: none;
   }
 
   .keyboard__row {
@@ -324,26 +331,37 @@ textarea.output {
 
   [data-code="Tab"],
   [data-code="ControlLeft"],
-  [data-code="AltLeft"],
-  [data-code="AltRight"] {
-    width: 3rem;
+  [data-code="AltLeft"] {
+    width: 4rem;
+  }
+
+  [data-code="Voice"] {
+    width: 6.5rem;
+  }
+
+  [data-code="Lang"] {
+    width: 4rem;
   }
 
   [data-code="CapsLock"] {
-    width: 3rem;
+    width: 4.5rem;
   }
 
   [data-code="ShiftLeft"],
   [data-code="Enter"] {
-    width: 3rem;
+    width: 5rem;
   }
 
   [data-code="Backspace"] {
-    width: 3.2rem;
+    width: 6rem;
+  }
+
+  [data-code="Done"] {
+    width: 4rem;
   }
 
   [data-code="Space"] {
-    width: 12rem;
+    width: 17rem;
   }
 
   .letter {

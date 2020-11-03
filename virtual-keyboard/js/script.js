@@ -16,23 +16,23 @@ new Keyboard(keyboardTemplate).init(keyboardLang).generateLayout();
 window.SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
 
 const words = document.querySelector(".output");
-const start = document.querySelector('.keyboard__key[data-code="Voice"]');
+const start = document.querySelector('[data-code="Voice"]');
 
 let rec = new SpeechRecognition();
 rec.interimResults = true;
 
 start.addEventListener("click", function() {
-this.classList.toggle('on');
-(this.classList.contains('on')) ? rec.start() : rec.stop();
+    this.classList.toggle('on');
+    (this.classList.contains('on')) ? rec.start() : rec.stop();
 });
 
 rec.addEventListener("result", function(e) {
-let text = Array.from(e.results)
-.map(result => result[0]).map(result => result.transcript).join('');
-if(e.results[0].isFinal) {
-words.setRangeText(text, words.selectionStart, words.selectionEnd, "end");
-words.setRangeText(' ', words.selectionStart, words.selectionEnd, "end" );
-}
+    let text = Array.from(e.results)
+    .map(result => result[0]).map(result => result.transcript).join('');
+    if(e.results[0].isFinal) {
+        words.setRangeText(text, words.selectionStart, words.selectionEnd, "end");
+        words.setRangeText(' ', words.selectionStart, words.selectionEnd, "end" );
+    }
 });
 
 rec.addEventListener("end", function(e) {
