@@ -51,7 +51,7 @@ const winnersBtn = create('button', 'winners__btn btn', createIcon('emoji_events
 // Parametrs for game
 let fieldSize = sizeSelector.value ** 2;
 const windowSize = 600;
-const diff = 120; // games difficulty
+const diff = 20; // games difficulty
 let cellSize = windowSize / sizeSelector.value;
 let randImageInd = Math.floor(Math.random() * (150 - 1) + 1);
 let stepCounter = 0;
@@ -69,10 +69,7 @@ if (JSON.parse(window.localStorage.getItem('winners'))) {
 }
 
 let cellEmpty;
-const empty = {
-  value: null,
-  element: cellEmpty,
-};
+const empty = {};
 
 function emptyCellMove() {
   cellEmpty.style.left = `${cells[fieldSize - 1].left * cellSize}rem`;
@@ -220,10 +217,8 @@ const move = function cellsMove(index, param) {
     const isFinish = cells.every((el) => el.value === el.top * Math.sqrt(fieldSize) + el.left + 1);
 
     if (isFinish && param !== 'solution') {
-      cellEmpty.style.backgroundImage = `url('./assets/images/${randImageInd}.jpg')`;
       cellEmpty.style.opacity = '1';
       field.style.pointerEvents = 'none';
-      overlayShow('win', `You Win! time: ${fixTime(timerMinutes)}:${fixTime(timerSeconds)} steps: ${stepCounter}`);
       solution = [];
       winners.unshift({
         steps: stepCounter,
@@ -232,13 +227,12 @@ const move = function cellsMove(index, param) {
       });
       window.localStorage.setItem('winners', JSON.stringify(winners));
       winnersRender();
+      overlayShow('win', `You Win! time: ${fixTime(timerMinutes)}:${fixTime(timerSeconds)} steps: ${stepCounter}`);
     }
     if (isFinish && param === 'solution') {
-      cellEmpty.style.backgroundImage = `url('./assets/images/${randImageInd}.jpg')`;
       cellEmpty.style.opacity = '1';
       field.style.pointerEvents = 'none';
       overlayShow('success', 'Auto solution finish');
-      setTimeout(overlayHide, 1500);
     }
   }
 
@@ -268,7 +262,7 @@ const startGame = function start() {
       element: cell,
       width: `${cellSize}rem`,
       height: `${cellSize}rem`,
-      background: `url('./assets/images/${randImageInd}.jpg') no-repeat`,
+      background: `url('./assets/images/${randImageInd}.jpg') no-repeat ${getRandomColor()}`,
       posX: `${-(left * Math.sqrt(fieldSize) * cellSize) / Math.sqrt(fieldSize)}rem`,
       posY: `${-(top * Math.sqrt(fieldSize) * cellSize) / Math.sqrt(fieldSize)}rem`,
     });
@@ -294,12 +288,13 @@ const startGame = function start() {
     cell.addEventListener('dragend', dragEnd);
   }
   cells.push(empty);
+  empty.value = fieldSize;
   empty.element = cellEmpty;
   empty.top = Math.sqrt(fieldSize) - 1;
   empty.left = Math.sqrt(fieldSize) - 1;
   empty.width = `${cellSize}rem`;
   empty.height = `${cellSize}rem`;
-  empty.background = '';
+  empty.background = `url('./assets/images/${randImageInd}.jpg') no-repeat`;
   empty.posX = `${-(cells[fieldSize - 1].left * Math.sqrt(fieldSize) * cellSize) / Math.sqrt(fieldSize)}rem`;
   empty.posY = `${-(cells[fieldSize - 1].top * Math.sqrt(fieldSize) * cellSize) / Math.sqrt(fieldSize)}rem`;
 
@@ -338,9 +333,11 @@ function randomGame(count) {
   }
 }
 
+// Game render function
 const gameRender = () => {
   field.style.width = `${Math.sqrt(fieldSize) * cellSize}rem`;
   field.style.height = `${Math.sqrt(fieldSize) * cellSize}rem`;
+  cellEmpty.style.opacity = '0';
 
   cells.forEach((el) => {
     const { left } = el;
@@ -409,7 +406,7 @@ function autoSolution() {
     let solutionSteps = solution.length;
     overlayShow('info', 'Auto solution start');
     setTimeout(overlayHide, 1000);
-    autofinishBtn.style.color = '#ff9500';
+    autofinishBtn.classList.add('btn__blink');
     buttonState(true, true, true, true, true, true, true, true);
     let ind = 0;
     const myLoop = function loop() {
@@ -424,9 +421,10 @@ function autoSolution() {
         if (ind === solution.length) {
           clearInterval(timerCount);
           solution = [];
-          autofinishBtn.style.color = '#fafafa';
+          autofinishBtn.classList.remove('btn__blink');
           buttonState();
           pauseBtn.disabled = true;
+          resumeBtn.disabled = true;
         }
       }, 200);
     };
@@ -534,6 +532,7 @@ function loadGame() {
     cell.addEventListener('dragend', dragEnd);
   }
   cells.push(empty);
+  empty.value = fieldSize;
   empty.element = cellEmpty;
   empty.width = cellsLoad[fieldSize - 1].width;
   empty.height = cellsLoad[fieldSize - 1].height;
