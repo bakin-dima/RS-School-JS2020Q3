@@ -1,12 +1,8 @@
-$color-text: #fafafa;
-
 * {
   padding: 0;
   margin: 0;
   box-sizing: border-box;
   font-family: "Roboto", "san-serif";
-  -moz-user-select: none;
-  -khtml-user-select: none;
   user-select: none;
 }
 
@@ -63,6 +59,7 @@ body {
   width: 100%;
   max-width: 600rem;
 }
+
 .overlay__title {
   display: flex;
   justify-content: space-between;
@@ -72,47 +69,53 @@ body {
   cursor: pointer;
   border-top-left-radius: 15rem;
   border-top-right-radius: 15rem;
-  .overlay__info {
-    display: flex;
-    align-items: center;
-    font-size: 15rem;
-  }
-  .overlay__close {
-    cursor: pointer;
-    transition: all 0.2s;
-    &:hover {
-      transform: scale(1.1);
-    }
-  }
 }
+
+.overlay__title .overlay__info {
+  display: flex;
+  align-items: center;
+  font-size: 15rem;
+}
+
+.overlay__title .overlay__close {
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.overlay__title .overlay__close:hover {
+  transform: scale(1.1);
+}
+
 .overlay__subtitle {
   padding: 20rem;
   color: #0c0c0c;
   font-size: 18rem;
-  background: $color-text;
+  background: #fafafa;
   border-bottom-left-radius: 15rem;
   border-bottom-right-radius: 15rem;
 }
+
 .overlay__winners {
   margin-top: 10rem;
   padding: 15rem;
   border-radius: 20rem;
-  background: $color-text;
+  background: #fafafa;
   display: none;
   flex-direction: column;
   align-items: center;
-  p {
-    padding: 2rem;
-    font-size: 18rem;
-    text-align: justify;
-  }
+}
+
+.overlay__winners p {
+  padding: 2rem;
+  font-size: 18rem;
+  text-align: justify;
 }
 
 .game__title {
   font-size: 50rem;
   letter-spacing: 5rem;
   font-weight: 200;
-  color: $color-text;
+  color: #fafafa;
 }
 
 .game__elements {
@@ -126,37 +129,39 @@ body {
 
 .menu {
   display: flex;
-
   align-items: center;
   margin-bottom: 10rem;
 }
 
 .btn {
-  color: $color-text;
+  color: #fafafa;
   margin: 0 2rem;
   padding: 10rem;
   border: none;
   outline: none;
   background: none;
   cursor: pointer;
-  &:hover {
-    color: #f9f6ef;
-    transform: scale(1.1);
-    transition: 0.2s;
-  }
-  &:disabled {
-    color: gray;
-  }
+}
+
+.btn:hover {
+  color: #f9f6ef;
+  transform: scale(1.1);
+  transition: 0.2s;
+}
+
+.btn:disabled {
+  color: gray;
 }
 
 .steps__icon,
 .timer__icon,
 .menu__btn {
-  color: $color-text;
+  color: #fafafa;
   border: none;
   outline: none;
   background: none;
 }
+
 .menu__btn {
   display: none;
 }
@@ -175,7 +180,7 @@ body {
 
 .steps__value,
 .timer__value {
-  color: $color-text;
+  color: #fafafa;
   font-size: 30rem;
   padding-left: 5rem;
 }
@@ -202,7 +207,6 @@ body {
   justify-content: center;
   align-items: center;
   color: #fafafa;
-
   font-size: 50rem;
   box-sizing: border-box;
   animation: cells 0.2s ease-in;
@@ -223,16 +227,19 @@ body {
 input[type="range"] {
   cursor: pointer;
 }
+
 @media screen and (max-width: 1000px) {
   :root {
     font-size: 1px;
   }
 }
+
 @media screen and (max-width: 800px) {
   :root {
     font-size: 0.8px;
   }
 }
+
 @media screen and (max-width: 500px) {
   :root {
     font-size: 0.5px;
@@ -243,3 +250,4 @@ input[type="range"] {
     justify-content: center;
   }
 }
+/*# sourceMappingURL=style.css.map */
