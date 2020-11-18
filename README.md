@@ -1,5 +1,4 @@
-# bakin-dima-JS2020Q3
-## English For Kids task
+# English For Kids
 https://github.com/rolling-scopes-school/tasks/blob/master/tasks/rslang/english-for-kids.md
 ### Описание страниц
 1. Главная страница приложения
