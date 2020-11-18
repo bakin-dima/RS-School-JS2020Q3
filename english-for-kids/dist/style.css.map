@@ -1,0 +1,1 @@
+{"version":3,"sources":["webpack://english-for-kids/./sass/style.scss"],"names":[],"mappings":"AAAA;EACE;EACA;EACA;AACF;;AAEA;EACE;AACF,C","file":"style.css","sourcesContent":["* {\r\n  padding: 0;\r\n  margin: 0;\r\n  box-sizing: border-box;\r\n}\r\n\r\nbody {\r\n  background: green;\r\n}\r\n"],"sourceRoot":""}
