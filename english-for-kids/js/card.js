@@ -6,7 +6,7 @@ export default class card {
     this.ru = ru;
     this.image = image;
     this.sound = sound;
-    this.enTitle = create('span', 'en__title', this.en);
-    this.ruTitle = create('span', 'ru__title', this.ru);
+    this.enTitle = create('div', 'en__title', this.en);
+    this.ruTitle = create('div', 'ru__title', this.ru);
   }
 }

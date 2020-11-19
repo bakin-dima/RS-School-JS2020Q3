@@ -1,7 +1,7 @@
 export default [
   {
-    en: 'Lion',
-    ru: 'Лев',
+    en: 'Dove',
+    ru: 'Лебедь',
     image: 1,
   },
   {
