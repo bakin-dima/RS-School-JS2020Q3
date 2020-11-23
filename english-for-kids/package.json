@@ -10,7 +10,7 @@
     "lint": "eslint .",
     "lint:fix": "eslint . --fix"
   },
-  "author": "Bakin Dzmitry",
+  "author": "https://github.com/bakin-dima",
   "license": "ISC",
   "devDependencies": {
     "css-loader": "^5.0.1",
