@@ -48,9 +48,11 @@ function generateCards(cardData) {
     const cardLook = create('button', 'btn btn__reverse', createIcon('visibility'), cardContainer);
 
     const gameDataSource = {
+      element: cardContainer,
       title: content[i].en,
       audio: `./assets/sounds/${content[i].en}.mp3`,
     };
+    gameData.push(gameDataSource);
 
     const statisticsSource = {
       title: content[i].en,
@@ -61,10 +63,9 @@ function generateCards(cardData) {
     cardContainer.addEventListener('click', () => {
       cardSound.play();
       statisticsSource.clicks += 1;
-      storage.set('statisctic', statisctic);
+      // storage.set('statisctic', statisctic);
     });
 
-    gameData.push(gameDataSource);
     cardLook.addEventListener('click', () => {
       cardContainer.classList.add('card__container_rotate');
       cardTitle.textContent = '';
@@ -77,6 +78,15 @@ function generateCards(cardData) {
       cardTitle.textContent = content[i].en;
     });
   }
+  const startGameBtn = create('button', 'btn btn__start', 'start', main.firstChild, [
+    'state',
+    'gameMode',
+  ]);
+  startGameBtn.addEventListener('click', () => {
+    for (let i = 0; i < gameData.length; i += 1) {
+      console.log(gameData[i].element);
+    }
+  });
 }
 
 const menuLinksCreate = function menuLinksCreate() {
@@ -134,6 +144,21 @@ function showinfo() {
     );
   });
 }
+
+switchBtn.addEventListener('change', () => {
+  if (switchBtn.checked) {
+    main.setAttribute('data-state', 'gameMode');
+    footer.setAttribute('data-state', 'gameMode');
+    header.setAttribute('data-state', 'gameMode');
+    document.querySelector('body').setAttribute('data-state', 'gameMode');
+  }
+  if (!switchBtn.checked) {
+    main.removeAttribute('data-state');
+    footer.removeAttribute('data-state');
+    header.removeAttribute('data-state');
+    document.querySelector('body').removeAttribute('data-state', 'gameMode');
+  }
+});
 
 menuBtn.addEventListener('click', showMenu);
 menu.addEventListener('click', showMenu);

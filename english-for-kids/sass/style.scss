@@ -1,4 +1,4 @@
-$MAX_WIDTH: 90;
+$MAX_WIDTH: 110;
 
 * {
   padding: 0;
@@ -13,7 +13,7 @@ $MAX_WIDTH: 90;
 }
 
 body {
-  background: url('../assets/static/background.png') #fafafa;
+  background: url('../assets/static/background.png');
   background-size: 400px 400px;
   width: 100vw;
   min-height: 100vh;
@@ -23,6 +23,12 @@ body {
   position: relative;
   font-family: 'Roboto', sans-serif;
   font-weight: 500;
+}
+
+body[data-state='gameMode'] {
+  background-color: #ffffff;
+  background-image: linear-gradient(315deg, #ffffff 0%, #d7e1ec 74%);
+  background: url('../assets/static/background-game.png');
 }
 
 @media screen and (max-width: 700px) {
@@ -35,6 +41,7 @@ body {
   width: 100%;
   height: 100%;
   display: flex;
+  flex-direction: column;
   align-items: center;
   justify-content: center;
 }
@@ -85,6 +92,10 @@ body {
   outline: none;
   cursor: pointer;
   background: none;
+}
+
+.btn__start {
+  display: none;
 }
 
 .menu {
@@ -195,12 +206,15 @@ body {
     transform: rotateY(180deg);
   }
 }
+
 .card__container {
-  width: 20rem;
-  height: 27rem;
-  background-color: rgba(235, 242, 234, 0.95);
+  width: 25rem;
+  position: relative;
+  height: 32rem;
+  background-color: #ffffff;
+  background-image: linear-gradient(315deg, #ffffff 0%, #d7e1ec 74%);
   margin: 1rem;
-  border-radius: 1rem;
+  border-radius: 2rem;
   display: flex;
   flex-wrap: wrap;
   align-items: center;
@@ -212,10 +226,22 @@ body {
     box-shadow: 0px 0px 25px 1px gray;
     transform: scale(1.01);
   }
-  .card__title,
+
+  .material-icons,
   .card__items {
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    color: #fafafa;
+    font-size: 3.2rem;
+  }
+
+  .card__title {
     font-size: 3rem;
     color: #282726;
+    padding: 2rem;
+    width: 100%;
+    text-align: center;
   }
 
   .card__image {
@@ -225,20 +251,62 @@ body {
     align-items: center;
     justify-content: center;
     img {
-      border-radius: 2rem;
-      padding: 2rem;
+      transition: padding 0.5s;
+      border-top-left-radius: 2rem;
+      border-top-right-radius: 2rem;
+      padding: 5rem;
       background-color: #82af44;
       background-image: linear-gradient(315deg, #82af44 0%, #6e9737 74%);
-      width: 18rem;
+      width: 25rem;
     }
   }
-  .material-icons {
-    font-size: 3rem;
-    color: #282726;
+}
+
+.footer[data-state='gameMode'],
+.header[data-state='gameMode'] {
+  background-color: #7f53ac;
+  background-image: linear-gradient(315deg, #7f53ac 0%, #647dee 74%);
+  .menu,
+  .info {
+    background-color: #7f53ac;
+    background-image: linear-gradient(315deg, #7f53ac 0%, #647dee 74%);
   }
-  .card__title_en {
-    font-size: 2rem;
+}
+.main[data-state='gameMode'] {
+  .btn__start {
+    display: flex;
+    margin: 2rem 0;
+    padding: 2rem 7rem;
     color: #fafafa;
+    font-size: 5rem;
+    border-radius: 5rem;
+    text-transform: uppercase;
+    background-color: #7f53ac;
+    background-image: linear-gradient(315deg, #7f53ac 0%, #647dee 74%);
+    transition: 0.2s all;
+    &:hover {
+      transition: 0.2s;
+      box-shadow: 0px 0px 25px 1px gray;
+      transform: scale(1.01);
+    }
+  }
+  .card__container {
+    overflow: hidden;
+
+    background-color: #7f53ac;
+    background-image: linear-gradient(315deg, #7f53ac 0%, #647dee 74%);
+    .card__title,
+    .card__items,
+    .material-icons {
+      display: none;
+    }
+    .card__image {
+      img {
+        transition: padding 0.5s;
+        padding: 4rem;
+        background: none;
+      }
+    }
   }
 }
 

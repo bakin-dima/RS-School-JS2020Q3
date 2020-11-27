@@ -12,6 +12,18 @@ export default [
     ru: 'Прыгать',
   },
   {
+    en: 'Talk',
+    ru: 'Говорить',
+  },
+  {
+    en: 'Drink',
+    ru: 'Пить',
+  },
+  {
+    en: 'Eat',
+    ru: 'Кушать',
+  },
+  {
     en: 'Sing',
     ru: 'Петь',
   },

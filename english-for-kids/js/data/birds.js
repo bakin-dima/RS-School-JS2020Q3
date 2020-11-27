@@ -31,4 +31,16 @@ export default [
     en: 'Penguin',
     ru: 'Пингвин',
   },
+  {
+    en: 'Owl',
+    ru: 'Сова',
+  },
+  {
+    en: 'Toucan',
+    ru: 'Тукан',
+  },
+  {
+    en: 'Duck',
+    ru: 'Утка',
+  },
 ];
