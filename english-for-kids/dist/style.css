@@ -115,6 +115,7 @@ body {
   transition: 0.5s;
   transform: scale(1.03);
 }
+
 .info {
   position: absolute;
   top: 0;
@@ -192,12 +193,13 @@ body {
 }
 .card__container {
   width: 20rem;
-  height: 20rem;
-  background-image: linear-gradient(315deg, rgba(130, 175, 68, 0.97) 0%, rgba(110, 151, 55, 0.97) 74%);
+  height: 27rem;
+  background-color: rgba(235, 242, 234, 0.95);
   margin: 1rem;
   border-radius: 1rem;
   display: flex;
   flex-wrap: wrap;
+  align-items: center;
   justify-content: space-around;
   user-select: none;
   transition: box-shadow 0.2s;
@@ -207,40 +209,38 @@ body {
   box-shadow: 0px 0px 25px 1px gray;
   transform: scale(1.01);
 }
-.card__container .card__title {
-  font-size: 2rem;
+.card__container .card__title,
+.card__container .card__items {
+  font-size: 3rem;
+  color: #282726;
 }
 .card__container .card__image {
-  background: #fafafa;
   width: 100%;
-  height: 15rem;
   opacity: 1;
-  border-top-left-radius: 1rem;
-  border-top-right-radius: 1rem;
-  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 .card__container .card__image img {
-  height: 100%;
-  width: 100%;
+  border-radius: 2rem;
+  padding: 2rem;
+  background-color: #82af44;
+  background-image: linear-gradient(315deg, #82af44 0%, #6e9737 74%);
+  width: 18rem;
 }
 .card__container .material-icons {
-  font-size: 2.5rem;
+  font-size: 3rem;
+  color: #282726;
 }
 .card__container .card__title_en {
-  font-size: 2.5rem;
+  font-size: 2rem;
   color: #fafafa;
 }
 
-@keyframes rotate {
-  0% {
-    transform: rotateY(0);
-  }
-  100% {
-    transform: rotateY(180deg);
-  }
-}
 .card__container_rotate {
   animation: rotate 0.5s linear;
+  background-color: #82af44;
+  background-image: linear-gradient(315deg, #82af44 0%, #6e9737 74%);
   justify-content: center;
   align-items: center;
 }
@@ -250,6 +250,7 @@ body {
 .card__container_rotate .card__image {
   display: none;
 }
-.card__container_rotate .card__title_en {
-  font-size: 4rem;
+.card__container_rotate .card__title {
+  color: #fafafa;
+  font-size: 3rem;
 }
