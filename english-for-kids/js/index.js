@@ -17,90 +17,143 @@ const header = create('header', 'header', create('div', 'wrapper wrapper__header
 const main = create('main', 'main', create('div', 'wrapper wrapper__main'));
 document.body.prepend(header, main, footer);
 
-const menu = create(
-  'div',
-  'menu',
-  create('a', 'menu__link', 'Menu', '', ['href', ``]),
-  header.firstChild,
-);
-
 const info = create('div', 'info', '', header.firstChild);
 const menuBtn = create('button', 'btn menu__btn', createIcon('menu'), header.firstChild);
 const switchBtn = create('input', 'swidth__btn', 'menu', header.firstChild, ['type', 'checkbox']);
 const infoBtn = create('button', 'btn info__btn', createIcon('help_outline'), header.firstChild);
 
+// function generateCards(cardData) {
+//   clear(main.firstChild);
+//   const gameData = [];
+//   const { content } = cardData;
+//   for (let i = 0; i < content.length; i += 1) {
+//     const cardContainer = create('div', 'card__container', '', main.firstChild);
+//     const cardImageContainer = create('div', 'card__image', '', cardContainer);
+//     create('img', 'card__image', '', cardImageContainer, [
+//       'src',
+//       `./assets/cards/${content[i].en}.png`,
+//     ]);
+//     const cardTitle = create('div', 'card__title', `${content[i].en}`, cardContainer);
+//     const cardSound = create('audio', '', '', cardContainer, [
+//       'src',
+//       `./assets/sounds/${content[i].en}.mp3`,
+//     ]);
+//     const cardLook = create('button', 'btn btn__reverse', createIcon('visibility'), cardContainer);
+
+//     //! Add Event listener for card rotate
+//     cardLook.addEventListener('click', () => {
+//       cardContainer.classList.add('card__container_rotate');
+//       cardTitle.textContent = '';
+//       setTimeout(() => {
+//         cardTitle.textContent = content[i].ru;
+//       }, 500);
+//     });
+//     cardContainer.addEventListener('mouseleave', () => {
+//       cardContainer.classList.remove('card__container_rotate');
+//       cardTitle.textContent = content[i].en;
+//     });
+
+//     //! Additional
+//     const gameDataSource = {
+//       element: cardContainer,
+//       title: content[i].en,
+//       audio: `./assets/sounds/${content[i].en}.mp3`,
+//     };
+//     gameData.push(gameDataSource);
+
+//     const statisticsSource = {
+//       title: content[i].en,
+//       clicks: 0,
+//     };
+//     statisctic.push(statisticsSource);
+
+//     cardContainer.addEventListener('click', () => {
+//       cardSound.play();
+//       statisticsSource.clicks += 1;
+//       // storage.set('statisctic', statisctic);
+//     });
+//   }
+//   const startGameBtn = create('button', 'btn btn__start', 'start', main.firstChild, [
+//     'state',
+//     'gameMode',
+//   ]);
+//   startGameBtn.addEventListener('click', () => {
+//     for (let i = 0; i < gameData.length; i += 1) {
+//       console.log(gameData[i].element);
+//     }
+//   });
+// }
+
 function generateCards(cardData) {
   clear(main.firstChild);
-  const gameData = [];
   const { content } = cardData;
   for (let i = 0; i < content.length; i += 1) {
     const cardContainer = create('div', 'card__container', '', main.firstChild);
-    const cardImageContainer = create('div', 'card__image', '', cardContainer);
+    const cardFront = create('div', 'card__front', '', cardContainer);
+    const cardBack = create(
+      'div',
+      'card__back',
+      create('div', 'card__title', `${content[i].ru}`, ''),
+      cardContainer,
+    );
+    const cardImageContainer = create('div', 'card__image', '', cardFront);
     create('img', 'card__image', '', cardImageContainer, [
       'src',
       `./assets/cards/${content[i].en}.png`,
     ]);
-    const cardTitle = create('div', 'card__title', `${content[i].en}`, cardContainer);
+    create('div', 'card__title', `${content[i].en}`, cardFront);
     const cardSound = create('audio', '', '', cardContainer, [
       'src',
       `./assets/sounds/${content[i].en}.mp3`,
     ]);
-    const cardLook = create('button', 'btn btn__reverse', createIcon('visibility'), cardContainer);
+    const cardLook = create('button', 'btn btn__reverse', createIcon('visibility'), cardFront);
 
-    const gameDataSource = {
-      element: cardContainer,
-      title: content[i].en,
-      audio: `./assets/sounds/${content[i].en}.mp3`,
-    };
-    gameData.push(gameDataSource);
-
-    const statisticsSource = {
-      title: content[i].en,
-      clicks: 0,
-    };
-    statisctic.push(statisticsSource);
-
-    cardContainer.addEventListener('click', () => {
-      cardSound.play();
-      statisticsSource.clicks += 1;
-      // storage.set('statisctic', statisctic);
-    });
-
+    //! Add Event listener for card rotate
     cardLook.addEventListener('click', () => {
-      cardContainer.classList.add('card__container_rotate');
-      cardTitle.textContent = '';
-      setTimeout(() => {
-        cardTitle.textContent = content[i].ru;
-      }, 500);
+      cardFront.classList.add('card__front_rotate');
+      cardBack.classList.add('card__back_rotate');
     });
     cardContainer.addEventListener('mouseleave', () => {
-      cardContainer.classList.remove('card__container_rotate');
-      cardTitle.textContent = content[i].en;
+      cardFront.classList.remove('card__front_rotate');
+      cardBack.classList.remove('card__back_rotate');
+    });
+    //! Play Sound
+    cardContainer.addEventListener('click', () => {
+      cardSound.play();
     });
   }
-  const startGameBtn = create('button', 'btn btn__start', 'start', main.firstChild, [
-    'state',
-    'gameMode',
-  ]);
-  startGameBtn.addEventListener('click', () => {
-    for (let i = 0; i < gameData.length; i += 1) {
-      console.log(gameData[i].element);
-    }
-  });
 }
 
 const menuLinksCreate = function menuLinksCreate() {
+  const menu = create('nav', 'menu', '', header.firstChild);
+  const menuList = create('ul', 'menu__list', '', menu);
+  create(
+    'li',
+    'menu__item',
+    create(
+      'a',
+      'menu__link',
+      `<img src="./assets/static/home.png" class="menu__image"/> Home`,
+      '',
+      ['href', ``],
+    ),
+    menuList,
+  );
   for (let i = 0; i < categories.length; i += 1) {
-    const elementLink = create('a', 'menu__link', `${categories[i].title}`, menu, [
-      'href',
-      `#${categories[i].title}/`,
-    ]);
-    categories[i].link = elementLink;
-    categories[i].link.addEventListener('click', () => generateCards(categories[i]));
+    const menuItem = create('li', 'menu__item', '', menuList);
+    create(
+      'a',
+      'menu__link',
+      `<img src="./assets/categories/${categories[i].title}.png" class="menu__image"/> ${categories[i].title}`,
+      menuItem,
+      ['href', `#${categories[i].title}/`],
+    );
+    menuItem.addEventListener('click', () => generateCards(categories[i]));
   }
+  return menu;
 };
 
-menuLinksCreate();
+const menu = menuLinksCreate();
 
 const cardsCreate = function cardsCreate() {
   for (let i = 0; i < categories.length; i += 1) {
@@ -108,13 +161,14 @@ const cardsCreate = function cardsCreate() {
       'href',
       `#${categories[i].title}/`,
     ]);
-    const cardImageContainer = create('div', 'card__image', '', cardContainer);
+    const cardFront = create('div', 'card__front', '', cardContainer);
+    const cardImageContainer = create('div', 'card__image', '', cardFront);
     create('img', '', '', cardImageContainer, [
       'src',
       `./assets/categories/${categories[i].title}.png`,
     ]);
-    create('div', 'card__title', `${categories[i].title}`, cardContainer);
-    create('span', 'card__items', `${categories[i].content.length}`, cardContainer);
+    create('div', 'card__title', `${categories[i].title}`, cardFront);
+    create('span', 'card__items', `${categories[i].content.length}`, cardFront);
 
     cardContainer.addEventListener('click', () => generateCards(categories[i]));
   }
