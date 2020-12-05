@@ -1,9 +1,9 @@
 import '../sass/style.scss';
 import './images';
 import create from './utils/create';
+import links from './utils/links';
 import clear from './utils/clear';
 import footer from './layouts/footer';
-import createIcon from './utils/createIcon';
 import categories from './data/categories';
 import * as storage from './storage';
 
@@ -18,76 +18,30 @@ const main = create('main', 'main', create('div', 'wrapper wrapper__main'));
 document.body.prepend(header, main, footer);
 
 const info = create('div', 'info', '', header.firstChild);
-const menuBtn = create('button', 'btn menu__btn', createIcon('menu'), header.firstChild);
-const switchBtn = create('input', 'swidth__btn', 'menu', header.firstChild, ['type', 'checkbox']);
-const infoBtn = create('button', 'btn info__btn', createIcon('help_outline'), header.firstChild);
+const menuBtn = create('button', 'btn menu__btn', '', header.firstChild);
+const switchElement = {
+  switchBox: create('div', 'switch', '', header.firstChild),
+  switchBtn: create('input', 'checkbox', '', '', ['type', 'checkbox'], ['id', 'checkbox']),
+  switchLabel: create('label', 'checkbox__label', '', '', ['for', 'checkbox']),
+  trainLabel: create('span', 'train', 'Train', ''),
+  playLabel: create('span', 'play', 'Play', ''),
+};
 
-// function generateCards(cardData) {
-//   clear(main.firstChild);
-//   const gameData = [];
-//   const { content } = cardData;
-//   for (let i = 0; i < content.length; i += 1) {
-//     const cardContainer = create('div', 'card__container', '', main.firstChild);
-//     const cardImageContainer = create('div', 'card__image', '', cardContainer);
-//     create('img', 'card__image', '', cardImageContainer, [
-//       'src',
-//       `./assets/cards/${content[i].en}.png`,
-//     ]);
-//     const cardTitle = create('div', 'card__title', `${content[i].en}`, cardContainer);
-//     const cardSound = create('audio', '', '', cardContainer, [
-//       'src',
-//       `./assets/sounds/${content[i].en}.mp3`,
-//     ]);
-//     const cardLook = create('button', 'btn btn__reverse', createIcon('visibility'), cardContainer);
+switchElement.switchBox.append(
+  switchElement.switchBtn,
+  switchElement.switchLabel,
+  switchElement.trainLabel,
+  switchElement.playLabel,
+);
 
-//     //! Add Event listener for card rotate
-//     cardLook.addEventListener('click', () => {
-//       cardContainer.classList.add('card__container_rotate');
-//       cardTitle.textContent = '';
-//       setTimeout(() => {
-//         cardTitle.textContent = content[i].ru;
-//       }, 500);
-//     });
-//     cardContainer.addEventListener('mouseleave', () => {
-//       cardContainer.classList.remove('card__container_rotate');
-//       cardTitle.textContent = content[i].en;
-//     });
-
-//     //! Additional
-//     const gameDataSource = {
-//       element: cardContainer,
-//       title: content[i].en,
-//       audio: `./assets/sounds/${content[i].en}.mp3`,
-//     };
-//     gameData.push(gameDataSource);
-
-//     const statisticsSource = {
-//       title: content[i].en,
-//       clicks: 0,
-//     };
-//     statisctic.push(statisticsSource);
-
-//     cardContainer.addEventListener('click', () => {
-//       cardSound.play();
-//       statisticsSource.clicks += 1;
-//       // storage.set('statisctic', statisctic);
-//     });
-//   }
-//   const startGameBtn = create('button', 'btn btn__start', 'start', main.firstChild, [
-//     'state',
-//     'gameMode',
-//   ]);
-//   startGameBtn.addEventListener('click', () => {
-//     for (let i = 0; i < gameData.length; i += 1) {
-//       console.log(gameData[i].element);
-//     }
-//   });
-// }
+const infoBtn = create('button', 'btn info__btn', '', header.firstChild);
 
 function generateCards(cardData) {
   clear(main.firstChild);
   const { content } = cardData;
+  const gameData = [];
   for (let i = 0; i < content.length; i += 1) {
+    gameData.push(content[i].en);
     const cardContainer = create('div', 'card__container', '', main.firstChild);
     const cardFront = create('div', 'card__front', '', cardContainer);
     const cardBack = create(
@@ -99,14 +53,14 @@ function generateCards(cardData) {
     const cardImageContainer = create('div', 'card__image', '', cardFront);
     create('img', 'card__image', '', cardImageContainer, [
       'src',
-      `./assets/cards/${content[i].en}.png`,
+      links.cardImageSrc(content[i].en),
     ]);
     create('div', 'card__title', `${content[i].en}`, cardFront);
+    const cardLook = create('button', 'btn look__btn', '', cardFront);
     const cardSound = create('audio', '', '', cardContainer, [
       'src',
       `./assets/sounds/${content[i].en}.mp3`,
     ]);
-    const cardLook = create('button', 'btn btn__reverse', createIcon('visibility'), cardFront);
 
     //! Add Event listener for card rotate
     cardLook.addEventListener('click', () => {
@@ -119,7 +73,11 @@ function generateCards(cardData) {
     });
     //! Play Sound
     cardContainer.addEventListener('click', () => {
-      cardSound.play();
+      if (switchElement.switchBtn.checked) {
+        cardFront.classList.add('game__true');
+      } else {
+        cardSound.play();
+      }
     });
   }
 }
@@ -161,12 +119,9 @@ const cardsCreate = function cardsCreate() {
       'href',
       `#${categories[i].title}/`,
     ]);
-    const cardFront = create('div', 'card__front', '', cardContainer);
+    const cardFront = create('div', 'card__categories', '', cardContainer);
     const cardImageContainer = create('div', 'card__image', '', cardFront);
-    create('img', '', '', cardImageContainer, [
-      'src',
-      `./assets/categories/${categories[i].title}.png`,
-    ]);
+    create('img', '', '', cardImageContainer, ['src', links.categoryImageSrc(categories[i].title)]);
     create('div', 'card__title', `${categories[i].title}`, cardFront);
     create('span', 'card__items', `${categories[i].content.length}`, cardFront);
 
@@ -199,14 +154,14 @@ function showinfo() {
   });
 }
 
-switchBtn.addEventListener('change', () => {
-  if (switchBtn.checked) {
+switchElement.switchBtn.addEventListener('change', () => {
+  if (switchElement.switchBtn.checked) {
     main.setAttribute('data-state', 'gameMode');
     footer.setAttribute('data-state', 'gameMode');
     header.setAttribute('data-state', 'gameMode');
     document.querySelector('body').setAttribute('data-state', 'gameMode');
   }
-  if (!switchBtn.checked) {
+  if (!switchElement.switchBtn.checked) {
     main.removeAttribute('data-state');
     footer.removeAttribute('data-state');
     header.removeAttribute('data-state');

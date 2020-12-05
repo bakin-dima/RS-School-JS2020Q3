@@ -1,7 +1,8 @@
 /**
- * @param {string} icon
+ * @param {string} iconName
  */
 
-export default function createIcon(icon) {
-  return `<i class="material-icons">${icon}</i>`;
+export default function createIcon(iconName) {
+  const path = './assets/static/';
+  return `<img src="${path}${iconName}.png"/>`;
 }
