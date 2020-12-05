@@ -8,14 +8,35 @@ import categories from './data/categories';
 import * as storage from './storage';
 
 let statisctic = [];
+let gameData = [];
+let mistakesCount = 0;
 
 if (storage.get('statisctic')) {
   statisctic = storage.get('statisctic');
 }
 
+const gameOverlay = {
+  gameOverlayContainer: create('div', 'game__overlay', ''),
+  gameOverlayImage: create('img', 'game__image', ''),
+  gameOverlayTitle: create('div', 'game__title', ''),
+  gameOverlayButton: create('a', 'game__link', 'Home', '', ['href', '']),
+};
+
+gameOverlay.gameOverlayContainer.append(
+  gameOverlay.gameOverlayImage,
+  gameOverlay.gameOverlayTitle,
+  gameOverlay.gameOverlayButton,
+);
+
 const header = create('header', 'header', create('div', 'wrapper wrapper__header'));
-const main = create('main', 'main', create('div', 'wrapper wrapper__main'));
-document.body.prepend(header, main, footer);
+const main = create('main', 'main', create('div', 'wrapper wrapper__main', ''));
+const gameAnswers = create('div', 'game__answers', '', main.firstChild);
+const cardsContainer = create('div', 'cards__container', '', main.firstChild);
+const cardSound = create('audio', '', '', main);
+
+const messageSound = create('audio', '', '', main);
+
+document.body.prepend(gameOverlay.gameOverlayContainer, header, main, footer);
 
 const info = create('div', 'info', '', header.firstChild);
 const menuBtn = create('button', 'btn menu__btn', '', header.firstChild);
@@ -33,22 +54,27 @@ switchElement.switchBox.append(
   switchElement.trainLabel,
   switchElement.playLabel,
 );
-
+const startGameBtn = create('button', 'btn start__btn', 'START', header.firstChild);
+startGameBtn.disabled = true;
 const infoBtn = create('button', 'btn info__btn', '', header.firstChild);
 
 function generateCards(cardData) {
-  clear(main.firstChild);
+  clear(cardsContainer);
+  clear(gameAnswers);
+  mistakesCount = 0;
   const { content } = cardData;
-  const gameData = [];
+  gameData = [];
+  startGameBtn.innerHTML = 'START';
+  startGameBtn.disabled = false;
   for (let i = 0; i < content.length; i += 1) {
     gameData.push(content[i].en);
-    const cardContainer = create('div', 'card__container', '', main.firstChild);
-    const cardFront = create('div', 'card__front', '', cardContainer);
+    const card = create('div', 'card', '', cardsContainer);
+    const cardFront = create('div', 'card__front', '', card, ['card', `${content[i].en}`]);
     const cardBack = create(
       'div',
       'card__back',
       create('div', 'card__title', `${content[i].ru}`, ''),
-      cardContainer,
+      card,
     );
     const cardImageContainer = create('div', 'card__image', '', cardFront);
     create('img', 'card__image', '', cardImageContainer, [
@@ -57,27 +83,14 @@ function generateCards(cardData) {
     ]);
     create('div', 'card__title', `${content[i].en}`, cardFront);
     const cardLook = create('button', 'btn look__btn', '', cardFront);
-    const cardSound = create('audio', '', '', cardContainer, [
-      'src',
-      `./assets/sounds/${content[i].en}.mp3`,
-    ]);
 
-    //! Add Event listener for card rotate
     cardLook.addEventListener('click', () => {
       cardFront.classList.add('card__front_rotate');
       cardBack.classList.add('card__back_rotate');
     });
-    cardContainer.addEventListener('mouseleave', () => {
+    card.addEventListener('mouseleave', () => {
       cardFront.classList.remove('card__front_rotate');
       cardBack.classList.remove('card__back_rotate');
-    });
-    //! Play Sound
-    cardContainer.addEventListener('click', () => {
-      if (switchElement.switchBtn.checked) {
-        cardFront.classList.add('game__true');
-      } else {
-        cardSound.play();
-      }
     });
   }
 }
@@ -115,17 +128,14 @@ const menu = menuLinksCreate();
 
 const cardsCreate = function cardsCreate() {
   for (let i = 0; i < categories.length; i += 1) {
-    const cardContainer = create('a', 'card__container', '', main.firstChild, [
-      'href',
-      `#${categories[i].title}/`,
-    ]);
-    const cardFront = create('div', 'card__categories', '', cardContainer);
+    const card = create('a', 'card', '', cardsContainer, ['href', `#${categories[i].title}/`]);
+    const cardFront = create('div', 'card__categories', '', card);
     const cardImageContainer = create('div', 'card__image', '', cardFront);
     create('img', '', '', cardImageContainer, ['src', links.categoryImageSrc(categories[i].title)]);
     create('div', 'card__title', `${categories[i].title}`, cardFront);
     create('span', 'card__items', `${categories[i].content.length}`, cardFront);
 
-    cardContainer.addEventListener('click', () => generateCards(categories[i]));
+    card.addEventListener('click', () => generateCards(categories[i]));
   }
 };
 
@@ -154,18 +164,89 @@ function showinfo() {
   });
 }
 
+const playSound = (element) => {
+  const soundSrc = element.getAttribute('data-card');
+  cardSound.src = links.soundSrc(soundSrc);
+  cardSound.load();
+  setTimeout(() => {
+    cardSound.play();
+  }, 1);
+};
+
+const playMessageSound = (message) => {
+  messageSound.src = message;
+  setTimeout(() => {
+    messageSound.play();
+  }, 1);
+};
+
+const gameOverlayShow = () => {
+  if (mistakesCount !== 0) {
+    playMessageSound(links.winnerSound);
+    gameOverlay.gameOverlayImage.src = links.staticImageSrc('game_lose');
+    gameOverlay.gameOverlayTitle.innerHTML = `You make ${mistakesCount} mistakes`;
+  } else {
+    playMessageSound(links.failSound);
+    gameOverlay.gameOverlayImage.src = links.staticImageSrc('game_win');
+    gameOverlay.gameOverlayTitle.innerHTML = 'Good Job!';
+  }
+
+  gameOverlay.gameOverlayContainer.classList.add('game__overlay_active');
+};
+
+const playGame = () => {
+  if (gameData.length === 0) {
+    gameOverlayShow();
+    return;
+  }
+  gameData.sort(() => Math.random() * 2 - 1);
+  cardSound.src = links.soundSrc(gameData[gameData.length - 1]);
+  cardSound.load();
+  cardSound.play();
+  startGameBtn.innerHTML = 'REPEAT';
+};
+
+startGameBtn.addEventListener('click', () => {
+  if (startGameBtn.innerHTML === 'START') {
+    playGame();
+  }
+  if (startGameBtn.innerHTML === 'REPEAT') {
+    cardSound.play();
+  }
+});
+
+cardsContainer.addEventListener('click', (event) => {
+  const targ = event.target.closest('.card__front');
+  if (targ) {
+    if (!switchElement.switchBtn.checked) {
+      playSound(targ);
+    }
+    if (switchElement.switchBtn.checked && startGameBtn.innerHTML === 'REPEAT') {
+      if (targ.getAttribute('data-card') === gameData[gameData.length - 1]) {
+        targ.classList.add('game__true');
+        gameAnswers.prepend(create('div', 'answer__true', '', ''));
+        playMessageSound(links.correctSound);
+        gameData.pop();
+        playGame();
+      } else {
+        gameAnswers.prepend(create('div', 'answer__false', '', ''));
+        playMessageSound(links.mistakeSound);
+        mistakesCount += 1;
+      }
+    }
+  }
+});
+
 switchElement.switchBtn.addEventListener('change', () => {
   if (switchElement.switchBtn.checked) {
     main.setAttribute('data-state', 'gameMode');
     footer.setAttribute('data-state', 'gameMode');
     header.setAttribute('data-state', 'gameMode');
-    document.querySelector('body').setAttribute('data-state', 'gameMode');
   }
   if (!switchElement.switchBtn.checked) {
     main.removeAttribute('data-state');
     footer.removeAttribute('data-state');
     header.removeAttribute('data-state');
-    document.querySelector('body').removeAttribute('data-state', 'gameMode');
   }
 });
 

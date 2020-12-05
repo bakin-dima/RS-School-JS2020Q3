@@ -13,22 +13,7 @@
 }
 
 body {
-  background: url('../assets/static/background.png');
-  background-size: 400px 400px;
-  width: 100%;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
   position: relative;
-  font-family: 'Roboto', sans-serif;
-  font-weight: 500;
-}
-
-body[data-state='gameMode'] {
-  background-color: #ffffff;
-  background-image: linear-gradient(315deg, #ffffff 0%, #d7e1ec 74%);
-  background: url('../assets/static/background-game.png');
 }
 
 @media screen and (max-width: 700px) {
@@ -39,9 +24,52 @@ body[data-state='gameMode'] {
 
 //* MAIN STYLES
 
-.main {
+.game__overlay {
+  display: none;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  position: absolute;
   width: 100%;
   height: 100%;
+  top: 0;
+  left: 0;
+  background-color: #82af44;
+  background-image: linear-gradient(315deg, #82af44 0%, #6e9737 74%);
+  padding: 1rem;
+  z-index: 10;
+  .game__image {
+    width: 100%;
+    max-width: 50rem;
+  }
+  .game__title {
+    font-size: 5rem;
+    margin: 1rem 0;
+    text-align: center;
+  }
+  .game__link {
+    font-size: 2rem;
+    border: 2px solid #fafafa;
+    padding: 1rem;
+  }
+}
+
+.game__overlay_active {
+  display: flex;
+}
+
+.main {
+  background: url('../assets/static/background.png');
+  background-size: 400px 400px;
+  width: 100%;
+  height: 100%;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  position: relative;
+  font-family: 'Roboto', sans-serif;
+  font-weight: 500;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -63,9 +91,9 @@ body[data-state='gameMode'] {
 
 .wrapper__main {
   display: flex;
-  flex-wrap: wrap;
+  flex-direction: column;
   align-items: center;
-  justify-content: center;
+  justify-content: flex-start;
   margin: 0 auto;
 }
 
@@ -89,22 +117,6 @@ body[data-state='gameMode'] {
   }
 }
 
-.btn {
-  border: none;
-  outline: none;
-  cursor: pointer;
-  background: none;
-  width: 3.2rem;
-  height: 3.2rem;
-}
-
-.menu__btn {
-  background: url('/assets/static/menuBtn.png') no-repeat;
-}
-.info__btn {
-  background: url('/assets/static/infoBtn.png') no-repeat;
-}
-
 .menu {
   position: absolute;
   top: 0;
@@ -126,7 +138,7 @@ body[data-state='gameMode'] {
     .menu__link {
       display: flex;
       color: #fafafa;
-      font-size: 5.2rem;
+      font-size: 4.4rem;
       text-decoration: none;
       text-transform: uppercase;
       margin: 1rem 0;
@@ -196,18 +208,39 @@ body[data-state='gameMode'] {
   }
 }
 
-.menu__btn {
-  z-index: 5;
-  color: #fafafa;
+.btn {
+  font-family: 'Roboto', sans-serif;
+  font-weight: 500;
+  border: none;
+  outline: none;
+  cursor: pointer;
+  background: none;
+  width: 3.2rem;
+  height: 3.2rem;
 }
 
 .menu__btn__switcher {
-  background: url('/assets/static/closeBtn.png');
+  background: url('../assets/static/closeBtn.png');
   z-index: 6;
 }
 
 .info__btn {
   z-index: 4;
+}
+
+.menu__btn {
+  background: url('../assets/static/menuBtn.png') no-repeat;
+  z-index: 5;
+}
+.info__btn {
+  background: url('../assets/static/infoBtn.png') no-repeat;
+}
+.start__btn {
+  width: 11rem;
+  border-radius: 2rem;
+  border: 2px solid #fafafa;
+  visibility: hidden;
+  font-size: 2rem;
 }
 
 .switch {
@@ -218,8 +251,6 @@ body[data-state='gameMode'] {
   height: 3rem;
   .checkbox {
     visibility: hidden;
-    width: 6rem;
-    height: 3rem;
   }
   .checkbox__label {
     display: block;
@@ -260,9 +291,65 @@ body[data-state='gameMode'] {
     opacity: 1;
   }
 }
+
+@media screen and (max-width: 500px) {
+  .start__btn {
+    width: 8rem;
+    font-size: 1.4rem;
+  }
+  .switch {
+    width: 11rem;
+    .play,
+    .train {
+      font-size: 1.4rem;
+      top: 0;
+      left: 3.5rem;
+    }
+    .play {
+      display: none;
+    }
+
+    .checkbox:checked ~ .train {
+      display: none;
+    }
+    .checkbox:checked ~ .play {
+      display: block;
+    }
+  }
+}
+
+//? GAME ANSWERS
+.game__answers {
+  width: 80%;
+  height: 3rem;
+  overflow-y: hidden;
+  visibility: hidden;
+  .answer__true,
+  .answer__false {
+    display: inline-block;
+    width: 3rem;
+    height: 3rem;
+    border-radius: 50%;
+    margin: 0 1rem;
+  }
+  .answer__true {
+    background-color: #6e9737;
+  }
+  .answer__false {
+    background-color: red;
+  }
+}
+
 //? STYLES FOR CARD
 
-.card__container {
+.cards__container {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+}
+
+.card {
   position: relative;
   width: 25rem;
   height: 26rem;
@@ -314,7 +401,7 @@ body[data-state='gameMode'] {
     width: 4rem;
   }
   .look__btn {
-    background: url('/assets/static/showBtn.png');
+    background: url('../assets/static/showBtn.png');
     position: absolute;
     top: 1rem;
     right: 1rem;
@@ -355,13 +442,24 @@ body[data-state='gameMode'] {
     background-image: linear-gradient(315deg, #7f53ac 0%, #647dee 74%);
   }
 }
+.header[data-state='gameMode'] {
+  .start__btn {
+    visibility: visible;
+  }
+}
 .main[data-state='gameMode'] {
+  background-color: #ffffff;
+  background-image: linear-gradient(315deg, #ffffff 0%, #d7e1ec 74%);
+  background: url('../assets/static/background_game.png');
   .card__categories {
     background-color: #7f53ac;
     background-image: linear-gradient(315deg, #7f53ac 0%, #647dee 74%);
     .card__items {
       color: #7f53ac;
     }
+  }
+  .game__answers {
+    visibility: visible;
   }
   .card__front {
     background-color: #7f53ac;
@@ -375,10 +473,9 @@ body[data-state='gameMode'] {
     .card__image {
       height: 100%;
       width: 100%;
-      transition: all 0.5s;
+      transition: padding 0.5s;
       img {
         padding: 3.5rem;
-        background: none;
       }
     }
   }
@@ -387,7 +484,9 @@ body[data-state='gameMode'] {
   }
 
   .game__true {
+    pointer-events: none;
     background: gray;
+    border-radius: 2rem;
     img {
       opacity: 0.5;
     }
