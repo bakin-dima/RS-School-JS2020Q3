@@ -95,7 +95,8 @@ function generateCards(cardData) {
   }
 }
 
-const menuLinksCreate = function menuLinksCreate() {
+function menuLinksCreate() {
+  const menuItems = [];
   const menu = create('nav', 'menu', '', header.firstChild);
   const menuList = create('ul', 'menu__list', '', menu);
   create(
@@ -119,10 +120,15 @@ const menuLinksCreate = function menuLinksCreate() {
       menuItem,
       ['href', `#${categories[i].title}/`],
     );
-    menuItem.addEventListener('click', () => generateCards(categories[i]));
+    menuItems.push(menuItem);
+    menuItem.addEventListener('click', () => {
+      menuItems.forEach((el) => el.classList.remove('menu__item_active'));
+      menuItem.classList.add('menu__item_active');
+      generateCards(categories[i]);
+    });
   }
   return menu;
-};
+}
 
 const menu = menuLinksCreate();
 
@@ -149,7 +155,7 @@ function showinfo() {
   info.classList.toggle('info__switcher');
   info.classList.toggle('info__btn__switcher');
   clear(info);
-  const clearBtn = create('button', 'btn btn__clear', 'CLEAR', info);
+  const clearBtn = create('button', 'btn clear__btn', 'CLEAR', info);
   clearBtn.addEventListener('click', () => {
     statisctic = [];
     storage.del('statisctic');

@@ -31,4 +31,8 @@ export default [
     en: 'Watermelon',
     ru: 'Арбуз',
   },
+  {
+    en: 'Mango',
+    ru: 'Манго',
+  },
 ];

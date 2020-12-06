@@ -3,7 +3,7 @@ import reptiles from './reptiles';
 import birds from './birds';
 import flowers from './flowers';
 import food from './food';
-import emotions from './emotions';
+import family from './family';
 import fruits from './fruits';
 import actions from './actions';
 
@@ -37,7 +37,7 @@ export default [
     content: actions,
   },
   {
-    title: 'Emotions',
-    content: emotions,
+    title: 'Family',
+    content: family,
   },
 ];
