@@ -1,18 +1,22 @@
+/* eslint-disable no-param-reassign */
 import '../sass/style.scss';
 import './images';
 import create from './utils/create';
 import links from './utils/links';
 import clear from './utils/clear';
+import generateStatistic from './utils/generateStatistic';
 import footer from './layouts/footer';
 import categories from './data/categories';
 import * as storage from './storage';
 
-let statisctic = [];
-let gameData = [];
+let statistic = [];
+let gameElements = [];
 let mistakesCount = 0;
 
-if (storage.get('statisctic')) {
-  statisctic = storage.get('statisctic');
+generateStatistic(categories, statistic);
+
+if (storage.get('statistic')) {
+  statistic = storage.get('statistic');
 }
 
 const gameOverlay = {
@@ -54,20 +58,21 @@ switchElement.switchBox.append(
   switchElement.trainLabel,
   switchElement.playLabel,
 );
+
 const startGameBtn = create('button', 'btn start__btn', 'START', header.firstChild);
 startGameBtn.disabled = true;
+
 const infoBtn = create('button', 'btn info__btn', '', header.firstChild);
 
-function generateCards(cardData) {
+function generateCards({ content }) {
   clear(cardsContainer);
   clear(gameAnswers);
   mistakesCount = 0;
-  const { content } = cardData;
-  gameData = [];
+  gameElements = [];
   startGameBtn.innerHTML = 'START';
   startGameBtn.disabled = false;
   for (let i = 0; i < content.length; i += 1) {
-    gameData.push(content[i].en);
+    gameElements.push(content[i].en);
     const card = create('div', 'card', '', cardsContainer);
     const cardFront = create('div', 'card__front', '', card, ['card', `${content[i].en}`]);
     const cardBack = create(
@@ -95,13 +100,13 @@ function generateCards(cardData) {
   }
 }
 
-function menuLinksCreate() {
+const menuLinksCreate = () => {
   const menuItems = [];
   const menu = create('nav', 'menu', '', header.firstChild);
   const menuList = create('ul', 'menu__list', '', menu);
   create(
     'li',
-    'menu__item',
+    'menu__item menu__item_main',
     create(
       'a',
       'menu__link',
@@ -112,7 +117,10 @@ function menuLinksCreate() {
     menuList,
   );
   for (let i = 0; i < categories.length; i += 1) {
-    const menuItem = create('li', 'menu__item', '', menuList);
+    const menuItem = create('li', 'menu__item', '', menuList, [
+      'category',
+      `${categories[i].title}`,
+    ]);
     create(
       'a',
       'menu__link',
@@ -128,22 +136,40 @@ function menuLinksCreate() {
     });
   }
   return menu;
-}
+};
 
 const menu = menuLinksCreate();
 
-const cardsCreate = function cardsCreate() {
+const setActiveLink = (clickedCategory) => {
+  const category = clickedCategory;
+  const element = document.querySelector(`[data-category="${category}"]`);
+  const mainMenu = document.querySelector('.menu__item_main');
+  mainMenu.classList.remove('menu__item_active');
+  element.classList.add('menu__item_active');
+};
+
+function cardsCreate() {
   for (let i = 0; i < categories.length; i += 1) {
-    const card = create('a', 'card', '', cardsContainer, ['href', `#${categories[i].title}/`]);
+    const card = create(
+      'a',
+      'card',
+      '',
+      cardsContainer,
+      ['href', `#${categories[i].title}/`],
+      ['category', `${categories[i].title}`],
+    );
     const cardFront = create('div', 'card__categories', '', card);
     const cardImageContainer = create('div', 'card__image', '', cardFront);
     create('img', '', '', cardImageContainer, ['src', links.categoryImageSrc(categories[i].title)]);
     create('div', 'card__title', `${categories[i].title}`, cardFront);
     create('span', 'card__items', `${categories[i].content.length}`, cardFront);
 
-    card.addEventListener('click', () => generateCards(categories[i]));
+    card.addEventListener('click', () => {
+      generateCards(categories[i]);
+      setActiveLink(categories[i].title);
+    });
   }
-};
+}
 
 cardsCreate();
 
@@ -151,21 +177,68 @@ function showMenu() {
   menu.classList.toggle('menu__switcher');
   menuBtn.classList.toggle('menu__btn__switcher');
 }
+
+const statisticUpdate = (cardName, field) => {
+  statistic.forEach((el) => {
+    if (el.en === cardName) {
+      switch (field) {
+        case 'mistake':
+          el.mistakesCount += 1;
+          break;
+        case 'correct':
+          el.correctCount += 1;
+          break;
+        default:
+          el.trainCount += 1;
+          break;
+      }
+      if (el.correctCount + el.mistakesCount !== 0) {
+        el.coef = Math.floor((el.correctCount / (el.correctCount + el.mistakesCount)) * 100);
+      }
+    }
+  });
+  storage.set('statistic', statistic);
+};
+
 function showinfo() {
   info.classList.toggle('info__switcher');
   info.classList.toggle('info__btn__switcher');
   clear(info);
   const clearBtn = create('button', 'btn clear__btn', 'CLEAR', info);
   clearBtn.addEventListener('click', () => {
-    statisctic = [];
-    storage.del('statisctic');
+    statistic = [];
+    generateStatistic(categories, statistic);
+    storage.del('statistic');
   });
-  statisctic.forEach((el) => {
+  const category = create('div', 'statistic__category', '', info);
+  create(
+    'div',
+    'statistic__fields',
+    [
+      create('div', 'statistic__name', 'Category', ''),
+      create('div', 'statistic__eng', 'English', ''),
+      create('div', 'statistic__rus', 'Русский', ''),
+      create('div', 'statistic__train', 'T', ''),
+      create('div', 'statistic__mistakes', '-', ''),
+      create('div', 'statistic__correct', '+', ''),
+      create('div', 'statistic__correct', '%', ''),
+    ],
+    category,
+  );
+  statistic.forEach((statisticElement) => {
     create(
-      'p',
-      '',
-      [create('span', '', el.title, ''), create('span', '', `${el.clicks}`, '')],
-      info,
+      'div',
+      'statistic__item',
+      [
+        create('div', 'statistic__name', `${statisticElement.categoryName}`, ''),
+        create('div', 'statistic__eng', `${statisticElement.en}`, ''),
+        create('div', 'statistic__rus', `${statisticElement.ru}`, ''),
+        create('div', 'statistic__train', `${statisticElement.trainCount}`, ''),
+        create('div', 'statistic__mistakes', `${statisticElement.mistakesCount}`, ''),
+        create('div', 'statistic__correct', `${statisticElement.correctCount}`, ''),
+        create('div', 'statistic__coef', `${statisticElement.coef}%`, ''),
+      ],
+      category,
     );
   });
 }
@@ -191,22 +264,28 @@ const gameOverlayShow = () => {
     playMessageSound(links.winnerSound);
     gameOverlay.gameOverlayImage.src = links.staticImageSrc('game_lose');
     gameOverlay.gameOverlayTitle.innerHTML = `You make ${mistakesCount} mistakes`;
+    setTimeout(() => {
+      window.location.reload();
+    }, 2000);
   } else {
     playMessageSound(links.failSound);
     gameOverlay.gameOverlayImage.src = links.staticImageSrc('game_win');
     gameOverlay.gameOverlayTitle.innerHTML = 'Good Job!';
+    setTimeout(() => {
+      window.location.reload();
+    }, 2000);
   }
 
   gameOverlay.gameOverlayContainer.classList.add('game__overlay_active');
 };
 
 const playGame = () => {
-  if (gameData.length === 0) {
+  if (gameElements.length === 0) {
     gameOverlayShow();
     return;
   }
-  gameData.sort(() => Math.random() * 2 - 1);
-  cardSound.src = links.soundSrc(gameData[gameData.length - 1]);
+  gameElements.sort(() => Math.random() * 2 - 1);
+  cardSound.src = links.soundSrc(gameElements[gameElements.length - 1]);
   cardSound.load();
   cardSound.play();
   startGameBtn.innerHTML = 'REPEAT';
@@ -224,18 +303,22 @@ startGameBtn.addEventListener('click', () => {
 cardsContainer.addEventListener('click', (event) => {
   const targ = event.target.closest('.card__front');
   if (targ) {
+    const cardName = targ.getAttribute('data-card');
     if (!switchElement.switchBtn.checked) {
       playSound(targ);
+      statisticUpdate(cardName);
     }
     if (switchElement.switchBtn.checked && startGameBtn.innerHTML === 'REPEAT') {
-      if (targ.getAttribute('data-card') === gameData[gameData.length - 1]) {
+      if (targ.getAttribute('data-card') === gameElements[gameElements.length - 1]) {
         targ.classList.add('game__true');
         gameAnswers.prepend(create('div', 'answer__true', '', ''));
         playMessageSound(links.correctSound);
-        gameData.pop();
+        statisticUpdate(cardName, 'correct');
+        gameElements.pop();
         playGame();
       } else {
         gameAnswers.prepend(create('div', 'answer__false', '', ''));
+        statisticUpdate(gameElements[gameElements.length - 1], 'mistake');
         playMessageSound(links.mistakeSound);
         mistakesCount += 1;
       }

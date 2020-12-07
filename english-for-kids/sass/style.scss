@@ -15,12 +15,7 @@
 
 body {
   position: relative;
-}
-
-@media screen and (max-width: 700px) {
-  body {
-    height: 100%;
-  }
+  font-family: 'Roboto', sans-serif;
 }
 
 .game__overlay {
@@ -136,8 +131,8 @@ body {
   .menu__list {
     list-style: none;
     .menu__item_active {
-      border: 2px solid #fafafa;
-      border-radius: 2rem;
+      border-bottom: 5px dotted #fafafa;
+      border-top: 5px dotted #fafafa;
     }
     .menu__link {
       display: flex;
@@ -166,16 +161,63 @@ body {
   position: absolute;
   top: 0;
   right: 0;
-  width: 100vw;
-  height: 100%;
+  width: 100%;
   z-index: 10;
   background-color: #6e9737;
   background-image: linear-gradient(#6e9737, #82af44, #6e9737);
-  opacity: 0.95;
   display: none;
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  .statistic__category {
+    width: 90%;
+    margin: 1rem 0;
+    z-index: 2;
+  }
+  .statistic__fields,
+  .statistic__item {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    font-size: 1.5rem;
+  }
+  .statistic__fields {
+    border-bottom: 1px solid #fafafa;
+  }
+  .statistic__name {
+    width: 20%;
+    margin: 0.5rem 0;
+  }
+
+  .statistic__eng,
+  .statistic__rus {
+    width: 30%;
+    margin: 0.5rem 0;
+  }
+  .statistic__train,
+  .statistic__mistakes,
+  .statistic__correct,
+  .statistic__coef {
+    width: 5%;
+    margin: 0.5rem 0;
+    text-align: center;
+  }
+}
+.info__switcher {
+  display: flex;
+  &::before {
+    position: absolute;
+    content: '';
+    background: url('../assets/static/panda_top.png');
+    background-size: 15rem auto;
+    background-repeat: no-repeat;
+    width: 15rem;
+    height: 20rem;
+    top: 3rem;
+    right: 0;
+    opacity: 0.6;
+    z-index: 1;
+  }
 }
 
 .menu__switcher {
@@ -196,22 +238,6 @@ body {
     z-index: 1;
   }
 }
-.info__switcher {
-  display: flex;
-  &::before {
-    position: absolute;
-    content: '';
-    background: url('../assets/static/panda_top.png');
-    background-size: 15rem auto;
-    background-repeat: no-repeat;
-    width: 15rem;
-    height: 20rem;
-    top: 0;
-    right: 0;
-    opacity: 0.8;
-    z-index: 1;
-  }
-}
 
 .btn {
   font-family: 'Roboto', sans-serif;
@@ -222,6 +248,11 @@ body {
   background: none;
   width: 3.2rem;
   height: 3.2rem;
+  opacity: 0.9;
+  &:hover {
+    opacity: 1;
+    transform: scale(1.02);
+  }
 }
 
 .info__btn {
@@ -251,6 +282,7 @@ body {
 }
 
 .clear__btn {
+  margin-top: 1rem;
   width: 11rem;
   border-radius: 2rem;
   border: 2px solid #fafafa;
@@ -505,5 +537,15 @@ body {
     img {
       opacity: 0.5;
     }
+  }
+}
+
+@media screen and (max-width: 700px) {
+  body {
+    height: 100%;
+  }
+  .info .statistic__fields,
+  .info .statistic__item {
+    font-size: 1.2rem;
   }
 }
