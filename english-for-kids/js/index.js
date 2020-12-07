@@ -1,3 +1,5 @@
+/* eslint-disable array-callback-return */
+/* eslint-disable consistent-return */
 /* eslint-disable no-param-reassign */
 import '../sass/style.scss';
 import './images';
@@ -202,44 +204,196 @@ const statisticUpdate = (cardName, field) => {
 
 function showinfo() {
   info.classList.toggle('info__switcher');
-  info.classList.toggle('info__btn__switcher');
+  infoBtn.classList.toggle('info__btn__switcher');
   clear(info);
   const clearBtn = create('button', 'btn clear__btn', 'CLEAR', info);
   clearBtn.addEventListener('click', () => {
     statistic = [];
     generateStatistic(categories, statistic);
     storage.del('statistic');
+    info.classList.toggle('info__switcher');
+    infoBtn.classList.toggle('info__btn__switcher');
   });
-  const category = create('div', 'statistic__category', '', info);
-  create(
+  const sortContainer = create(
     'div',
-    'statistic__fields',
+    'statistic__sort',
     [
-      create('div', 'statistic__name', 'Category', ''),
-      create('div', 'statistic__eng', 'English', ''),
-      create('div', 'statistic__rus', 'Русский', ''),
-      create('div', 'statistic__train', 'T', ''),
-      create('div', 'statistic__mistakes', '-', ''),
-      create('div', 'statistic__correct', '+', ''),
-      create('div', 'statistic__correct', '%', ''),
+      create(
+        'div',
+        'sort__name',
+        [
+          create('div', 'sort sort__up', '', '', ['sort', 'name-up']),
+          create('div', 'sort sort__down', '', '', ['sort', 'name-down']),
+        ],
+        '',
+      ),
+      create(
+        'div',
+        'sort__eng',
+        [
+          create('div', 'sort sort__up', '', '', ['sort', 'eng-up']),
+          create('div', 'sort sort__down', '', '', ['sort', 'eng-down']),
+        ],
+        '',
+      ),
+      create(
+        'div',
+        'sort__rus',
+        [
+          create('div', 'sort sort__up', '', '', ['sort', 'rus-up']),
+          create('div', 'sort sort__down', '', '', ['sort', 'rus-down']),
+        ],
+        '',
+      ),
+      create(
+        'div',
+        'sort__train',
+        [
+          create('div', 'sort sort__up', '', '', ['sort', 'train-up']),
+          create('div', 'sort sort__down', '', '', ['sort', 'train-down']),
+        ],
+        '',
+      ),
+      create(
+        'div',
+        'sort__mistakes',
+        [
+          create('div', 'sort sort__up', '', '', ['sort', 'mistake-up']),
+          create('div', 'sort sort__down', '', '', ['sort', 'mistake-down']),
+        ],
+        '',
+      ),
+      create(
+        'div',
+        'sort__correct',
+        [
+          create('div', 'sort sort__up', '', '', ['sort', 'correct-up']),
+          create('div', 'sort sort__down', '', '', ['sort', 'correct-down']),
+        ],
+        '',
+      ),
+      create(
+        'div',
+        'sort__correct',
+        [
+          create('div', 'sort sort__up', '', '', ['sort', 'coef-up']),
+          create('div', 'sort sort__down', '', '', ['sort', 'coef-down']),
+        ],
+        '',
+      ),
     ],
-    category,
+    info,
   );
-  statistic.forEach((statisticElement) => {
+  const statistisContainer = create('div', 'statistic__container', '', info);
+  clear(statistisContainer);
+  const renderStatistic = () => {
+    const category = create('div', 'statistic__category', '', statistisContainer);
     create(
       'div',
-      'statistic__item',
+      'statistic__fields',
       [
-        create('div', 'statistic__name', `${statisticElement.categoryName}`, ''),
-        create('div', 'statistic__eng', `${statisticElement.en}`, ''),
-        create('div', 'statistic__rus', `${statisticElement.ru}`, ''),
-        create('div', 'statistic__train', `${statisticElement.trainCount}`, ''),
-        create('div', 'statistic__mistakes', `${statisticElement.mistakesCount}`, ''),
-        create('div', 'statistic__correct', `${statisticElement.correctCount}`, ''),
-        create('div', 'statistic__coef', `${statisticElement.coef}%`, ''),
+        create('div', 'statistic__name', 'Category', ''),
+        create('div', 'statistic__eng', 'English', ''),
+        create('div', 'statistic__rus', 'Русский', ''),
+        create('div', 'statistic__train', 'T', ''),
+        create('div', 'statistic__mistakes', '-', ''),
+        create('div', 'statistic__correct', '+', ''),
+        create('div', 'statistic__correct', '%', ''),
       ],
       category,
     );
+    statistic.forEach((statisticElement) => {
+      create(
+        'div',
+        'statistic__item',
+        [
+          create('div', 'statistic__name', `${statisticElement.categoryName}`, ''),
+          create('div', 'statistic__eng', `${statisticElement.en}`, ''),
+          create('div', 'statistic__rus', `${statisticElement.ru}`, ''),
+          create('div', 'statistic__train', `${statisticElement.trainCount}`, ''),
+          create('div', 'statistic__mistakes', `${statisticElement.mistakesCount}`, ''),
+          create('div', 'statistic__correct', `${statisticElement.correctCount}`, ''),
+          create('div', 'statistic__coef', `${statisticElement.coef}%`, ''),
+        ],
+        category,
+      );
+    });
+  };
+  renderStatistic();
+  sortContainer.addEventListener('click', (event) => {
+    const targ = event.target.closest('.sort');
+    if (targ) {
+      const sortElement = targ.getAttribute('data-sort');
+      const statisticSort = (item) => {
+        clear(statistisContainer);
+        statistic = storage.get('statistic');
+        statistic.sort((prev, next) => {
+          switch (item) {
+            case 'name-up':
+              if (prev.categoryName < next.categoryName) return -1;
+              if (prev.categoryName < next.categoryName) return 1;
+              break;
+            case 'name-down':
+              if (prev.categoryName > next.categoryName) return -1;
+              if (prev.categoryName > next.categoryName) return 1;
+              break;
+            case 'eng-up':
+              if (prev.en < next.en) return -1;
+              if (prev.en < next.en) return 1;
+              break;
+            case 'eng-down':
+              if (prev.en > next.en) return -1;
+              if (prev.en > next.en) return 1;
+              break;
+            case 'rus-up':
+              if (prev.ru < next.ru) return -1;
+              if (prev.ru < next.ru) return 1;
+              break;
+            case 'rus-down':
+              if (prev.ru > next.ru) return -1;
+              if (prev.ru > next.ru) return 1;
+              break;
+            case 'train-up':
+              if (prev.trainCount < next.trainCount) return -1;
+              if (prev.trainCount < next.trainCount) return 1;
+              break;
+            case 'train-down':
+              if (prev.trainCount > next.trainCount) return -1;
+              if (prev.trainCount > next.trainCount) return 1;
+              break;
+            case 'correct-up':
+              if (prev.correctCount < next.correctCount) return -1;
+              if (prev.correctCount < next.correctCount) return 1;
+              break;
+            case 'correct-down':
+              if (prev.correctCount > next.correctCount) return -1;
+              if (prev.correctCount > next.correctCount) return 1;
+              break;
+            case 'mistake-up':
+              if (prev.mistakesCount < next.mistakesCount) return -1;
+              if (prev.mistakesCount < next.mistakesCount) return 1;
+              break;
+            case 'mistake-down':
+              if (prev.mistakesCount > next.mistakesCount) return -1;
+              if (prev.mistakesCount > next.mistakesCount) return 1;
+              break;
+            case 'coef-up':
+              if (prev.coef < next.coef) return -1;
+              if (prev.coef < next.coef) return 1;
+              break;
+            case 'coef-down':
+              if (prev.coef > next.coef) return -1;
+              if (prev.coef > next.coef) return 1;
+              break;
+
+            default:
+              break;
+          }
+        });
+      };
+      statisticSort(sortElement);
+      renderStatistic();
+    }
   });
 }
 
@@ -342,4 +496,3 @@ switchElement.switchBtn.addEventListener('change', () => {
 menuBtn.addEventListener('click', showMenu);
 menu.addEventListener('click', showMenu);
 infoBtn.addEventListener('click', showinfo);
-info.addEventListener('click', showinfo);
