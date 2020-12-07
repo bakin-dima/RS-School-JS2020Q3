@@ -209,8 +209,9 @@ function showinfo() {
   const clearBtn = create('button', 'btn clear__btn', 'CLEAR', info);
   clearBtn.addEventListener('click', () => {
     statistic = [];
-    generateStatistic(categories, statistic);
     storage.del('statistic');
+    generateStatistic(categories, statistic);
+    storage.set('statistic', statistic);
     info.classList.toggle('info__switcher');
     infoBtn.classList.toggle('info__btn__switcher');
   });
